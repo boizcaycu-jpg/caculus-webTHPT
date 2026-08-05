@@ -1,0 +1,1665 @@
+{
+  "users": [
+    {
+      "id": "user-admin-1",
+      "email": "admin@caculus.edu.vn",
+      "passwordHash": "$2a$10$w6M7q3p/k9Zz9t.g3/6VyeGz3/U9eD2eF3.L/M9X8/1Y1Y1Y1Y1Y1",
+      "name": "Quản trị viên THPTQG",
+      "studentId": "ADMIN-001",
+      "role": "admin",
+      "isVip": true,
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "user-student-1",
+      "email": "student@caculus.edu.vn",
+      "passwordHash": "$2a$10$w6M7q3p/k9Zz9t.g3/6VyeGz3/U9eD2eF3.L/M9X8/1Y1Y1Y1Y1Y1",
+      "name": "Nguyễn Cường",
+      "studentId": "THPTQG_496692",
+      "role": "student",
+      "isVip": true,
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "user-student-2",
+      "email": "tranvanb@caculus.edu.vn",
+      "passwordHash": "$2a$10$w6M7q3p/k9Zz9t.g3/6VyeGz3/U9eD2eF3.L/M9X8/1Y1Y1Y1Y1Y1",
+      "name": "Trần Văn B",
+      "studentId": "THPTQG_496693",
+      "role": "student",
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "user-student-3",
+      "email": "lethic@caculus.edu.vn",
+      "passwordHash": "$2a$10$w6M7q3p/k9Zz9t.g3/6VyeGz3/U9eD2eF3.L/M9X8/1Y1Y1Y1Y1Y1",
+      "name": "Lê Thị C",
+      "studentId": "THPTQG_496694",
+      "role": "student",
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "user-student-mock-1",
+      "email": "student_mock1@caculus.edu.vn",
+      "passwordHash": "$2a$10$w6M7q3p/k9Zz9t.g3/6VyeGz3/U9eD2eF3.L/M9X8/1Y1Y1Y1Y1Y1",
+      "name": "Nguyễn Minh Triết",
+      "studentId": "THPTQG_108291",
+      "role": "student",
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "user-student-mock-2",
+      "email": "student_mock2@caculus.edu.vn",
+      "passwordHash": "$2a$10$w6M7q3p/k9Zz9t.g3/6VyeGz3/U9eD2eF3.L/M9X8/1Y1Y1Y1Y1Y1",
+      "name": "Trần Hoàng Nam",
+      "studentId": "THPTQG_293812",
+      "role": "student",
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "user-student-mock-3",
+      "email": "student_mock3@caculus.edu.vn",
+      "passwordHash": "$2a$10$w6M7q3p/k9Zz9t.g3/6VyeGz3/U9eD2eF3.L/M9X8/1Y1Y1Y1Y1Y1",
+      "name": "Lê Phương Thảo",
+      "studentId": "THPTQG_819230",
+      "role": "student",
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "user-student-mock-4",
+      "email": "student_mock4@caculus.edu.vn",
+      "passwordHash": "$2a$10$w6M7q3p/k9Zz9t.g3/6VyeGz3/U9eD2eF3.L/M9X8/1Y1Y1Y1Y1Y1",
+      "name": "Đặng Quốc Bảo",
+      "studentId": "THPTQG_304918",
+      "role": "student",
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "user-student-mock-5",
+      "email": "student_mock5@caculus.edu.vn",
+      "passwordHash": "$2a$10$w6M7q3p/k9Zz9t.g3/6VyeGz3/U9eD2eF3.L/M9X8/1Y1Y1Y1Y1Y1",
+      "name": "Vũ Hoàng Yến",
+      "studentId": "THPTQG_918234",
+      "role": "student",
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "user-student-mock-6",
+      "email": "student_mock6@caculus.edu.vn",
+      "passwordHash": "$2a$10$w6M7q3p/k9Zz9t.g3/6VyeGz3/U9eD2eF3.L/M9X8/1Y1Y1Y1Y1Y1",
+      "name": "Phạm Đức Anh",
+      "studentId": "THPTQG_129384",
+      "role": "student",
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "user-student-mock-7",
+      "email": "student_mock7@caculus.edu.vn",
+      "passwordHash": "$2a$10$w6M7q3p/k9Zz9t.g3/6VyeGz3/U9eD2eF3.L/M9X8/1Y1Y1Y1Y1Y1",
+      "name": "Bùi Thị Mai",
+      "studentId": "THPTQG_827364",
+      "role": "student",
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "user-student-mock-8",
+      "email": "student_mock8@caculus.edu.vn",
+      "passwordHash": "$2a$10$w6M7q3p/k9Zz9t.g3/6VyeGz3/U9eD2eF3.L/M9X8/1Y1Y1Y1Y1Y1",
+      "name": "Đỗ Quang Huy",
+      "studentId": "THPTQG_394827",
+      "role": "student",
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "user-student-mock-9",
+      "email": "student_mock9@caculus.edu.vn",
+      "passwordHash": "$2a$10$w6M7q3p/k9Zz9t.g3/6VyeGz3/U9eD2eF3.L/M9X8/1Y1Y1Y1Y1Y1",
+      "name": "Hoàng Ngọc Ánh",
+      "studentId": "THPTQG_583920",
+      "role": "student",
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "user-student-mock-10",
+      "email": "student_mock10@caculus.edu.vn",
+      "passwordHash": "$2a$10$w6M7q3p/k9Zz9t.g3/6VyeGz3/U9eD2eF3.L/M9X8/1Y1Y1Y1Y1Y1",
+      "name": "Nguyễn Thành Long",
+      "studentId": "THPTQG_948201",
+      "role": "student",
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "user-student-mock-11",
+      "email": "student_mock11@caculus.edu.vn",
+      "passwordHash": "$2a$10$w6M7q3p/k9Zz9t.g3/6VyeGz3/U9eD2eF3.L/M9X8/1Y1Y1Y1Y1Y1",
+      "name": "Lương Gia Huy",
+      "studentId": "THPTQG_284719",
+      "role": "student",
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "user-student-mock-12",
+      "email": "student_mock12@caculus.edu.vn",
+      "passwordHash": "$2a$10$w6M7q3p/k9Zz9t.g3/6VyeGz3/U9eD2eF3.L/M9X8/1Y1Y1Y1Y1Y1",
+      "name": "Trịnh Như Quỳnh",
+      "studentId": "THPTQG_472910",
+      "role": "student",
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "user-student-mock-13",
+      "email": "student_mock13@caculus.edu.vn",
+      "passwordHash": "$2a$10$w6M7q3p/k9Zz9t.g3/6VyeGz3/U9eD2eF3.L/M9X8/1Y1Y1Y1Y1Y1",
+      "name": "Phan Nhật Minh",
+      "studentId": "THPTQG_739201",
+      "role": "student",
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "user-student-mock-14",
+      "email": "student_mock14@caculus.edu.vn",
+      "passwordHash": "$2a$10$w6M7q3p/k9Zz9t.g3/6VyeGz3/U9eD2eF3.L/M9X8/1Y1Y1Y1Y1Y1",
+      "name": "Đào Khánh Linh",
+      "studentId": "THPTQG_193847",
+      "role": "student",
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "user-student-mock-15",
+      "email": "student_mock15@caculus.edu.vn",
+      "passwordHash": "$2a$10$w6M7q3p/k9Zz9t.g3/6VyeGz3/U9eD2eF3.L/M9X8/1Y1Y1Y1Y1Y1",
+      "name": "Đinh Tấn Phát",
+      "studentId": "THPTQG_582019",
+      "role": "student",
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    }
+  ],
+  "exams": [
+    {
+      "id": "exam-cd-1",
+      "title": "Chuyên đề 01: Biến thiên & Đồ thị Hàm số",
+      "description": "Tổng ôn Đơn điệu, Cực trị, Giá trị lớn nhất - nhỏ nhất, Tiệm cận & Đồ thị hàm số 12",
+      "isFree": true,
+      "isPublished": true,
+      "status": "ĐÃ UPDATE",
+      "category": "LUYỆN TẬP",
+      "subCategory": "math",
+      "topic": "Hàm số",
+      "modules": [
+        {
+          "id": "mod-cd-1",
+          "examId": "exam-cd-1",
+          "title": "Chuyên đề Biến thiên & Đồ thị Hàm số",
+          "category": "math",
+          "durationMinutes": 45,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 25
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "exam-cd-2",
+      "title": "Chuyên đề 02: Phương trình & Bất phương trình Mũ - Logarit",
+      "description": "Công thức biến đổi logarit, phương trình, bất phương trình mũ & bài toán thực tế",
+      "isFree": true,
+      "isPublished": true,
+      "status": "ĐÃ UPDATE",
+      "category": "LUYỆN TẬP",
+      "subCategory": "math",
+      "topic": "Mũ & Logarit",
+      "modules": [
+        {
+          "id": "mod-cd-2",
+          "examId": "exam-cd-2",
+          "title": "Chuyên đề Mũ & Logarit",
+          "category": "math",
+          "durationMinutes": 40,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 20
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "exam-cd-3",
+      "title": "Chuyên đề 03: Nguyên hàm, Tích phân & Ứng dụng Hình phẳng",
+      "description": "Các phương pháp tính nguyên hàm, tích phân đổi biến, từng phần & tính diện tích, thể tích",
+      "isFree": true,
+      "isPublished": true,
+      "status": "ĐÃ UPDATE",
+      "category": "LUYỆN TẬP",
+      "subCategory": "math",
+      "topic": "Tích phân",
+      "modules": [
+        {
+          "id": "mod-cd-3",
+          "examId": "exam-cd-3",
+          "title": "Chuyên đề Nguyên hàm - Tích phân",
+          "category": "math",
+          "durationMinutes": 45,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 25
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "exam-cd-4",
+      "title": "Chuyên đề 04: Khối đa diện, Góc & Khoảng cách Không gian Cổ điển",
+      "description": "Tính thể tích khối chóp, khối lăng trụ, khoảng cách từ điểm đến mặt phẳng & góc giữa 2 mặt phẳng",
+      "isFree": true,
+      "isPublished": true,
+      "status": "ĐÃ UPDATE",
+      "category": "LUYỆN TẬP",
+      "subCategory": "math",
+      "topic": "Hình học Không gian",
+      "modules": [
+        {
+          "id": "mod-cd-4",
+          "examId": "exam-cd-4",
+          "title": "Chuyên đề Hình học Không gian",
+          "category": "math",
+          "durationMinutes": 40,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 20
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "exam-cd-5",
+      "title": "Chuyên đề 05: Tọa độ Oxyz: Mặt phẳng, Đường thẳng & Mặt cầu",
+      "description": "Phương trình mặt phẳng, phương trình đường thẳng, mặt cầu và vị trí tương đối trong Oxyz",
+      "isFree": true,
+      "isPublished": true,
+      "status": "ĐÃ UPDATE",
+      "category": "LUYỆN TẬP",
+      "subCategory": "math",
+      "topic": "Hình học Oxyz",
+      "modules": [
+        {
+          "id": "mod-cd-5",
+          "examId": "exam-cd-5",
+          "title": "Chuyên đề Hình học Tọa độ Oxyz",
+          "category": "math",
+          "durationMinutes": 45,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 25
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "exam-cd-6",
+      "title": "Chuyên đề 06: Đại số Số phức & Biểu diễn Tọa độ Mặt phẳng",
+      "description": "Các phép toán số phức, môđun, số phức liên hợp, tập hợp điểm biểu diễn & cực trị số phức",
+      "isFree": true,
+      "isPublished": true,
+      "status": "ĐÃ UPDATE",
+      "category": "LUYỆN TẬP",
+      "subCategory": "math",
+      "topic": "Số phức",
+      "modules": [
+        {
+          "id": "mod-cd-6",
+          "examId": "exam-cd-6",
+          "title": "Chuyên đề Số phức",
+          "category": "math",
+          "durationMinutes": 35,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 20
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "exam-cd-7",
+      "title": "Chuyên đề 07: Xác suất, Tổ hợp & Thống kê Số liệu THPTQG",
+      "description": "Quy tắc đếm, hoán vị, chỉnh hợp, tổ hợp, biến cố ngẫu nhiên & phân tích bảng biểu thống kê",
+      "isFree": true,
+      "isPublished": true,
+      "status": "ĐÃ UPDATE",
+      "category": "LUYỆN TẬP",
+      "subCategory": "math",
+      "topic": "Xác suất",
+      "modules": [
+        {
+          "id": "mod-cd-7",
+          "examId": "exam-cd-7",
+          "title": "Chuyên đề Xác suất & Thống kê",
+          "category": "math",
+          "durationMinutes": 40,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 20
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "exam-cd-8",
+      "title": "Chuyên đề 08: Dãy số, Cấp số cộng & Cấp số nhân",
+      "description": "Dãy số tăng giảm, công sai cấp số cộng, công bội cấp số nhân & bài toán tổng quát",
+      "isFree": true,
+      "isPublished": true,
+      "status": "ĐÃ UPDATE",
+      "category": "LUYỆN TẬP",
+      "subCategory": "math",
+      "topic": "Cấp số cộng",
+      "modules": [
+        {
+          "id": "mod-cd-8",
+          "examId": "exam-cd-8",
+          "title": "Chuyên đề Dãy số & Cấp số",
+          "category": "math",
+          "durationMinutes": 30,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 15
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "exam-thptqg-1",
+      "title": "Đề Thi Thử TN THPT Quốc Gia Môn Toán 2026 - Đề Số 01",
+      "description": "Bộ đề thi chuẩn cấu trúc Bộ GD&ĐT 2025/2026 (12 Trắc nghiệm + 4 Đúng/Sai + 6 Trả lời ngắn)",
+      "isFree": true,
+      "isPublished": true,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-thptqg-math-1",
+          "examId": "exam-thptqg-1",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "exam-thptqg-2",
+      "title": "Đề Thi Thử TN THPT Quốc Gia Môn Toán 2026 - Đề Số 02",
+      "description": "Đề tổng ôn 9+ chuyên đề Hàm số, Tích phân & Hình học Oxyz vận dụng cao",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-thptqg-math-2",
+          "examId": "exam-thptqg-2",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "08:00 01/06/2026",
+          "closeTime": "23:59 30/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "exam-vip-001",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 001",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 001)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-001",
+          "examId": "exam-vip-001",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "exam-vip-002",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 002",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 002)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-002",
+          "examId": "exam-vip-002",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "exam-vip-003",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 003",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 003)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-003",
+          "examId": "exam-vip-003",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.652Z"
+    },
+    {
+      "id": "exam-vip-004",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 004",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 004)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-004",
+          "examId": "exam-vip-004",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-005",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 005",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 005)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-005",
+          "examId": "exam-vip-005",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-006",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 006",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 006)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-006",
+          "examId": "exam-vip-006",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-007",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 007",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 007)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-007",
+          "examId": "exam-vip-007",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-008",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 008",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 008)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-008",
+          "examId": "exam-vip-008",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-009",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 009",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 009)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-009",
+          "examId": "exam-vip-009",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-010",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 010",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 010)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-010",
+          "examId": "exam-vip-010",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-011",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 011",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 011)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-011",
+          "examId": "exam-vip-011",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-012",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 012",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 012)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-012",
+          "examId": "exam-vip-012",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-013",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 013",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 013)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-013",
+          "examId": "exam-vip-013",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-014",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 014",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 014)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-014",
+          "examId": "exam-vip-014",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-015",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 015",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 015)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-015",
+          "examId": "exam-vip-015",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-016",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 016",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 016)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-016",
+          "examId": "exam-vip-016",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-017",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 017",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 017)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-017",
+          "examId": "exam-vip-017",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-018",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 018",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 018)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-018",
+          "examId": "exam-vip-018",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-019",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 019",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 019)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-019",
+          "examId": "exam-vip-019",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-020",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 020",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 020)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-020",
+          "examId": "exam-vip-020",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-021",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 021",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 021)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-021",
+          "examId": "exam-vip-021",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-022",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 022",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 022)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-022",
+          "examId": "exam-vip-022",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-023",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 023",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 023)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-023",
+          "examId": "exam-vip-023",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-024",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 024",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 024)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-024",
+          "examId": "exam-vip-024",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-025",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 025",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 025)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-025",
+          "examId": "exam-vip-025",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-026",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 026",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 026)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-026",
+          "examId": "exam-vip-026",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-027",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 027",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 027)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-027",
+          "examId": "exam-vip-027",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-028",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 028",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 028)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-028",
+          "examId": "exam-vip-028",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-029",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 029",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 029)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-029",
+          "examId": "exam-vip-029",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-030",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 030",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 030)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-030",
+          "examId": "exam-vip-030",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-031",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 031",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 031)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-031",
+          "examId": "exam-vip-031",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-032",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 032",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 032)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-032",
+          "examId": "exam-vip-032",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-033",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 033",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 033)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-033",
+          "examId": "exam-vip-033",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-034",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 034",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 034)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-034",
+          "examId": "exam-vip-034",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-035",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 035",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 035)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-035",
+          "examId": "exam-vip-035",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    },
+    {
+      "id": "exam-vip-036",
+      "title": "Đề Thi Thử THPTQG Môn Toán VIP 036",
+      "description": "Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP 036)",
+      "isFree": false,
+      "isPublished": true,
+      "price": 150000,
+      "status": "ĐÃ UPDATE",
+      "category": "THỰC CHIẾN",
+      "subCategory": "math",
+      "modules": [
+        {
+          "id": "mod-math-vip-036",
+          "examId": "exam-vip-036",
+          "title": "Bài Thi Môn Toán TN THPT Quốc Gia",
+          "category": "math",
+          "durationMinutes": 90,
+          "openTime": "00:00 01/01/2026",
+          "closeTime": "23:59 31/12/2027",
+          "totalQuestions": 22
+        }
+      ],
+      "createdAt": "2026-08-04T11:03:36.653Z"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-math-p1-1",
+      "moduleId": "mod-thptqg-math-1",
+      "number": 1,
+      "partType": "part1",
+      "type": "single_choice",
+      "topic": "Hàm số",
+      "text": "Cho hàm số y = f(x) có bảng biến thiên như sau. Hàm số đã cho đồng biến trên khoảng nào dưới đây?",
+      "passage": "x   |-∞       -1        1       +∞\nf'(x)|    +    0    -   0   +   \nf(x) |-∞  ↗  2   ↘  -2  ↗  +∞",
+      "options": [
+        {
+          "id": "opt-a",
+          "text": "(-1; 1)"
+        },
+        {
+          "id": "opt-b",
+          "text": "(1; +∞)"
+        },
+        {
+          "id": "opt-c",
+          "text": "(-∞; 1)"
+        },
+        {
+          "id": "opt-d",
+          "text": "(-2; 2)"
+        }
+      ],
+      "correctOptionId": "opt-b",
+      "explanation": "Quan sát bảng biến thiên, f'(x) > 0 trên các khoảng (-∞; -1) và (1; +∞). Do đó hàm số đồng biến trên (1; +∞)."
+    },
+    {
+      "id": "q-math-p1-2",
+      "moduleId": "mod-thptqg-math-1",
+      "number": 2,
+      "partType": "part1",
+      "type": "single_choice",
+      "topic": "Mũ & Logarit",
+      "text": "Nghiệm của phương trình log2(x - 3) = 3 là:",
+      "options": [
+        {
+          "id": "opt-a",
+          "text": "x = 11"
+        },
+        {
+          "id": "opt-b",
+          "text": "x = 9"
+        },
+        {
+          "id": "opt-c",
+          "text": "x = 12"
+        },
+        {
+          "id": "opt-d",
+          "text": "x = 8"
+        }
+      ],
+      "correctOptionId": "opt-a",
+      "explanation": "Điều kiện x > 3. Ta có: x - 3 = 2^3 = 8 => x = 11 (thỏa mãn)."
+    },
+    {
+      "id": "q-math-[#0052cc]-3",
+      "moduleId": "mod-thptqg-math-1",
+      "number": 3,
+      "partType": "part1",
+      "type": "single_choice",
+      "topic": "Nguyên hàm & Tích phân",
+      "text": "Cho hàm số f(x) = e^(2x). Họ tất cả các nguyên hàm của hàm số f(x) là:",
+      "options": [
+        {
+          "id": "opt-a",
+          "text": "F(x) = 2.e^(2x) + C"
+        },
+        {
+          "id": "opt-b",
+          "text": "F(x) = (1/2).e^(2x) + C"
+        },
+        {
+          "id": "opt-c",
+          "text": "F(x) = e^(2x) + C"
+        },
+        {
+          "id": "opt-d",
+          "text": "F(x) = (1/2).e^x + C"
+        }
+      ],
+      "correctOptionId": "opt-b",
+      "explanation": "∫ e^(2x) dx = (1/2) e^(2x) + C."
+    },
+    {
+      "id": "q-math-p2-1",
+      "moduleId": "mod-thptqg-math-1",
+      "number": 13,
+      "partType": "part2",
+      "type": "true_false",
+      "topic": "Hàm số & Khảo sát",
+      "text": "Xét hàm số y = f(x) = x^3 - 3x^2 + 2 trên đoạn [0; 3]. Các phát biểu sau đây ĐÚNG hay SAI?",
+      "options": [],
+      "trueFalseItems": [
+        {
+          "id": "a",
+          "statement": "a) Đạo hàm f'(x) = 3x^2 - 6x.",
+          "isTrue": true,
+          "explanation": "f'(x) = 3x^2 - 6x"
+        },
+        {
+          "id": "b",
+          "statement": "b) Hàm số đạt cực đại tại điểm x = 2.",
+          "isTrue": false,
+          "explanation": "f'(x) = 0 <=> x = 0 (cực đại) hoặc x = 2 (cực tiểu)"
+        },
+        {
+          "id": "c",
+          "statement": "c) Giá trị lớn nhất của hàm số trên đoạn [0; 3] bằng 2.",
+          "isTrue": true,
+          "explanation": "f(0)=2, f(2)=-2, f(3)=2. Max = 2"
+        },
+        {
+          "id": "d",
+          "statement": "d) Giá trị nhỏ nhất của hàm số trên đoạn [0; 3] bằng -2.",
+          "isTrue": true,
+          "explanation": "Min = f(2) = -2"
+        }
+      ],
+      "explanation": "a) Đúng. b) Sai (x=2 là điểm cực tiểu). c) Đúng (Max [0;3] = 2). d) Đúng (Min [0;3] = -2)."
+    },
+    {
+      "id": "q-math-p3-1",
+      "moduleId": "mod-thptqg-math-1",
+      "number": 17,
+      "partType": "part3",
+      "type": "fill_blank",
+      "topic": "Hàm số & Ứng dụng thực tế",
+      "text": "Một xưởng sản xuất thiết kế thùng chứa hình trụ có thể tích V = 2000 cm³. Bán kính đáy r (cm) để diện tích toàn phần của thùng chứa đạt giá trị nhỏ nhất làm tròn đến hàng phần mười là bao nhiêu?",
+      "options": [],
+      "fillBlankAnswers": [
+        "6.8",
+        "6.84",
+        "6,8"
+      ],
+      "explanation": "Diện tích toàn phần S = 2πr² + 2000/r. Đạo hàm S' = 4πr - 2000/r² = 0 => r = ∛(500/π) ≈ 6.836 cm => Làm tròn 6.8."
+    }
+  ],
+  "questionGroups": [],
+  "submissions": [
+    {
+      "id": "sub-1",
+      "examId": "exam-thptqg-1",
+      "moduleId": "mod-thptqg-math-1",
+      "userId": "user-student-1",
+      "userName": "Nguyễn Cường",
+      "studentId": "THPTQG_496692",
+      "score": 9.25,
+      "totalQuestions": 22,
+      "correctCount": 20,
+      "answers": [],
+      "submittedAt": "2026-07-24T14:30:00.000Z",
+      "antiCheatViolationCount": 0
+    },
+    {
+      "id": "sub-mock-1",
+      "examId": "exam-thptqg-1",
+      "moduleId": "mod-thptqg-math-1",
+      "userId": "user-student-mock-1",
+      "userName": "Nguyễn Minh Triết",
+      "studentId": "THPTQG_108291",
+      "score": 9.8,
+      "totalQuestions": 22,
+      "correctCount": 22,
+      "answers": [],
+      "submittedAt": "2026-08-04T07:03:36.653Z",
+      "antiCheatViolationCount": 0
+    },
+    {
+      "id": "sub-mock-2",
+      "examId": "exam-thptqg-1",
+      "moduleId": "mod-thptqg-math-1",
+      "userId": "user-student-mock-2",
+      "userName": "Trần Hoàng Nam",
+      "studentId": "THPTQG_293812",
+      "score": 9.6,
+      "totalQuestions": 22,
+      "correctCount": 21,
+      "answers": [],
+      "submittedAt": "2026-08-04T03:03:36.653Z",
+      "antiCheatViolationCount": 0
+    },
+    {
+      "id": "sub-mock-3",
+      "examId": "exam-thptqg-1",
+      "moduleId": "mod-thptqg-math-1",
+      "userId": "user-student-mock-3",
+      "userName": "Lê Phương Thảo",
+      "studentId": "THPTQG_819230",
+      "score": 9.5,
+      "totalQuestions": 22,
+      "correctCount": 21,
+      "answers": [],
+      "submittedAt": "2026-08-03T23:03:36.653Z",
+      "antiCheatViolationCount": 0
+    },
+    {
+      "id": "sub-mock-4",
+      "examId": "exam-thptqg-1",
+      "moduleId": "mod-thptqg-math-1",
+      "userId": "user-student-mock-4",
+      "userName": "Đặng Quốc Bảo",
+      "studentId": "THPTQG_304918",
+      "score": 9.25,
+      "totalQuestions": 22,
+      "correctCount": 20,
+      "answers": [],
+      "submittedAt": "2026-08-03T19:03:36.653Z",
+      "antiCheatViolationCount": 0
+    },
+    {
+      "id": "sub-mock-5",
+      "examId": "exam-thptqg-1",
+      "moduleId": "mod-thptqg-math-1",
+      "userId": "user-student-mock-5",
+      "userName": "Vũ Hoàng Yến",
+      "studentId": "THPTQG_918234",
+      "score": 9,
+      "totalQuestions": 22,
+      "correctCount": 20,
+      "answers": [],
+      "submittedAt": "2026-08-03T15:03:36.653Z",
+      "antiCheatViolationCount": 0
+    },
+    {
+      "id": "sub-mock-6",
+      "examId": "exam-thptqg-1",
+      "moduleId": "mod-thptqg-math-1",
+      "userId": "user-student-mock-6",
+      "userName": "Phạm Đức Anh",
+      "studentId": "THPTQG_129384",
+      "score": 8.8,
+      "totalQuestions": 22,
+      "correctCount": 19,
+      "answers": [],
+      "submittedAt": "2026-08-03T11:03:36.653Z",
+      "antiCheatViolationCount": 0
+    },
+    {
+      "id": "sub-mock-7",
+      "examId": "exam-thptqg-1",
+      "moduleId": "mod-thptqg-math-1",
+      "userId": "user-student-mock-7",
+      "userName": "Bùi Thị Mai",
+      "studentId": "THPTQG_827364",
+      "score": 8.6,
+      "totalQuestions": 22,
+      "correctCount": 19,
+      "answers": [],
+      "submittedAt": "2026-08-03T07:03:36.653Z",
+      "antiCheatViolationCount": 0
+    },
+    {
+      "id": "sub-mock-8",
+      "examId": "exam-thptqg-1",
+      "moduleId": "mod-thptqg-math-1",
+      "userId": "user-student-mock-8",
+      "userName": "Đỗ Quang Huy",
+      "studentId": "THPTQG_394827",
+      "score": 8.5,
+      "totalQuestions": 22,
+      "correctCount": 19,
+      "answers": [],
+      "submittedAt": "2026-08-03T03:03:36.653Z",
+      "antiCheatViolationCount": 0
+    },
+    {
+      "id": "sub-mock-9",
+      "examId": "exam-thptqg-1",
+      "moduleId": "mod-thptqg-math-1",
+      "userId": "user-student-mock-9",
+      "userName": "Hoàng Ngọc Ánh",
+      "studentId": "THPTQG_583920",
+      "score": 8.2,
+      "totalQuestions": 22,
+      "correctCount": 18,
+      "answers": [],
+      "submittedAt": "2026-08-02T23:03:36.653Z",
+      "antiCheatViolationCount": 0
+    },
+    {
+      "id": "sub-mock-10",
+      "examId": "exam-thptqg-1",
+      "moduleId": "mod-thptqg-math-1",
+      "userId": "user-student-mock-10",
+      "userName": "Nguyễn Thành Long",
+      "studentId": "THPTQG_948201",
+      "score": 8,
+      "totalQuestions": 22,
+      "correctCount": 18,
+      "answers": [],
+      "submittedAt": "2026-08-02T19:03:36.653Z",
+      "antiCheatViolationCount": 0
+    },
+    {
+      "id": "sub-mock-11",
+      "examId": "exam-thptqg-1",
+      "moduleId": "mod-thptqg-math-1",
+      "userId": "user-student-mock-11",
+      "userName": "Lương Gia Huy",
+      "studentId": "THPTQG_284719",
+      "score": 7.8,
+      "totalQuestions": 22,
+      "correctCount": 17,
+      "answers": [],
+      "submittedAt": "2026-08-02T15:03:36.653Z",
+      "antiCheatViolationCount": 0
+    },
+    {
+      "id": "sub-mock-12",
+      "examId": "exam-thptqg-1",
+      "moduleId": "mod-thptqg-math-1",
+      "userId": "user-student-mock-12",
+      "userName": "Trịnh Như Quỳnh",
+      "studentId": "THPTQG_472910",
+      "score": 7.6,
+      "totalQuestions": 22,
+      "correctCount": 17,
+      "answers": [],
+      "submittedAt": "2026-08-02T11:03:36.653Z",
+      "antiCheatViolationCount": 0
+    },
+    {
+      "id": "sub-mock-13",
+      "examId": "exam-thptqg-1",
+      "moduleId": "mod-thptqg-math-1",
+      "userId": "user-student-mock-13",
+      "userName": "Phan Nhật Minh",
+      "studentId": "THPTQG_739201",
+      "score": 7.4,
+      "totalQuestions": 22,
+      "correctCount": 16,
+      "answers": [],
+      "submittedAt": "2026-08-02T07:03:36.653Z",
+      "antiCheatViolationCount": 0
+    },
+    {
+      "id": "sub-mock-14",
+      "examId": "exam-thptqg-1",
+      "moduleId": "mod-thptqg-math-1",
+      "userId": "user-student-mock-14",
+      "userName": "Đào Khánh Linh",
+      "studentId": "THPTQG_193847",
+      "score": 7.2,
+      "totalQuestions": 22,
+      "correctCount": 16,
+      "answers": [],
+      "submittedAt": "2026-08-02T03:03:36.653Z",
+      "antiCheatViolationCount": 0
+    },
+    {
+      "id": "sub-mock-15",
+      "examId": "exam-thptqg-1",
+      "moduleId": "mod-thptqg-math-1",
+      "userId": "user-student-mock-15",
+      "userName": "Đinh Tấn Phát",
+      "studentId": "THPTQG_582019",
+      "score": 7,
+      "totalQuestions": 22,
+      "correctCount": 15,
+      "answers": [],
+      "submittedAt": "2026-08-01T23:03:36.653Z",
+      "antiCheatViolationCount": 0
+    }
+  ],
+  "antiCheatLogs": [
+    {
+      "id": "ac-1",
+      "userId": "user-student-1",
+      "userName": "Nguyễn Cường",
+      "studentId": "THPTQG_496692",
+      "examId": "exam-thptqg-1",
+      "moduleId": "mod-thptqg-math-1",
+      "eventType": "tab_switch",
+      "timestamp": "2026-07-24T15:10:22.000Z",
+      "details": "Thí sinh rời màn hình bài thi (Chuyển tab trình duyệt)"
+    }
+  ]
+}
