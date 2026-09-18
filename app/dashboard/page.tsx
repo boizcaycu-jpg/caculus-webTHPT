@@ -148,11 +148,11 @@ export default function DashboardPage() {
                 <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
                   🔷 CHUYÊN ĐỀ LUYỆN TẬP TOÁN THPTQG
                   <span className="text-xs font-bold bg-[#0052cc] text-white px-2.5 py-0.5 rounded-full">
-                    {practiceExams.length} Chuyên đề trọng tâm
+                    {practiceExams.length} Chuyên đề trọng tâm GDPT 2018
                   </span>
                 </h3>
                 <p className="text-xs text-slate-500 mt-0.5">
-                  Luyện tập chuyên sâu các dạng toán Hàm số, Logarit, Tích phân, Hình học Oxyz, Số phức & Xác suất THPTQG
+                  Luyện tập chuyên sâu 9 dạng toán trọng tâm: Hàm số, Mũ - Logarit, Tích phân, Tọa độ Oxyz, Xác suất điều kiện, Thống kê ghép nhóm
                 </p>
               </div>
             </div>
@@ -182,7 +182,7 @@ export default function DashboardPage() {
                               {item.title}
                             </h4>
                             <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-blue-50 text-[#0052cc] border border-blue-200">
-                              🔵 Luyện Chuyên Đề
+                              🔵 Chuyên Đề
                             </span>
                           </div>
                           <p className="text-xs text-slate-500 mt-0.5 line-clamp-1">{item.description}</p>
@@ -191,7 +191,7 @@ export default function DashboardPage() {
 
                       <div className="flex items-center justify-between sm:justify-end gap-3 shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100">
                         <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md">
-                          {item.modules?.[0]?.totalQuestions || 25} câu • {item.modules?.[0]?.durationMinutes || 45} phút
+                          {item.modules?.[0]?.totalQuestions || 22} câu • {item.modules?.[0]?.durationMinutes || 45} phút
                         </span>
 
                         {canAccess ? (
@@ -217,7 +217,7 @@ export default function DashboardPage() {
           )}
         </div>
 
-        {/* SECTION 2: 🔥 LUYỆN ĐỀ THỰC CHIẾN THPTQG MÔN TOÁN (DANH SÁCH NGANG) */}
+        {/* SECTION 2: 🔥 BỘ 36 ĐỀ THI THỬ THỰC CHIẾN TN THPTQG 2026 (DANH SÁCH NGANG) */}
         <div className="bg-white rounded-2xl border border-blue-200 overflow-hidden shadow-xs">
           <button
             onClick={() => setOpenFull(!openFull)}
@@ -227,9 +227,9 @@ export default function DashboardPage() {
               <span className="w-3 h-8 bg-amber-400 rounded-full inline-block"></span>
               <div>
                 <h3 className="text-lg font-black text-white flex items-center gap-2">
-                  🔥 LUYỆN ĐỀ THỰC CHIẾN - Bộ Đề Thi Thử TN THPTQG Môn Toán
+                  🔥 BỘ ĐỀ THI THỬ THỰC CHIẾN TN THPTQG 2026
                   <span className="text-xs font-bold bg-amber-400 text-slate-950 px-2.5 py-0.5 rounded-full">
-                    {fullExams.length} Đề thi
+                    {fullExams.length} Đề thi • Update liên tục
                   </span>
                 </h3>
                 <p className="text-xs text-blue-100 mt-0.5">

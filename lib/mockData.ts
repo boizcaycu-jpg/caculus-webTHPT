@@ -23,85 +23,54 @@ const baseUsers: User[] = [
     role: 'student',
     isVip: true,
     createdAt: new Date().toISOString(),
-  },
-  {
-    id: 'user-student-2',
-    email: 'tranvanb@caculus.edu.vn',
-    passwordHash,
-    name: 'Trần Văn B',
-    studentId: 'THPTQG_496693',
-    role: 'student',
-    createdAt: new Date().toISOString(),
-  },
-  {
-    id: 'user-student-3',
-    email: 'lethic@caculus.edu.vn',
-    passwordHash,
-    name: 'Lê Thị C',
-    studentId: 'THPTQG_496694',
-    role: 'student',
-    createdAt: new Date().toISOString(),
   }
 ];
 
-const mockStudentData = [
-  { name: 'Nguyễn Minh Triết', idNum: '108291', score: 9.8, exams: 5 },
-  { name: 'Trần Hoàng Nam', idNum: '293812', score: 9.6, exams: 4 },
-  { name: 'Lê Phương Thảo', idNum: '819230', score: 9.5, exams: 6 },
-  { name: 'Đặng Quốc Bảo', idNum: '304918', score: 9.25, exams: 4 },
-  { name: 'Vũ Hoàng Yến', idNum: '918234', score: 9.0, exams: 5 },
-  { name: 'Phạm Đức Anh', idNum: '129384', score: 8.8, exams: 3 },
-  { name: 'Bùi Thị Mai', idNum: '827364', score: 8.6, exams: 4 },
-  { name: 'Đỗ Quang Huy', idNum: '394827', score: 8.5, exams: 5 },
-  { name: 'Hoàng Ngọc Ánh', idNum: '583920', score: 8.2, exams: 3 },
-  { name: 'Nguyễn Thành Long', idNum: '948201', score: 8.0, exams: 4 },
-  { name: 'Lương Gia Huy', idNum: '284719', score: 7.8, exams: 2 },
-  { name: 'Trịnh Như Quỳnh', idNum: '472910', score: 7.6, exams: 3 },
-  { name: 'Phan Nhật Minh', idNum: '739201', score: 7.4, exams: 4 },
-  { name: 'Đào Khánh Linh', idNum: '193847', score: 7.2, exams: 2 },
-  { name: 'Đinh Tấn Phát', idNum: '582019', score: 7.0, exams: 3 },
-];
+// Seed 500 VIP Students
+const vipStudents: User[] = Array.from({ length: 500 }).map((_, i) => {
+  const num = String(i + 1).padStart(3, '0');
+  return {
+    id: `user-hs-${num}`,
+    email: `hs${num}@caculus.edu.vn`,
+    passwordHash,
+    name: `Học sinh ${num}`,
+    studentId: `THPTQG_${num}`,
+    role: 'student',
+    isVip: true,
+    createdAt: new Date().toISOString(),
+  };
+});
 
-const mockStudents: User[] = mockStudentData.map((item, idx) => ({
-  id: `user-student-mock-${idx + 1}`,
-  email: `student_mock${idx + 1}@caculus.edu.vn`,
-  passwordHash,
-  name: item.name,
-  studentId: `THPTQG_${item.idNum}`,
-  role: 'student',
-  createdAt: new Date().toISOString(),
-}));
+export const INITIAL_USERS: User[] = [...baseUsers, ...vipStudents];
 
-export const INITIAL_USERS: User[] = [...baseUsers, ...mockStudents];
-
-// 8 Practice Topics as Exams with category = 'LUYỆN TẬP'
+// 9 CHUYÊN ĐỀ TOÁN THPTQG CHUẨN GDPT 2018 (LOẠI BỎ SỐ PHỨC, BỔ SUNG XÁC SUẤT ĐIỀU KIỆN & THỐNG KÊ GHÉP NHÓM)
 export const PRACTICE_TOPIC_EXAMS: Exam[] = [
   {
-    id: 'exam-cd-1',
-    title: 'Chuyên đề 01: Biến thiên & Đồ thị Hàm số',
-    description: 'Tổng ôn Đơn điệu, Cực trị, Giá trị lớn nhất - nhỏ nhất, Tiệm cận & Đồ thị hàm số 12',
+    id: 'chuyen-de-01',
+    title: 'Chuyên đề 01: Ứng dụng Đạo hàm khảo sát & vẽ đồ thị hàm số 12',
+    description: 'Tính đơn điệu, Cực trị, Giá trị lớn nhất - nhỏ nhất, Tiệm cận, Nhận dạng đồ thị & Bài toán tối ưu thực tế 12',
     isFree: true,
     isPublished: true,
     status: 'ĐÃ UPDATE',
     category: 'LUYỆN TẬP',
     subCategory: 'math',
-    topic: 'Hàm số',
+    topic: 'Hàm số 12',
     modules: [{
-      id: 'mod-cd-1',
-      examId: 'exam-cd-1',
-      title: 'Chuyên đề Biến thiên & Đồ thị Hàm số',
+      id: 'mod-chuyen-de-01',
+      examId: 'chuyen-de-01',
+      title: 'Chuyên đề Đạo hàm & Khảo sát Đồ thị Hàm số',
       category: 'math',
       durationMinutes: 45,
       openTime: '00:00 01/01/2026',
       closeTime: '23:59 31/12/2027',
-      totalQuestions: 25
+      totalQuestions: 22
     }],
     createdAt: new Date().toISOString()
   },
   {
-    id: 'exam-cd-2',
-    title: 'Chuyên đề 02: Phương trình & Bất phương trình Mũ - Logarit',
-    description: 'Công thức biến đổi logarit, phương trình, bất phương trình mũ & bài toán thực tế',
+    id: 'chuyen-de-02',
+    title: 'Chuyên đề 02: Hàm số Mũ, Hàm số Lôgarit & Phương trình Mũ - Logarit',
+    description: 'Lũy thừa, Lôgarit, Tập xác định, Đạo hàm, Phương trình và Bất phương trình Mũ - Logarit thực tế',
     isFree: true,
     isPublished: true,
     status: 'ĐÃ UPDATE',
@@ -109,21 +78,21 @@ export const PRACTICE_TOPIC_EXAMS: Exam[] = [
     subCategory: 'math',
     topic: 'Mũ & Logarit',
     modules: [{
-      id: 'mod-cd-2',
-      examId: 'exam-cd-2',
-      title: 'Chuyên đề Mũ & Logarit',
+      id: 'mod-chuyen-de-02',
+      examId: 'chuyen-de-02',
+      title: 'Chuyên đề Hàm số Mũ & Lôgarit',
       category: 'math',
-      durationMinutes: 40,
+      durationMinutes: 45,
       openTime: '00:00 01/01/2026',
       closeTime: '23:59 31/12/2027',
-      totalQuestions: 20
+      totalQuestions: 22
     }],
     createdAt: new Date().toISOString()
   },
   {
-    id: 'exam-cd-3',
-    title: 'Chuyên đề 03: Nguyên hàm, Tích phân & Ứng dụng Hình phẳng',
-    description: 'Các phương pháp tính nguyên hàm, tích phân đổi biến, từng phần & tính diện tích, thể tích',
+    id: 'chuyen-de-03',
+    title: 'Chuyên đề 03: Nguyên hàm, Tích phân & Ứng dụng Hình học - Thực tế',
+    description: 'Bảng nguyên hàm cơ bản & mở rộng, Đổi biến số, Từng phần, Diện tích hình phẳng và Thể tích khối tròn xoay',
     isFree: true,
     isPublished: true,
     status: 'ĐÃ UPDATE',
@@ -131,21 +100,43 @@ export const PRACTICE_TOPIC_EXAMS: Exam[] = [
     subCategory: 'math',
     topic: 'Tích phân',
     modules: [{
-      id: 'mod-cd-3',
-      examId: 'exam-cd-3',
-      title: 'Chuyên đề Nguyên hàm - Tích phân',
+      id: 'mod-chuyen-de-03',
+      examId: 'chuyen-de-03',
+      title: 'Chuyên đề Nguyên hàm & Tích phân',
       category: 'math',
       durationMinutes: 45,
       openTime: '00:00 01/01/2026',
       closeTime: '23:59 31/12/2027',
-      totalQuestions: 25
+      totalQuestions: 22
     }],
     createdAt: new Date().toISOString()
   },
   {
-    id: 'exam-cd-4',
-    title: 'Chuyên đề 04: Khối đa diện, Góc & Khoảng cách Không gian Cổ điển',
-    description: 'Tính thể tích khối chóp, khối lăng trụ, khoảng cách từ điểm đến mặt phẳng & góc giữa 2 mặt phẳng',
+    id: 'chuyen-de-04',
+    title: 'Chuyên đề 04: Phương pháp Tọa độ trong không gian Oxyz 12',
+    description: 'Vectơ trong không gian, Tọa độ điểm, Phương trình Mặt phẳng, Đường thẳng, Mặt cầu & Mô hình không gian 3D thực tế',
+    isFree: true,
+    isPublished: true,
+    status: 'ĐÃ UPDATE',
+    category: 'LUYỆN TẬP',
+    subCategory: 'math',
+    topic: 'Tọa độ Oxyz',
+    modules: [{
+      id: 'mod-chuyen-de-04',
+      examId: 'chuyen-de-04',
+      title: 'Chuyên đề Phương pháp Tọa độ Oxyz',
+      category: 'math',
+      durationMinutes: 45,
+      openTime: '00:00 01/01/2026',
+      closeTime: '23:59 31/12/2027',
+      totalQuestions: 22
+    }],
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: 'chuyen-de-05',
+    title: 'Chuyên đề 05: Hình học Không gian Cổ điển & Khối tròn xoay (Nón - Trụ - Cầu)',
+    description: 'Góc giữa đường và mặt, Góc nhị diện, Khoảng cách điểm đến mặt phẳng, Thể tích khối chóp, lăng trụ, Khối Nón - Trụ - Cầu',
     isFree: true,
     isPublished: true,
     status: 'ĐÃ UPDATE',
@@ -153,325 +144,436 @@ export const PRACTICE_TOPIC_EXAMS: Exam[] = [
     subCategory: 'math',
     topic: 'Hình học Không gian',
     modules: [{
-      id: 'mod-cd-4',
-      examId: 'exam-cd-4',
-      title: 'Chuyên đề Hình học Không gian',
-      category: 'math',
-      durationMinutes: 40,
-      openTime: '00:00 01/01/2026',
-      closeTime: '23:59 31/12/2027',
-      totalQuestions: 20
-    }],
-    createdAt: new Date().toISOString()
-  },
-  {
-    id: 'exam-cd-5',
-    title: 'Chuyên đề 05: Tọa độ Oxyz: Mặt phẳng, Đường thẳng & Mặt cầu',
-    description: 'Phương trình mặt phẳng, phương trình đường thẳng, mặt cầu và vị trí tương đối trong Oxyz',
-    isFree: true,
-    isPublished: true,
-    status: 'ĐÃ UPDATE',
-    category: 'LUYỆN TẬP',
-    subCategory: 'math',
-    topic: 'Hình học Oxyz',
-    modules: [{
-      id: 'mod-cd-5',
-      examId: 'exam-cd-5',
-      title: 'Chuyên đề Hình học Tọa độ Oxyz',
+      id: 'mod-chuyen-de-05',
+      examId: 'chuyen-de-05',
+      title: 'Chuyên đề Hình học Không gian Cổ điển',
       category: 'math',
       durationMinutes: 45,
       openTime: '00:00 01/01/2026',
       closeTime: '23:59 31/12/2027',
-      totalQuestions: 25
+      totalQuestions: 22
     }],
     createdAt: new Date().toISOString()
   },
   {
-    id: 'exam-cd-6',
-    title: 'Chuyên đề 06: Đại số Số phức & Biểu diễn Tọa độ Mặt phẳng',
-    description: 'Các phép toán số phức, môđun, số phức liên hợp, tập hợp điểm biểu diễn & cực trị số phức',
+    id: 'chuyen-de-06',
+    title: 'Chuyên đề 06: Xác suất có điều kiện & Công thức Bayes',
+    description: 'Nội dung mới trọng tâm GDPT 2018: Xác suất có điều kiện, Quy tắc nhân xác suất, Công thức Bayes và Ứng dụng thực tế',
     isFree: true,
     isPublished: true,
     status: 'ĐÃ UPDATE',
     category: 'LUYỆN TẬP',
     subCategory: 'math',
-    topic: 'Số phức',
+    topic: 'Xác suất có điều kiện',
     modules: [{
-      id: 'mod-cd-6',
-      examId: 'exam-cd-6',
-      title: 'Chuyên đề Số phức',
+      id: 'mod-chuyen-de-06',
+      examId: 'chuyen-de-06',
+      title: 'Chuyên đề Xác suất có điều kiện & Bayes',
       category: 'math',
-      durationMinutes: 35,
+      durationMinutes: 45,
       openTime: '00:00 01/01/2026',
       closeTime: '23:59 31/12/2027',
-      totalQuestions: 20
+      totalQuestions: 22
     }],
     createdAt: new Date().toISOString()
   },
   {
-    id: 'exam-cd-7',
-    title: 'Chuyên đề 07: Xác suất, Tổ hợp & Thống kê Số liệu THPTQG',
-    description: 'Quy tắc đếm, hoán vị, chỉnh hợp, tổ hợp, biến cố ngẫu nhiên & phân tích bảng biểu thống kê',
+    id: 'chuyen-de-07',
+    title: 'Chuyên đề 07: Các số đặc trưng đo độ phân tán mẫu số liệu ghép nhóm 12',
+    description: 'Nội dung mới lớp 12: Khoảng biến thiên, Khoảng tứ phân vị, Phương sai, Độ lệch chuẩn của mẫu số liệu ghép nhóm',
     isFree: true,
     isPublished: true,
     status: 'ĐÃ UPDATE',
     category: 'LUYỆN TẬP',
     subCategory: 'math',
-    topic: 'Xác suất',
+    topic: 'Thống kê Ghép nhóm',
     modules: [{
-      id: 'mod-cd-7',
-      examId: 'exam-cd-7',
-      title: 'Chuyên đề Xác suất & Thống kê',
+      id: 'mod-chuyen-de-07',
+      examId: 'chuyen-de-07',
+      title: 'Chuyên đề Số đặc trưng mẫu số liệu ghép nhóm',
       category: 'math',
-      durationMinutes: 40,
+      durationMinutes: 45,
       openTime: '00:00 01/01/2026',
       closeTime: '23:59 31/12/2027',
-      totalQuestions: 20
+      totalQuestions: 22
     }],
     createdAt: new Date().toISOString()
   },
   {
-    id: 'exam-cd-8',
+    id: 'chuyen-de-08',
     title: 'Chuyên đề 08: Dãy số, Cấp số cộng & Cấp số nhân',
-    description: 'Dãy số tăng giảm, công sai cấp số cộng, công bội cấp số nhân & bài toán tổng quát',
+    description: 'Công thức số hạng tổng quát, Tổng n số hạng đầu tiên, Bài toán tăng trưởng kinh tế & lãi suất',
     isFree: true,
     isPublished: true,
     status: 'ĐÃ UPDATE',
     category: 'LUYỆN TẬP',
     subCategory: 'math',
-    topic: 'Cấp số cộng',
+    topic: 'Dãy số & Cấp số',
     modules: [{
-      id: 'mod-cd-8',
-      examId: 'exam-cd-8',
-      title: 'Chuyên đề Dãy số & Cấp số',
+      id: 'mod-chuyen-de-08',
+      examId: 'chuyen-de-08',
+      title: 'Chuyên đề Cấp số cộng & Cấp số nhân',
       category: 'math',
-      durationMinutes: 30,
+      durationMinutes: 45,
       openTime: '00:00 01/01/2026',
       closeTime: '23:59 31/12/2027',
-      totalQuestions: 15
+      totalQuestions: 22
     }],
     createdAt: new Date().toISOString()
-  }
-];
-
-// Active Full Mock Exams (THPTQG Math Mock Tests)
-const activeExams: Exam[] = [
+  },
   {
-    id: 'exam-thptqg-1',
-    title: 'Đề Thi Thử TN THPT Quốc Gia Môn Toán 2026 - Đề Số 01',
-    description: 'Bộ đề thi chuẩn cấu trúc Bộ GD&ĐT 2025/2026 (12 Trắc nghiệm + 4 Đúng/Sai + 6 Trả lời ngắn)',
+    id: 'chuyen-de-09',
+    title: 'Chuyên đề 09: Thống kê & Đại số Tổ hợp Ứng dụng',
+    description: 'Quy tắc cộng, Quy tắc nhân, Hoán vị, Chỉnh hợp, Tổ hợp, Nhị thức Newton & Bài toán xác suất cổ điển',
     isFree: true,
     isPublished: true,
     status: 'ĐÃ UPDATE',
-    category: 'THỰC CHIẾN',
+    category: 'LUYỆN TẬP',
     subCategory: 'math',
-    modules: [
-      {
-        id: 'mod-thptqg-math-1',
-        examId: 'exam-thptqg-1',
-        title: 'Bài Thi Môn Toán TN THPT Quốc Gia',
-        category: 'math',
-        durationMinutes: 90,
-        openTime: '00:00 01/01/2026',
-        closeTime: '23:59 31/12/2027',
-        totalQuestions: 22,
-      }
-    ],
-    createdAt: new Date().toISOString(),
+    topic: 'Tổ hợp & Xác suất',
+    modules: [{
+      id: 'mod-chuyen-de-09',
+      examId: 'chuyen-de-09',
+      title: 'Chuyên đề Đại số Tổ hợp & Thống kê',
+      category: 'math',
+      durationMinutes: 45,
+      openTime: '00:00 01/01/2026',
+      closeTime: '23:59 31/12/2027',
+      totalQuestions: 22
+    }],
+    createdAt: new Date().toISOString()
   },
-  {
-    id: 'exam-thptqg-2',
-    title: 'Đề Thi Thử TN THPT Quốc Gia Môn Toán 2026 - Đề Số 02',
-    description: 'Đề tổng ôn 9+ chuyên đề Hàm số, Tích phân & Hình học Oxyz vận dụng cao',
-    isFree: false,
-    isPublished: true,
-    price: 150000,
-    status: 'ĐÃ UPDATE',
-    category: 'THỰC CHIẾN',
-    subCategory: 'math',
-    modules: [
-      {
-        id: 'mod-thptqg-math-2',
-        examId: 'exam-thptqg-2',
-        title: 'Bài Thi Môn Toán TN THPT Quốc Gia',
-        category: 'math',
-        durationMinutes: 90,
-        openTime: '08:00 01/06/2026',
-        closeTime: '23:59 30/12/2027',
-        totalQuestions: 22,
-      }
-    ],
-    createdAt: new Date().toISOString(),
-  }
 ];
 
-// 36 VIP THPTQG Math Exams
-const vipExams: Exam[] = Array.from({ length: 36 }).map((_, idx) => {
-  const numStr = String(idx + 1).padStart(3, '0');
+// BỘ 36 ĐỀ THI THỬ THỰC CHIẾN TN THPTQG 2026 (CẬP NHẬT LIÊN TỤC)
+export const MOCK_FULL_EXAMS: Exam[] = Array.from({ length: 36 }).map((_, i) => {
+  const num = String(i + 1).padStart(2, '0');
+  const isFree = i === 0;
   return {
-    id: `exam-vip-${numStr}`,
-    title: `Đề Thi Thử THPTQG Môn Toán VIP ${numStr}`,
-    description: `Đề thi thực chiến luyện đề 9+ môn Toán THPT Quốc Gia (Chuyên đề VIP ${numStr})`,
-    isFree: false,
+    id: `de-thuc-chien-${num}`,
+    title: `Đề Thi Thử Thực Chiến TN THPTQG 2026 - Đề Số ${num}`,
+    description: `Bộ đề chuẩn cấu trúc Bộ GD&ĐT 2026 môn Toán (22 câu - 90 phút - 3 phần)`,
+    isFree,
+    isDemoExam: isFree,
     isPublished: true,
-    price: 150000,
     status: 'ĐÃ UPDATE',
     category: 'THỰC CHIẾN',
     subCategory: 'math',
-    modules: [
-      {
-        id: `mod-math-vip-${numStr}`,
-        examId: `exam-vip-${numStr}`,
-        title: 'Bài Thi Môn Toán TN THPT Quốc Gia',
-        category: 'math',
-        durationMinutes: 90,
-        openTime: '00:00 01/01/2026',
-        closeTime: '23:59 31/12/2027',
-        totalQuestions: 22,
-      }
-    ],
-    createdAt: new Date().toISOString(),
+    modules: [{
+      id: `mod-de-thuc-chien-${num}`,
+      examId: `de-thuc-chien-${num}`,
+      title: `Bài Thi Môn Toán THPTQG - Đề Số ${num}`,
+      category: 'math',
+      durationMinutes: 90,
+      openTime: '00:00 01/01/2026',
+      closeTime: '23:59 31/12/2027',
+      totalQuestions: 22
+    }],
+    createdAt: new Date().toISOString()
   };
 });
 
-export const INITIAL_EXAMS: Exam[] = [...PRACTICE_TOPIC_EXAMS, ...activeExams, ...vipExams];
+// TỔNG HỢP TOÀN BỘ ĐỀ THI TRONG HỆ THỐNG
+export const INITIAL_EXAMS: Exam[] = [...PRACTICE_TOPIC_EXAMS, ...MOCK_FULL_EXAMS];
 
-// Seed Questions matching 3-part THPTQG Math format
+// MẪU 22 CÂU HỎI CHUẨN BỘ GD&ĐT 2026 CHO ĐỀ SỐ 01
 export const INITIAL_QUESTIONS: Question[] = [
-  // PART I: Single Choice (12 questions)
+  // PHẦN I: 12 CÂU TRẮC NGHIỆM ĐƠN (0.25đ / câu)
   {
-    id: 'q-math-p1-1',
-    moduleId: 'mod-thptqg-math-1',
+    id: 'q-p1-1',
+    moduleId: 'mod-de-thuc-chien-01',
     number: 1,
     partType: 'part1',
     type: 'single_choice',
-    topic: 'Hàm số',
-    text: 'Cho hàm số y = f(x) có bảng biến thiên như sau. Hàm số đã cho đồng biến trên khoảng nào dưới đây?',
-    passage: `x   |-∞       -1        1       +∞
-f'(x)|    +    0    -   0   +   
-f(x) |-∞  ↗  2   ↘  -2  ↗  +∞`,
+    text: 'Cho hàm số $y = f(x)$ có bảng biến thiên trên $\\mathbb{R}$. Hàm số đã cho đồng biến trên khoảng nào dưới đây?',
     options: [
-      { id: 'opt-a', text: '(-1; 1)' },
-      { id: 'opt-b', text: '(1; +∞)' },
-      { id: 'opt-c', text: '(-∞; 1)' },
-      { id: 'opt-d', text: '(-2; 2)' }
+      { id: 'opt-a', text: '$(-\\infty; -1)$' },
+      { id: 'opt-b', text: '$(-1; 1)$' },
+      { id: 'opt-c', text: '$(1; +\\infty)$' },
+      { id: 'opt-d', text: '$(0; 2)$' },
     ],
     correctOptionId: 'opt-b',
-    explanation: 'Quan sát bảng biến thiên, f\'(x) > 0 trên các khoảng (-∞; -1) và (1; +∞). Do đó hàm số đồng biến trên (1; +∞).'
   },
   {
-    id: 'q-math-p1-2',
-    moduleId: 'mod-thptqg-math-1',
+    id: 'q-p1-2',
+    moduleId: 'mod-de-thuc-chien-01',
     number: 2,
     partType: 'part1',
     type: 'single_choice',
-    topic: 'Mũ & Logarit',
-    text: 'Nghiệm của phương trình log2(x - 3) = 3 là:',
+    text: 'Nghiệm của phương trình $\\log_2(x - 1) = 3$ là:',
     options: [
-      { id: 'opt-a', text: 'x = 11' },
-      { id: 'opt-b', text: 'x = 9' },
-      { id: 'opt-c', text: 'x = 12' },
-      { id: 'opt-d', text: 'x = 8' }
+      { id: 'opt-a', text: '$x = 7$' },
+      { id: 'opt-b', text: '$x = 8$' },
+      { id: 'opt-c', text: '$x = 9$' },
+      { id: 'opt-d', text: '$x = 10$' },
     ],
-    correctOptionId: 'opt-a',
-    explanation: 'Điều kiện x > 3. Ta có: x - 3 = 2^3 = 8 => x = 11 (thỏa mãn).'
+    correctOptionId: 'opt-c',
   },
   {
-    id: 'q-math-[#0052cc]-3',
-    moduleId: 'mod-thptqg-math-1',
+    id: 'q-p1-3',
+    moduleId: 'mod-de-thuc-chien-01',
     number: 3,
     partType: 'part1',
     type: 'single_choice',
-    topic: 'Nguyên hàm & Tích phân',
-    text: 'Cho hàm số f(x) = e^(2x). Họ tất cả các nguyên hàm của hàm số f(x) là:',
+    text: 'Họ nguyên hàm của hàm số $f(x) = 3x^2 + 2x$ là:',
     options: [
-      { id: 'opt-a', text: 'F(x) = 2.e^(2x) + C' },
-      { id: 'opt-b', text: 'F(x) = (1/2).e^(2x) + C' },
-      { id: 'opt-c', text: 'F(x) = e^(2x) + C' },
-      { id: 'opt-d', text: 'F(x) = (1/2).e^x + C' }
+      { id: 'opt-a', text: '$x^3 + x^2 + C$' },
+      { id: 'opt-b', text: '$6x + 2 + C$' },
+      { id: 'opt-c', text: '$3x^3 + 2x^2 + C$' },
+      { id: 'opt-d', text: '$x^3 + 2x^2 + C$' },
+    ],
+    correctOptionId: 'opt-a',
+  },
+  {
+    id: 'q-p1-4',
+    moduleId: 'mod-de-thuc-chien-01',
+    number: 4,
+    partType: 'part1',
+    type: 'single_choice',
+    text: 'Trong không gian $Oxyz$, cho mặt phẳng $(P): 2x - y + 3z - 4 = 0$. Một vectơ pháp tuyến của $(P)$ là:',
+    options: [
+      { id: 'opt-a', text: '$\\vec{n}_1 = (2; -1; 3)$' },
+      { id: 'opt-b', text: '$\\vec{n}_2 = (2; 1; 3)$' },
+      { id: 'opt-c', text: '$\\vec{n}_3 = (2; -1; -4)$' },
+      { id: 'opt-d', text: '$\\vec{n}_4 = (-2; -1; 3)$' },
+    ],
+    correctOptionId: 'opt-a',
+  },
+  {
+    id: 'q-p1-5',
+    moduleId: 'mod-de-thuc-chien-01',
+    number: 5,
+    partType: 'part1',
+    type: 'single_choice',
+    text: 'Thể tích của khối chóp có diện tích đáy $B = 6$ và chiều cao $h = 4$ bằng:',
+    options: [
+      { id: 'opt-a', text: '$24$' },
+      { id: 'opt-b', text: '$8$' },
+      { id: 'opt-c', text: '$12$' },
+      { id: 'opt-d', text: '$72$' },
     ],
     correctOptionId: 'opt-b',
-    explanation: '∫ e^(2x) dx = (1/2) e^(2x) + C.'
+  },
+  {
+    id: 'q-p1-6',
+    moduleId: 'mod-de-thuc-chien-01',
+    number: 6,
+    partType: 'part1',
+    type: 'single_choice',
+    text: 'Cho cấp số cộng $(u_n)$ có $u_1 = 3$ và công sai $d = 2$. Giá trị của $u_4$ bằng:',
+    options: [
+      { id: 'opt-a', text: '$9$' },
+      { id: 'opt-b', text: '$11$' },
+      { id: 'opt-c', text: '$7$' },
+      { id: 'opt-d', text: '$8$' },
+    ],
+    correctOptionId: 'opt-a',
+  },
+  {
+    id: 'q-p1-7',
+    moduleId: 'mod-de-thuc-chien-01',
+    number: 7,
+    partType: 'part1',
+    type: 'single_choice',
+    text: 'Tập nghiệm của bất phương trình $3^{x} > 9$ là:',
+    options: [
+      { id: 'opt-a', text: '$(2; +\\infty)$' },
+      { id: 'opt-b', text: '$(-\\infty; 2)$' },
+      { id: 'opt-c', text: '$(3; +\\infty)$' },
+      { id: 'opt-d', text: '$(0; 2)$' },
+    ],
+    correctOptionId: 'opt-a',
+  },
+  {
+    id: 'q-p1-8',
+    moduleId: 'mod-de-thuc-chien-01',
+    number: 8,
+    partType: 'part1',
+    type: 'single_choice',
+    text: 'Trong không gian $Oxyz$, mặt cầu $(S): (x-1)^2 + (y+2)^2 + (z-3)^2 = 16$ có bán kính bằng:',
+    options: [
+      { id: 'opt-a', text: '$16$' },
+      { id: 'opt-b', text: '$4$' },
+      { id: 'opt-c', text: '$8$' },
+      { id: 'opt-d', text: '$2$' },
+    ],
+    correctOptionId: 'opt-b',
+  },
+  {
+    id: 'q-p1-9',
+    moduleId: 'mod-de-thuc-chien-01',
+    number: 9,
+    partType: 'part1',
+    type: 'single_choice',
+    text: 'Biết $\\int_1^3 f(x)dx = 4$ và $\\int_1^3 g(x)dx = -2$. Khi đó $\\int_1^3 [f(x) + g(x)]dx$ bằng:',
+    options: [
+      { id: 'opt-a', text: '$2$' },
+      { id: 'opt-b', text: '$6$' },
+      { id: 'opt-c', text: '$-2$' },
+      { id: 'opt-d', text: '$-8$' },
+    ],
+    correctOptionId: 'opt-a',
+  },
+  {
+    id: 'q-p1-10',
+    moduleId: 'mod-de-thuc-chien-01',
+    number: 10,
+    partType: 'part1',
+    type: 'single_choice',
+    text: 'Đồ thị hàm số $y = \\frac{2x - 1}{x + 1}$ có đường tiệm cận đứng là:',
+    options: [
+      { id: 'opt-a', text: '$x = -1$' },
+      { id: 'opt-b', text: '$x = 2$' },
+      { id: 'opt-c', text: '$y = 2$' },
+      { id: 'opt-d', text: '$y = -1$' },
+    ],
+    correctOptionId: 'opt-a',
+  },
+  {
+    id: 'q-p1-11',
+    moduleId: 'mod-de-thuc-chien-01',
+    number: 11,
+    partType: 'part1',
+    type: 'single_choice',
+    text: 'Số cách chọn 3 học sinh từ một nhóm 10 học sinh là:',
+    options: [
+      { id: 'opt-a', text: '$C_{10}^3 = 120$' },
+      { id: 'opt-b', text: '$A_{10}^3 = 720$' },
+      { id: 'opt-c', text: '$30$' },
+      { id: 'opt-d', text: '$10^3 = 1000$' },
+    ],
+    correctOptionId: 'opt-a',
+  },
+  {
+    id: 'q-p1-12',
+    moduleId: 'mod-de-thuc-chien-01',
+    number: 12,
+    partType: 'part1',
+    type: 'single_choice',
+    text: 'Cho hai biến cố $A$ và $B$ độc lập có $P(A) = 0.5$ và $P(B) = 0.4$. Xác suất $P(AB)$ bằng:',
+    options: [
+      { id: 'opt-a', text: '$0.2$' },
+      { id: 'opt-b', text: '$0.9$' },
+      { id: 'opt-c', text: '$0.1$' },
+      { id: 'opt-d', text: '$0.5$' },
+    ],
+    correctOptionId: 'opt-a',
   },
 
-  // PART II: True / False (4 Questions, each with 4 sub-statements a, b, c, d)
+  // PHẦN II: 4 CÂU ĐÚNG / SAI (4 ý a, b, c, d)
   {
-    id: 'q-math-p2-1',
-    moduleId: 'mod-thptqg-math-1',
+    id: 'q-p2-13',
+    moduleId: 'mod-de-thuc-chien-01',
     number: 13,
     partType: 'part2',
     type: 'true_false',
-    topic: 'Hàm số & Khảo sát',
-    text: 'Xét hàm số y = f(x) = x^3 - 3x^2 + 2 trên đoạn [0; 3]. Các phát biểu sau đây ĐÚNG hay SAI?',
-    options: [],
+    text: 'Cho hàm số $f(x) = x^3 - 3x^2 + 2$. Xét tính đúng/sai của các mệnh đề sau:',
     trueFalseItems: [
-      { id: 'a', statement: 'a) Đạo hàm f\'(x) = 3x^2 - 6x.', isTrue: true, explanation: 'f\'(x) = 3x^2 - 6x' },
-      { id: 'b', statement: 'b) Hàm số đạt cực đại tại điểm x = 2.', isTrue: false, explanation: 'f\'(x) = 0 <=> x = 0 (cực đại) hoặc x = 2 (cực tiểu)' },
-      { id: 'c', statement: 'c) Giá trị lớn nhất của hàm số trên đoạn [0; 3] bằng 2.', isTrue: true, explanation: 'f(0)=2, f(2)=-2, f(3)=2. Max = 2' },
-      { id: 'd', statement: 'd) Giá trị nhỏ nhất của hàm số trên đoạn [0; 3] bằng -2.', isTrue: true, explanation: 'Min = f(2) = -2' }
-    ],
-    explanation: 'a) Đúng. b) Sai (x=2 là điểm cực tiểu). c) Đúng (Max [0;3] = 2). d) Đúng (Min [0;3] = -2).'
+      { id: 'a', statement: 'a) Hàm số đồng biến trên khoảng $(2; +\\infty)$.', isTrue: true },
+      { id: 'b', statement: 'b) Điểm cực đại của đồ thị hàm số là $(0; 2)$.', isTrue: true },
+      { id: 'c', statement: 'c) Giá trị nhỏ nhất của hàm số trên đoạn $[-1; 3]$ bằng $-2$.', isTrue: true },
+      { id: 'd', statement: 'd) Phương trình $f(x) = m$ có đúng 3 nghiệm thực phân biệt khi $-2 < m < 2$.', isTrue: true },
+    ]
+  },
+  {
+    id: 'q-p2-14',
+    moduleId: 'mod-de-thuc-chien-01',
+    number: 14,
+    partType: 'part2',
+    type: 'true_false',
+    text: 'Trong không gian $Oxyz$, cho $A(1; 0; 2)$, $B(2; -1; 3)$ và $(P): x + y + z - 1 = 0$. Xét tính đúng/sai của các mệnh đề sau:',
+    trueFalseItems: [
+      { id: 'a', statement: 'a) Vectơ $\\vec{AB} = (1; -1; 1)$.', isTrue: true },
+      { id: 'b', statement: 'b) Đường thẳng $AB$ vuông góc với mặt phẳng $(P)$.', isTrue: false },
+      { id: 'c', statement: 'c) Khoảng cách từ điểm $A$ đến mặt phẳng $(P)$ bằng $\\frac{2}{\\sqrt{3}}$.', isTrue: true },
+      { id: 'd', statement: 'd) Mặt cầu tâm $A$ tiếp xúc $(P)$ có phương trình $(x-1)^2 + y^2 + (z-2)^2 = \\frac{4}{3}$.', isTrue: true },
+    ]
+  },
+  {
+    id: 'q-p2-15',
+    moduleId: 'mod-de-thuc-chien-01',
+    number: 15,
+    partType: 'part2',
+    type: 'true_false',
+    text: 'Một công ty sản xuất sản phẩm với chi phí $C(x) = 2x^2 + 50x + 1800$ (nghìn đồng) khi sản xuất $x$ sản phẩm ($x > 0$). Giá bán mỗi sản phẩm là $150$ nghìn đồng. Xét tính đúng/sai của các khẳng định sau:',
+    trueFalseItems: [
+      { id: 'a', statement: 'a) Hàm số doanh thu khi bán $x$ sản phẩm là $R(x) = 150x$.', isTrue: true },
+      { id: 'b', statement: 'b) Hàm số lợi nhuận là $P(x) = -2x^2 + 100x - 1800$.', isTrue: true },
+      { id: 'c', statement: 'c) Lợi nhuận lớn nhất công ty đạt được là $550$ nghìn đồng khi sản xuất $25$ sản phẩm.', isTrue: false },
+      { id: 'd', statement: 'd) Chi phí trung bình cho mỗi sản phẩm đạt giá trị nhỏ nhất khi sản xuất $30$ sản phẩm.', isTrue: true },
+    ]
+  },
+  {
+    id: 'q-p2-16',
+    moduleId: 'mod-de-thuc-chien-01',
+    number: 16,
+    partType: 'part2',
+    type: 'true_false',
+    text: 'Thực hiện khảo sát về thời gian tự học (giờ/ngày) của một nhóm 40 học sinh lớp 12 thu được mẫu số liệu ghép nhóm. Xét tính đúng/sai của các khẳng định sau:',
+    trueFalseItems: [
+      { id: 'a', statement: 'a) Khoảng biến thiên của mẫu số liệu là hiệu giữa đầu mút phải của nhóm lớn nhất và đầu mút trái của nhóm nhỏ nhất.', isTrue: true },
+      { id: 'b', statement: 'b) Số trung bình của mẫu số liệu ghép nhóm xấp xỉ bằng $3.2$ giờ.', isTrue: true },
+      { id: 'c', statement: 'c) Phương sai của mẫu số liệu đo mức độ phân tán của thời gian học quanh giá trị trung bình.', isTrue: true },
+      { id: 'd', statement: 'd) Độ lệch chuẩn bằng bình phương của phương sai.', isTrue: false },
+    ]
   },
 
-  // PART III: Short Answer / Fill-in (6 questions)
+  // PHẦN III: 6 CÂU TRẢ LỜI NGẮN / ĐIỀN SỐ (0.5đ / câu)
   {
-    id: 'q-math-p3-1',
-    moduleId: 'mod-thptqg-math-1',
+    id: 'q-p3-17',
+    moduleId: 'mod-de-thuc-chien-01',
     number: 17,
     partType: 'part3',
     type: 'fill_blank',
-    topic: 'Hàm số & Ứng dụng thực tế',
-    text: 'Một xưởng sản xuất thiết kế thùng chứa hình trụ có thể tích V = 2000 cm³. Bán kính đáy r (cm) để diện tích toàn phần của thùng chứa đạt giá trị nhỏ nhất làm tròn đến hàng phần mười là bao nhiêu?',
-    options: [],
-    fillBlankAnswers: ['6.8', '6.84', '6,8'],
-    explanation: 'Diện tích toàn phần S = 2πr² + 2000/r. Đạo hàm S\' = 4πr - 2000/r² = 0 => r = ∛(500/π) ≈ 6.836 cm => Làm tròn 6.8.'
-  }
-];
-
-const baseSubmissions: Submission[] = [
+    text: 'Biết $\\int_0^2 (2x + 1) e^x dx = a \\cdot e^2 + b$ với $a, b \\in \\mathbb{Z}$. Tính giá trị của biểu thức $T = a + 2b$.',
+    fillBlankAnswers: ['5', '5.0'],
+  },
   {
-    id: 'sub-1',
-    examId: 'exam-thptqg-1',
-    moduleId: 'mod-thptqg-math-1',
-    userId: 'user-student-1',
-    userName: 'Nguyễn Cường',
-    studentId: 'THPTQG_496692',
-    score: 9.25,
-    totalQuestions: 22,
-    correctCount: 20,
-    answers: [],
-    submittedAt: '2026-07-24T14:30:00.000Z',
-    antiCheatViolationCount: 0,
-  }
-];
-
-const mockSubmissions: Submission[] = mockStudentData.map((item, idx) => ({
-  id: `sub-mock-${idx + 1}`,
-  examId: 'exam-thptqg-1',
-  moduleId: 'mod-thptqg-math-1',
-  userId: `user-student-mock-${idx + 1}`,
-  userName: item.name,
-  studentId: `THPTQG_${item.idNum}`,
-  score: item.score,
-  totalQuestions: 22,
-  correctCount: Math.round((item.score / 10) * 22),
-  answers: [],
-  submittedAt: new Date(Date.now() - (idx + 1) * 3600000 * 4).toISOString(),
-  antiCheatViolationCount: 0,
-}));
-
-export const INITIAL_SUBMISSIONS: Submission[] = [...baseSubmissions, ...mockSubmissions];
-
-export const INITIAL_ANTICHEAT_LOGS: AntiCheatLog[] = [
+    id: 'q-p3-18',
+    moduleId: 'mod-de-thuc-chien-01',
+    number: 18,
+    partType: 'part3',
+    type: 'fill_blank',
+    text: 'Trong không gian $Oxyz$, cho mặt cầu $(S): x^2 + y^2 + z^2 - 2x + 4y - 6z - 11 = 0$. Bán kính $R$ của mặt cầu $(S)$ bằng bao nhiêu?',
+    fillBlankAnswers: ['5', '5.0'],
+  },
   {
-    id: 'ac-1',
-    userId: 'user-student-1',
-    userName: 'Nguyễn Cường',
-    studentId: 'THPTQG_496692',
-    examId: 'exam-thptqg-1',
-    moduleId: 'mod-thptqg-math-1',
-    eventType: 'tab_switch',
-    timestamp: '2026-07-24T15:10:22.000Z',
-    details: 'Thí sinh rời màn hình bài thi (Chuyển tab trình duyệt)'
-  }
+    id: 'q-p3-19',
+    moduleId: 'mod-de-thuc-chien-01',
+    number: 19,
+    partType: 'part3',
+    type: 'fill_blank',
+    text: 'Một xưởng sản xuất thùng phi hình trụ có thể tích $V = 2\\pi \\text{ m}^3$. Để tiết kiệm vật liệu nhất (diện tích toàn phần nhỏ nhất), bán kính đáy $r$ (đơn vị: mét) phải bằng bao nhiêu?',
+    fillBlankAnswers: ['1', '1.0'],
+  },
+  {
+    id: 'q-p3-20',
+    moduleId: 'mod-de-thuc-chien-01',
+    number: 20,
+    partType: 'part3',
+    type: 'fill_blank',
+    text: 'Tỉ lệ người mắc một bệnh hiếm trong cộng đồng là $0.01$. Một xét nghiệm y tế cho kết quả dương tính chính xác $95\\%$ ở người có bệnh, nhưng có $2\\%$ dương tính giả ở người không có bệnh. Khi một người nhận kết quả dương tính, xác suất người đó thực sự mắc bệnh là bao nhiêu? (Làm tròn đến 2 chữ số thập phân dạng 0.XY)',
+    fillBlankAnswers: ['0.32', '0.324'],
+  },
+  {
+    id: 'q-p3-21',
+    moduleId: 'mod-de-thuc-chien-01',
+    number: 21,
+    partType: 'part3',
+    type: 'fill_blank',
+    text: 'Tìm giá trị lớn nhất $M$ của hàm số $y = -x^4 + 4x^2 + 5$ trên đoạn $[0; 3]$.',
+    fillBlankAnswers: ['9', '9.0'],
+  },
+  {
+    id: 'q-p3-22',
+    moduleId: 'mod-de-thuc-chien-01',
+    number: 22,
+    partType: 'part3',
+    type: 'fill_blank',
+    text: 'Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác vuông tại $B$, $AB = 3, BC = 4$. Cạnh bên $SA \\perp (ABC)$ và $SA = 6$. Thể tích $V$ của khối chóp $S.ABC$ bằng bao nhiêu?',
+    fillBlankAnswers: ['12', '12.0'],
+  },
 ];
+
+export const INITIAL_SUBMISSIONS: Submission[] = [];
+export const INITIAL_ANTICHEAT_LOGS: AntiCheatLog[] = [];

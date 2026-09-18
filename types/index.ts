@@ -47,7 +47,7 @@ export interface Question {
   passage?: string; // Optional standalone math context or data table
   imageUrl?: string; // Base64 data URL, upload path, or external URL for question prompt image
   imageSize?: 'small' | 'medium' | 'large' | 'full';
-  options: QuestionOption[];
+  options?: QuestionOption[];
   correctOptionId?: string; // For single choice
   correctOptionIds?: string[]; // For multiple choice (exact match required)
   trueFalseItems?: TrueFalseItem[]; // For Part II True/False (4 statements a, b, c, d)

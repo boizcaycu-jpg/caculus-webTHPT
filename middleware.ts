@@ -9,7 +9,9 @@ export async function middleware(request: NextRequest) {
 
   const url = request.nextUrl.clone();
 
-  if (!token && (url.pathname.startsWith('/admin') || url.pathname.startsWith('/dashboard'))) {
+  // Admin chạy 100% tự do trên Local không cần đăng nhập
+  // Chỉ chuyển hướng nếu thí sinh truy cập dashboard mà chưa đăng nhập
+  if (!token && url.pathname.startsWith('/dashboard')) {
     url.pathname = '/login';
     return NextResponse.redirect(url);
   }

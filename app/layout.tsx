@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Phòng Luyện TSA - CACULUS",
-  description: "Phòng Luyện Mô Phỏng TSA - Hệ thống Khảo thí Đánh giá Tư duy Bách Khoa CACULUS",
+  title: "Phòng Luyện THPTQG - CACULUS",
+  description: "Phòng Luyện Thi Tốt Nghiệp THPT Quốc Gia Môn Toán - Hệ Thống Khảo Thí Trực Tuyến CACULUS",
 };
 
 export default function RootLayout({
