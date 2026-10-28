@@ -97,9 +97,9 @@ Trong những năm 1930, William Frederick Gericke tại Đại học California
 
   if (loading || !selectedModule) {
     return (
-      <div className="min-h-screen bg-slate-900 flex flex-col items-center justify-center text-white space-y-4">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0052cc]"></div>
-        <p className="text-sm font-semibold tracking-wider">ĐANG TẢI DỮ LIỆU CÂU HỎI MÔN TOÁN THPTQG...</p>
+      <div className="min-h-screen bg-[#F5F5F7] bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(37,99,235,0.10),transparent)] flex flex-col items-center justify-center text-slate-900 space-y-4 antialiased">
+        <div className="w-10 h-10 rounded-full border-3 border-blue-600 border-t-transparent animate-spin" />
+        <p className="text-xs font-semibold tracking-wider text-slate-500 uppercase">Đang tải dữ liệu bài thi Toán THPTQG...</p>
       </div>
     );
   }
@@ -110,7 +110,7 @@ Trong những năm 1930, William Frederick Gericke tại Đại học California
       module={selectedModule}
       questions={questions}
       studentName={user?.name || user?.realName || 'Thí sinh'}
-      studentId={user?.studentId || 'THPTQG_2026'}
+      studentId={user?.studentId || 'THPTQG_2027'}
     />
   );
 }

@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
-import { ChevronRight, ArrowLeft } from 'lucide-react';
+import { ChevronRight, ArrowLeft, ShieldCheck, Sparkles, CheckCircle2 } from 'lucide-react';
 
 export default function ExamPreparationPage() {
   const router = useRouter();
@@ -14,173 +14,252 @@ export default function ExamPreparationPage() {
   const [user, setUser] = useState<any>(null);
   const [sliderPosition, setSliderPosition] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+  const [isStarting, setIsStarting] = useState(false);
   const sliderTrackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     fetch('/api/auth/me')
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         if (data.authenticated) {
           setUser(data.user);
         } else if (typeof window !== 'undefined') {
           const stored = localStorage.getItem('caculus_user');
-          if (stored) setUser(JSON.parse(stored));
+          if (stored) {
+            try {
+              setUser(JSON.parse(stored));
+            } catch {
+              // Ignore invalid local storage json
+            }
+          }
         }
       })
       .catch(() => {});
 
     fetch('/api/student/exams')
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         const found = (data.exams || []).find((e: any) => e.id === examId);
         if (found) setExam(found);
       })
       .catch(() => {});
   }, [examId]);
 
-  const handleStart = () => {
+  const handleStart = useCallback(() => {
+    if (isStarting) return;
+    setIsStarting(true);
     router.push(`/exams/${examId}/room`);
-  };
+  }, [examId, isStarting, router]);
 
-  const handleTouchMove = (e: React.TouchEvent | React.MouseEvent) => {
-    if (!isDragging || !sliderTrackRef.current) return;
+  const updateSlider = (clientX: number) => {
+    if (!sliderTrackRef.current || isStarting) return;
     const rect = sliderTrackRef.current.getBoundingClientRect();
-    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
-    const maxDrag = rect.width - 68;
-    const offset = Math.max(0, Math.min(clientX - rect.left - 34, maxDrag));
+    const thumbWidth = 44;
+    const padding = 6;
+    const maxDrag = Math.max(0, rect.width - thumbWidth - padding * 2);
+    const currentX = clientX - rect.left - padding - thumbWidth / 2;
+    const offset = Math.max(0, Math.min(currentX, maxDrag));
     setSliderPosition(offset);
 
-    if (offset >= maxDrag * 0.88) {
+    if (maxDrag > 0 && offset >= maxDrag * 0.75) {
       setIsDragging(false);
       setSliderPosition(maxDrag);
       handleStart();
     }
   };
 
+  const handleTouchMove = (e: React.TouchEvent | React.MouseEvent) => {
+    if (!isDragging || isStarting) return;
+    const clientX = 'touches' in e ? e.touches[0].clientX : (e as React.MouseEvent).clientX;
+    updateSlider(clientX);
+  };
+
   const handleMouseUp = () => {
-    if (!isDragging) return;
+    if (!isDragging || isStarting) return;
     setIsDragging(false);
     if (sliderTrackRef.current) {
-      const maxDrag = sliderTrackRef.current.getBoundingClientRect().width - 68;
-      if (sliderPosition < maxDrag * 0.88) {
+      const rect = sliderTrackRef.current.getBoundingClientRect();
+      const maxDrag = Math.max(0, rect.width - 44 - 12);
+      if (sliderPosition < maxDrag * 0.75) {
         setSliderPosition(0);
       }
     }
   };
 
+  const handleTrackClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isStarting || !sliderTrackRef.current) return;
+    const rect = sliderTrackRef.current.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const maxDrag = Math.max(0, rect.width - 44 - 12);
+
+    // If clicked past the middle or right half, trigger start smoothly
+    if (clickX > rect.width * 0.5) {
+      setSliderPosition(maxDrag);
+      handleStart();
+    }
+  };
+
+  const studentName = user?.realName || user?.name || user?.fullName || 'Thí sinh THPTQG';
+  const studentSbd = user?.studentId || user?.username || user?.email || 'THPTQG-2027';
+  const examTitle = exam?.title || 'Đề Thi Mô Phỏng Tốt Nghiệp THPTQG 2027 - Môn Toán';
+  const duration = exam?.durationMinutes || 90;
+  const questionCount = exam?.questions?.length || 22;
+
   return (
     <div
-      className="min-h-screen bg-slate-100 flex flex-col font-sans select-none"
+      className="min-h-screen bg-[#F5F5F7] bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(37,99,235,0.10),transparent)] flex flex-col justify-between p-4 md:p-8 antialiased select-none"
       onMouseMove={handleTouchMove}
       onMouseUp={handleMouseUp}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleMouseUp}
     >
-      {/* Top Banner Tiêu chuẩn Bộ GD&ĐT theo Ảnh 2 */}
-      <div className="bg-[#0052cc] text-white py-4 px-6 sm:px-12 flex items-center justify-between shadow-md">
-        <div>
-          <h1 className="text-xl sm:text-3xl font-black tracking-wide uppercase">
-            GIAO DIỆN THI TRÊN MÁY TÍNH
+      {/* 1. Minimal Top Glass Bar */}
+      <header className="max-w-3xl w-full mx-auto flex items-center justify-between py-2">
+        <Link
+          href="/dashboard"
+          className="inline-flex items-center gap-1.5 rounded-full bg-white/80 backdrop-blur-md border border-slate-200/70 px-4 py-2 text-xs font-semibold text-slate-700 hover:bg-white hover:text-slate-900 shadow-sm active:scale-95 transition-all"
+        >
+          <ArrowLeft className="w-3.5 h-3.5" />
+          <span>Quay lại Tổng quan</span>
+        </Link>
+
+        <div className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 px-3.5 py-1.5 text-xs font-medium text-emerald-700 shadow-xs">
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span>Hệ thống Khảo thí Sẵn sàng</span>
+        </div>
+      </header>
+
+      {/* 2. Main Centerpiece: The Liquid Glass Exam Card */}
+      <main className="max-w-2xl w-full mx-auto my-auto py-6">
+        <div className="rounded-[32px] bg-white/80 backdrop-blur-2xl border border-white/90 ring-1 ring-slate-900/[0.05] shadow-[0_20px_60px_rgb(15,23,42,0.07)] p-6 md:p-10 text-center">
+          {/* Eyebrow Pill */}
+          <div className="inline-flex items-center gap-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 px-3.5 py-1 text-[11px] font-bold uppercase tracking-wider text-blue-700 mb-3">
+            <Sparkles className="w-3 h-3 text-blue-600" />
+            <span>Phòng Khảo Thí Mô Phỏng • Môn Toán 12</span>
+          </div>
+
+          {/* Exam Title (Full-width, centered, zero awkward truncation) */}
+          <h1 className="text-xl md:text-2xl font-bold tracking-tight text-slate-900 text-center leading-snug">
+            {examTitle}
           </h1>
-          <p className="text-xs sm:text-sm font-semibold text-blue-100 uppercase tracking-widest mt-0.5">
-            GIAO DIỆN THÍ SINH SAU KHI CHỌN BÀI THI
-          </p>
-        </div>
-        <div className="text-right hidden sm:block">
-          <span className="text-xs font-bold tracking-wider uppercase block text-blue-200">
-            KHẢO THÍ THPT TRỰC TUYẾN
-          </span>
-          <span className="text-[11px] font-mono text-white/80">CACULUS ONLINE TEST</span>
-        </div>
-      </div>
 
-      {/* Main Container */}
-      <main className="flex-1 max-w-4xl w-full mx-auto p-4 sm:p-8 flex flex-col justify-center space-y-8">
-        <h2 className="text-2xl sm:text-3xl font-black text-[#0039a6] text-center uppercase tracking-wide">
-          BÀI THI MÔ PHỎNG TN THPTQG 2026 - MÔN TOÁN
-        </h2>
-
-        {/* 2 Khung Thông tin theo Ảnh 2 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Card 1: Thông tin Thí sinh */}
-          <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-3">
-            <h3 className="font-black text-slate-900 text-sm tracking-wider uppercase border-b border-slate-100 pb-2">
-              THÔNG TIN THÍ SINH
-            </h3>
-            <div className="space-y-2 text-sm">
-              <div className="flex justify-between">
-                <span className="text-slate-500 font-bold">HỌ TÊN:</span>
-                <span className="font-black text-slate-900">{user?.name || user?.realName || 'Thí sinh THPTQG'}</span>
+          {/* Candidate & Exam Quick Specs Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 my-6 text-left">
+            {/* Box 1: Thí sinh */}
+            <div className="rounded-[20px] bg-slate-900/[0.025] border border-slate-200/60 p-4 flex flex-col justify-between">
+              <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">THÍ SINH</span>
+              <div className="mt-1">
+                <p className="text-sm font-semibold text-slate-900 truncate">{studentName}</p>
+                <p className="text-xs text-blue-600 font-medium tabular-nums truncate mt-0.5">SBD: {studentSbd}</p>
               </div>
-              <div className="flex justify-between">
-                <span className="text-slate-500 font-bold">USERNAME / SBD:</span>
-                <span className="font-mono font-black text-[#0052cc]">{user?.studentId || user?.email || 'THPTQG_2026_01'}</span>
+            </div>
+
+            {/* Box 2: Thời gian làm bài */}
+            <div className="rounded-[20px] bg-slate-900/[0.025] border border-slate-200/60 p-4 flex flex-col justify-between">
+              <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">THỜI GIAN</span>
+              <div className="mt-1">
+                <p className="text-base font-bold text-slate-900 tabular-nums">{duration} phút</p>
+                <p className="text-xs text-slate-500 mt-0.5">Đếm ngược tự động</p>
+              </div>
+            </div>
+
+            {/* Box 3: Cấu trúc đề */}
+            <div className="rounded-[20px] bg-slate-900/[0.025] border border-slate-200/60 p-4 col-span-2 sm:col-span-1 flex flex-col justify-between">
+              <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">CẤU TRÚC ĐỀ</span>
+              <div className="mt-1">
+                <p className="text-base font-bold text-slate-900 tabular-nums">{questionCount} câu hỏi</p>
+                <p className="text-xs text-slate-500 mt-0.5">Chuẩn GDPT 2018</p>
               </div>
             </div>
           </div>
 
-          {/* Card 2: Thông tin Bài thi */}
-          <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-3">
-            <h3 className="font-black text-slate-900 text-sm tracking-wider uppercase border-b border-slate-100 pb-2">
-              THÔNG TIN BÀI THI
-            </h3>
-            <div className="space-y-2 text-sm">
-              <div className="flex justify-between">
-                <span className="text-slate-500 font-bold">TÊN BÀI THI:</span>
-                <span className="font-bold text-slate-900 text-right line-clamp-1">{exam?.title || 'Đề thi thử THPTQG Môn Toán'}</span>
+          {/* 3-Part Exam Structure Breakdown */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mb-8">
+            <div className="rounded-2xl bg-white/90 border border-slate-200/60 p-3.5 text-left shadow-[0_1px_4px_rgba(0,0,0,0.02)]">
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-xs font-bold text-slate-900">Phần I: 12 câu</span>
+                <span className="text-[10px] font-semibold text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded-md">3.0 điểm</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-slate-500 font-bold">ID:</span>
-                <span className="font-mono text-slate-700 font-semibold">{exam?.id || examId}</span>
+              <p className="text-[11px] font-medium text-slate-600">Trắc nghiệm 4 lựa chọn</p>
+              <p className="text-[10px] text-slate-400 mt-0.5">Chọn 1 phương án đúng A, B, C, D</p>
+            </div>
+
+            <div className="rounded-2xl bg-white/90 border border-slate-200/60 p-3.5 text-left shadow-[0_1px_4px_rgba(0,0,0,0.02)]">
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-xs font-bold text-slate-900">Phần II: 4 câu</span>
+                <span className="text-[10px] font-semibold text-indigo-600 bg-indigo-50 px-1.5 py-0.5 rounded-md">4.0 điểm</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-slate-500 font-bold">SỐ LƯỢNG CÂU HỎI:</span>
-                <span className="font-black text-slate-900">22 câu (3 Phần)</span>
+              <p className="text-[11px] font-medium text-slate-600">Trắc nghiệm Đúng / Sai</p>
+              <p className="text-[10px] text-slate-400 mt-0.5">Mỗi câu gồm 4 ý a), b), c), d)</p>
+            </div>
+
+            <div className="rounded-2xl bg-white/90 border border-slate-200/60 p-3.5 text-left shadow-[0_1px_4px_rgba(0,0,0,0.02)]">
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-xs font-bold text-slate-900">Phần III: 6 câu</span>
+                <span className="text-[10px] font-semibold text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded-md">3.0 điểm</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-slate-500 font-bold">THỜI GIAN:</span>
-                <span className="font-black text-rose-600">90 phút</span>
-              </div>
+              <p className="text-[11px] font-medium text-slate-600">Trả lời ngắn (Điền số)</p>
+              <p className="text-[10px] text-slate-400 mt-0.5">Điền số nguyên hoặc số thập phân</p>
             </div>
           </div>
-        </div>
 
-        {/* Thanh Trượt "KÉO SANG ĐỂ THAM GIA BÀI THI" theo Ảnh 2 */}
-        <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
-          <h3 className="text-center font-black text-slate-900 text-base uppercase tracking-wider">
-            KÉO SANG ĐỂ THAM GIA BÀI THI
-          </h3>
-
-          <div
-            ref={sliderTrackRef}
-            className="relative h-18 bg-gradient-to-r from-blue-100 via-blue-300 to-[#0052cc] rounded-2xl overflow-hidden border-2 border-blue-300 shadow-inner flex items-center"
-          >
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <span className="text-xs sm:text-sm font-black text-white uppercase tracking-widest animate-pulse opacity-90 drop-shadow-md">
-                Kéo thanh trượt sang phải để vào thi →
-              </span>
-            </div>
-
+          {/* 3. Authentic iOS "Slide to Start Exam" Capsule */}
+          <div className="max-w-md mx-auto w-full">
             <div
-              onMouseDown={() => setIsDragging(true)}
-              onTouchStart={() => setIsDragging(true)}
-              style={{ transform: `translateX(${sliderPosition}px)` }}
-              className="absolute left-1.5 top-1.5 bottom-1.5 w-16 bg-white hover:bg-slate-50 border-2 border-slate-800 rounded-xl shadow-lg flex items-center justify-center cursor-grab active:cursor-grabbing transition-transform duration-75 z-10"
+              ref={sliderTrackRef}
+              onClick={handleTrackClick}
+              className="relative h-14 w-full rounded-full bg-slate-900/[0.06] backdrop-blur-md border border-slate-300/60 p-1.5 shadow-inner overflow-hidden select-none flex items-center cursor-pointer transition-colors"
             >
-              <ChevronRight className="w-9 h-9 text-slate-900 stroke-[3]" />
-            </div>
-          </div>
+              {/* Progress Fill tracking the thumb */}
+              <div
+                style={{ width: `${sliderPosition + 44}px` }}
+                className="absolute left-0 top-0 bottom-0 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full transition-[width] duration-75 pointer-events-none opacity-90"
+              />
 
-          <div className="flex justify-center pt-2">
-            <Link
-              href="/dashboard"
-              className="inline-flex items-center gap-1.5 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-xs px-6 py-2.5 rounded-xl transition shadow-xs"
-            >
-              <ArrowLeft className="w-4 h-4" /> Quay lại
-            </Link>
+              {/* Center Track Label */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 px-12">
+                <span
+                  style={{
+                    opacity: Math.max(0, 1 - sliderPosition / 140),
+                  }}
+                  className="text-xs font-semibold tracking-wide text-slate-600 transition-opacity"
+                >
+                  {isStarting ? 'Đang mở phòng thi...' : 'Kéo sang phải để bắt đầu tính giờ →'}
+                </span>
+              </div>
+
+              {/* Draggable Thumb Button */}
+              <div
+                onMouseDown={() => !isStarting && setIsDragging(true)}
+                onTouchStart={() => !isStarting && setIsDragging(true)}
+                style={{
+                  transform: `translateX(${sliderPosition}px)`,
+                  transition: isDragging ? 'none' : 'transform 200ms cubic-bezier(0.16, 1, 0.3, 1)',
+                }}
+                className="relative h-11 w-11 rounded-full bg-white shadow-[0_2px_10px_rgba(0,0,0,0.15)] ring-1 ring-black/[0.04] flex items-center justify-center text-blue-600 cursor-grab active:cursor-grabbing active:scale-95 z-10 select-none"
+              >
+                {isStarting ? (
+                  <div className="w-5 h-5 border-2 border-blue-600 border-t-transparent rounded-full animate-spin" />
+                ) : (
+                  <ChevronRight className="w-5 h-5 stroke-[2.5]" />
+                )}
+              </div>
+            </div>
+
+            {/* Subtle Anti-cheat & Security Guidance */}
+            <p className="text-[11px] text-slate-400 text-center mt-3 flex items-center justify-center gap-1.5">
+              <ShieldCheck className="w-3.5 h-3.5 text-slate-400" />
+              <span>Hệ thống tự động lưu bài làm và chống gian lận trong thời gian thi</span>
+            </p>
           </div>
         </div>
       </main>
+
+      {/* Footer Minimal */}
+      <footer className="max-w-3xl w-full mx-auto py-3 text-center text-xs text-slate-400 font-medium flex items-center justify-center gap-2">
+        <CheckCircle2 className="w-3.5 h-3.5 text-blue-500" />
+        <span>CACULUS THPTQG 2027 • Hệ Thống Khảo Thí Trực Tuyến</span>
+      </footer>
     </div>
   );
 }

@@ -78,6 +78,7 @@ export interface Exam {
   price?: number;
   category?: 'LUYỆN TẬP' | 'THỰC CHIẾN' | string;
   subCategory?: 'math' | 'reading' | 'science' | string;
+  stage?: 'gk1' | 'hk1' | 'gk2' | 'ck2' | 'tot-nghiep' | string;
   topic?: string;
   status?: 'CHƯA UPDATE' | 'ĐÃ UPDATE' | 'ĐÃ THI' | 'active' | 'disabled' | 'coming_soon' | string;
   isPublished?: boolean; // True if published, false if locked

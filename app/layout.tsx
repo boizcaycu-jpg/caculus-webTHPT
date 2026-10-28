@@ -13,7 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi" className="h-full antialiased" suppressHydrationWarning>
-      <body className="bg-slate-50 text-slate-900 text-base min-h-full flex flex-col font-sans" suppressHydrationWarning>
+      <body className="min-h-full bg-[#F5F5F7] text-slate-900 text-base flex flex-col font-sans antialiased selection:bg-blue-500/15 selection:text-blue-700" suppressHydrationWarning>
         {children}
       </body>
     </html>

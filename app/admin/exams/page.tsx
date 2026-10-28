@@ -10,8 +10,8 @@ export default function AdminExamsWorkspacePage() {
   const [exams, setExams] = useState<Exam[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Active filter tab: 'all' | 'LUYỆN TẬP' | 'THỰC CHIẾN'
-  const [filterTab, setFilterTab] = useState<'all' | 'LUYỆN TẬP' | 'THỰC CHIẾN'>('all');
+  // Active filter tab: 'all' | 'topics' | 'gk1' | 'hk1' | 'gk2' | 'ck2' | 'tot-nghiep'
+  const [filterTab, setFilterTab] = useState<'all' | 'topics' | 'gk1' | 'hk1' | 'gk2' | 'ck2' | 'tot-nghiep'>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
   // Modal / Drawer state for creating / editing exams
@@ -193,8 +193,12 @@ export default function AdminExamsWorkspacePage() {
 
   const filteredExams = exams
     .filter(e => {
-      if (filterTab === 'LUYỆN TẬP') return e.category === 'LUYỆN TẬP';
-      if (filterTab === 'THỰC CHIẾN') return e.category !== 'LUYỆN TẬP';
+      if (filterTab === 'topics') return e.category === 'LUYỆN TẬP' || e.id.startsWith('chuyen-de-');
+      if (filterTab === 'gk1') return e.stage === 'gk1';
+      if (filterTab === 'hk1') return e.stage === 'hk1';
+      if (filterTab === 'gk2') return e.stage === 'gk2';
+      if (filterTab === 'ck2') return e.stage === 'ck2';
+      if (filterTab === 'tot-nghiep') return e.stage === 'tot-nghiep';
       return true;
     })
     .filter(e => {
@@ -202,6 +206,13 @@ export default function AdminExamsWorkspacePage() {
       const q = searchQuery.toLowerCase();
       return e.title.toLowerCase().includes(q) || (e.description || '').toLowerCase().includes(q);
     });
+
+  const topicsCount = exams.filter(e => e.category === 'LUYỆN TẬP' || e.id.startsWith('chuyen-de-')).length;
+  const gk1Count = exams.filter(e => e.stage === 'gk1').length;
+  const hk1Count = exams.filter(e => e.stage === 'hk1').length;
+  const gk2Count = exams.filter(e => e.stage === 'gk2').length;
+  const ck2Count = exams.filter(e => e.stage === 'ck2').length;
+  const totNghiepCount = exams.filter(e => e.stage === 'tot-nghiep').length;
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
@@ -217,7 +228,7 @@ export default function AdminExamsWorkspacePage() {
               <h1 className="text-2xl font-bold text-slate-900">Workspace Quản lý & Soạn thảo Đề thi THPTQG</h1>
             </div>
             <p className="text-slate-500 text-sm mt-1">
-              Quản lý đồng nhất <strong>LUYỆN TẬP (Chuyên đề Toán)</strong> & <strong>THỰC CHIẾN (Đề thi THPTQG)</strong> trên CSDL local `db.json`
+              Khung chương trình chuẩn 10-20-10: <strong>10 Chuyên đề</strong> • <strong>20 Đề Học kì (GK1, HK1, GK2, CK2)</strong> • <strong>10 Đề Tốt nghiệp THPT</strong>
             </p>
           </div>
 
@@ -230,41 +241,78 @@ export default function AdminExamsWorkspacePage() {
         </div>
 
         {/* Tab Selection & Search */}
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
-          <div className="flex items-center bg-slate-100 p-1 rounded-xl w-full sm:w-auto">
+        <div className="flex flex-col gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
+          <div className="flex flex-wrap items-center gap-1.5 bg-slate-100 p-1.5 rounded-xl">
             <button
               onClick={() => setFilterTab('all')}
-              className={`px-4 py-2 text-xs font-bold rounded-lg transition ${
+              className={`px-3 py-1.5 text-xs font-bold rounded-lg transition ${
                 filterTab === 'all' ? 'bg-white text-[#0052cc] shadow-xs' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               Tất cả ({exams.length})
             </button>
             <button
-              onClick={() => setFilterTab('LUYỆN TẬP')}
-              className={`px-4 py-2 text-xs font-bold rounded-lg transition ${
-                filterTab === 'LUYỆN TẬP' ? 'bg-white text-[#0052cc] shadow-xs' : 'text-slate-600 hover:text-slate-900'
+              onClick={() => setFilterTab('topics')}
+              className={`px-3 py-1.5 text-xs font-bold rounded-lg transition ${
+                filterTab === 'topics' ? 'bg-white text-[#0052cc] shadow-xs' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              🔵 LUYỆN TẬP ({exams.filter(e => e.category === 'LUYỆN TẬP').length})
+              🔵 Chuyên đề ({topicsCount})
             </button>
             <button
-              onClick={() => setFilterTab('THỰC CHIẾN')}
-              className={`px-4 py-2 text-xs font-bold rounded-lg transition ${
-                filterTab === 'THỰC CHIẾN' ? 'bg-white text-[#0052cc] shadow-xs' : 'text-slate-600 hover:text-slate-900'
+              onClick={() => setFilterTab('gk1')}
+              className={`px-3 py-1.5 text-xs font-bold rounded-lg transition ${
+                filterTab === 'gk1' ? 'bg-white text-amber-700 shadow-xs' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              🔥 THỰC CHIẾN ({exams.filter(e => e.category !== 'LUYỆN TẬP').length})
+              🔥 Giữa Kì 1 ({gk1Count})
+            </button>
+            <button
+              onClick={() => setFilterTab('hk1')}
+              className={`px-3 py-1.5 text-xs font-bold rounded-lg transition ${
+                filterTab === 'hk1' ? 'bg-white text-blue-700 shadow-xs' : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              📘 Học Kì 1 ({hk1Count})
+            </button>
+            <button
+              onClick={() => setFilterTab('gk2')}
+              className={`px-3 py-1.5 text-xs font-bold rounded-lg transition ${
+                filterTab === 'gk2' ? 'bg-white text-purple-700 shadow-xs' : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              ⚡ Giữa Kì 2 ({gk2Count})
+            </button>
+            <button
+              onClick={() => setFilterTab('ck2')}
+              className={`px-3 py-1.5 text-xs font-bold rounded-lg transition ${
+                filterTab === 'ck2' ? 'bg-white text-teal-700 shadow-xs' : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              🎯 Cuối Kì 2 ({ck2Count})
+            </button>
+            <button
+              onClick={() => setFilterTab('tot-nghiep')}
+              className={`px-3 py-1.5 text-xs font-bold rounded-lg transition ${
+                filterTab === 'tot-nghiep' ? 'bg-white text-rose-700 shadow-xs' : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              🏆 Tốt Nghiệp THPT ({totNghiepCount})
             </button>
           </div>
 
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Lọc tên đề thi..."
-            className="w-full sm:w-64 text-xs px-3 py-2 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-[#0052cc]"
-          />
+          <div className="flex items-center justify-between gap-4">
+            <span className="text-xs text-slate-500 font-medium">
+              Đang hiển thị <strong>{filteredExams.length}</strong> / <strong>{exams.length}</strong> bài thi trong CSDL
+            </span>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Lọc theo tên hoặc mô tả đề thi..."
+              className="w-full sm:w-72 text-xs px-3 py-2 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-[#0052cc]"
+            />
+          </div>
         </div>
 
         {/* Unified Exam Management Table */}
@@ -301,20 +349,38 @@ export default function AdminExamsWorkspacePage() {
                     </td>
 
                     <td className="px-4 py-4">
-                      <span className={`text-[11px] font-bold px-2.5 py-1 rounded-md ${
-                        exam.category === 'LUYỆN TẬP'
-                          ? 'bg-blue-50 text-blue-700 border border-blue-200'
-                          : 'bg-rose-50 text-[#d90429] border border-rose-200'
-                      }`}>
-                        {exam.category === 'LUYỆN TẬP' ? 'LUYỆN TẬP' : 'THỰC CHIẾN'}
-                      </span>
+                      {exam.category === 'LUYỆN TẬP' || exam.id.startsWith('chuyen-de-') ? (
+                        <span className="text-[11px] font-bold px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-200">
+                          🔵 Chuyên Đề
+                        </span>
+                      ) : exam.stage === 'gk1' ? (
+                        <span className="text-[11px] font-bold px-2.5 py-1 rounded-md bg-amber-50 text-amber-800 border border-amber-200">
+                          🔥 Giữa Kì 1
+                        </span>
+                      ) : exam.stage === 'hk1' ? (
+                        <span className="text-[11px] font-bold px-2.5 py-1 rounded-md bg-blue-50 text-[#0052cc] border border-blue-200">
+                          📘 Học Kì 1
+                        </span>
+                      ) : exam.stage === 'gk2' ? (
+                        <span className="text-[11px] font-bold px-2.5 py-1 rounded-md bg-purple-50 text-purple-700 border border-purple-200">
+                          ⚡ Giữa Kì 2
+                        </span>
+                      ) : exam.stage === 'ck2' ? (
+                        <span className="text-[11px] font-bold px-2.5 py-1 rounded-md bg-teal-50 text-teal-800 border border-teal-200">
+                          🎯 Cuối Kì 2
+                        </span>
+                      ) : (
+                        <span className="text-[11px] font-bold px-2.5 py-1 rounded-md bg-rose-50 text-[#d90429] border border-rose-200">
+                          🏆 Tốt Nghiệp
+                        </span>
+                      )}
                     </td>
 
                     <td className="px-4 py-4 text-xs font-medium text-slate-600">
-                      {exam.category === 'LUYỆN TẬP' ? (
-                        <span className="capitalize">{exam.subCategory === 'math' ? '🔵 Toán học' : exam.subCategory === 'reading' ? '🟣 Đọc hiểu' : '🟢 Khoa học'} (20 câu)</span>
+                      {exam.category === 'LUYỆN TẬP' || exam.id.startsWith('chuyen-de-') ? (
+                        <span>Toán 12 • 22 câu (45 phút)</span>
                       ) : (
-                        <span>Full 3 Phần ({exam.modules?.length || 3} Module)</span>
+                        <span>Toán THPTQG • 22 câu (90 phút)</span>
                       )}
                     </td>
 

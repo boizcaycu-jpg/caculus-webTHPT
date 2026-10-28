@@ -43,22 +43,22 @@ const vipStudents: User[] = Array.from({ length: 500 }).map((_, i) => {
 
 export const INITIAL_USERS: User[] = [...baseUsers, ...vipStudents];
 
-// 9 CHUYÊN ĐỀ TOÁN THPTQG CHUẨN GDPT 2018 (LOẠI BỎ SỐ PHỨC, BỔ SUNG XÁC SUẤT ĐIỀU KIỆN & THỐNG KÊ GHÉP NHÓM)
+// 10 CHUYÊN ĐỀ TOÁN 12 CHUẨN GDPT 2018
 export const PRACTICE_TOPIC_EXAMS: Exam[] = [
   {
     id: 'chuyen-de-01',
-    title: 'Chuyên đề 01: Ứng dụng Đạo hàm khảo sát & vẽ đồ thị hàm số 12',
-    description: 'Tính đơn điệu, Cực trị, Giá trị lớn nhất - nhỏ nhất, Tiệm cận, Nhận dạng đồ thị & Bài toán tối ưu thực tế 12',
+    title: 'Chuyên đề 01: Cấp số cộng & Cấp số nhân',
+    description: 'Dãy số, Cấp số cộng, Cấp số nhân & Bài toán thực tế',
     isFree: true,
     isPublished: true,
     status: 'ĐÃ UPDATE',
     category: 'LUYỆN TẬP',
     subCategory: 'math',
-    topic: 'Hàm số 12',
+    topic: 'Cấp số cộng & Cấp số nhân',
     modules: [{
       id: 'mod-chuyen-de-01',
       examId: 'chuyen-de-01',
-      title: 'Chuyên đề Đạo hàm & Khảo sát Đồ thị Hàm số',
+      title: 'Chuyên đề 01: Cấp số cộng & Cấp số nhân',
       category: 'math',
       durationMinutes: 45,
       openTime: '00:00 01/01/2026',
@@ -69,18 +69,18 @@ export const PRACTICE_TOPIC_EXAMS: Exam[] = [
   },
   {
     id: 'chuyen-de-02',
-    title: 'Chuyên đề 02: Hàm số Mũ, Hàm số Lôgarit & Phương trình Mũ - Logarit',
-    description: 'Lũy thừa, Lôgarit, Tập xác định, Đạo hàm, Phương trình và Bất phương trình Mũ - Logarit thực tế',
+    title: 'Chuyên đề 02: Ứng dụng Đạo hàm khảo sát hàm số (Phần 1)',
+    description: 'Tính đơn điệu, Cực trị, GTLN - GTNN của hàm số',
     isFree: true,
     isPublished: true,
     status: 'ĐÃ UPDATE',
     category: 'LUYỆN TẬP',
     subCategory: 'math',
-    topic: 'Mũ & Logarit',
+    topic: 'Đạo hàm & Khảo sát hàm số (Phần 1)',
     modules: [{
       id: 'mod-chuyen-de-02',
       examId: 'chuyen-de-02',
-      title: 'Chuyên đề Hàm số Mũ & Lôgarit',
+      title: 'Chuyên đề 02: Ứng dụng Đạo hàm khảo sát hàm số (Phần 1)',
       category: 'math',
       durationMinutes: 45,
       openTime: '00:00 01/01/2026',
@@ -91,18 +91,18 @@ export const PRACTICE_TOPIC_EXAMS: Exam[] = [
   },
   {
     id: 'chuyen-de-03',
-    title: 'Chuyên đề 03: Nguyên hàm, Tích phân & Ứng dụng Hình học - Thực tế',
-    description: 'Bảng nguyên hàm cơ bản & mở rộng, Đổi biến số, Từng phần, Diện tích hình phẳng và Thể tích khối tròn xoay',
+    title: 'Chuyên đề 03: Ứng dụng Đạo hàm & Đồ thị hàm số (Phần 2)',
+    description: 'Tiệm cận, Nhận diện đồ thị, Tương giao & Bài toán tối ưu thực tế',
     isFree: true,
     isPublished: true,
     status: 'ĐÃ UPDATE',
     category: 'LUYỆN TẬP',
     subCategory: 'math',
-    topic: 'Tích phân',
+    topic: 'Đạo hàm & Đồ thị hàm số (Phần 2)',
     modules: [{
       id: 'mod-chuyen-de-03',
       examId: 'chuyen-de-03',
-      title: 'Chuyên đề Nguyên hàm & Tích phân',
+      title: 'Chuyên đề 03: Ứng dụng Đạo hàm & Đồ thị hàm số (Phần 2)',
       category: 'math',
       durationMinutes: 45,
       openTime: '00:00 01/01/2026',
@@ -113,18 +113,18 @@ export const PRACTICE_TOPIC_EXAMS: Exam[] = [
   },
   {
     id: 'chuyen-de-04',
-    title: 'Chuyên đề 04: Phương pháp Tọa độ trong không gian Oxyz 12',
-    description: 'Vectơ trong không gian, Tọa độ điểm, Phương trình Mặt phẳng, Đường thẳng, Mặt cầu & Mô hình không gian 3D thực tế',
+    title: 'Chuyên đề 04: Hàm số Mũ & Hàm số Lôgarit',
+    description: 'Lũy thừa, Mũ, Lôgarit, Phương trình & Bất phương trình Mũ - Lôgarit',
     isFree: true,
     isPublished: true,
     status: 'ĐÃ UPDATE',
     category: 'LUYỆN TẬP',
     subCategory: 'math',
-    topic: 'Tọa độ Oxyz',
+    topic: 'Mũ & Lôgarit',
     modules: [{
       id: 'mod-chuyen-de-04',
       examId: 'chuyen-de-04',
-      title: 'Chuyên đề Phương pháp Tọa độ Oxyz',
+      title: 'Chuyên đề 04: Hàm số Mũ & Hàm số Lôgarit',
       category: 'math',
       durationMinutes: 45,
       openTime: '00:00 01/01/2026',
@@ -135,18 +135,18 @@ export const PRACTICE_TOPIC_EXAMS: Exam[] = [
   },
   {
     id: 'chuyen-de-05',
-    title: 'Chuyên đề 05: Hình học Không gian Cổ điển & Khối tròn xoay (Nón - Trụ - Cầu)',
-    description: 'Góc giữa đường và mặt, Góc nhị diện, Khoảng cách điểm đến mặt phẳng, Thể tích khối chóp, lăng trụ, Khối Nón - Trụ - Cầu',
+    title: 'Chuyên đề 05: Hình học Không gian (Phần 1)',
+    description: 'Quan hệ song song, Quan hệ vuông góc, Góc & Khoảng cách cổ điển',
     isFree: true,
     isPublished: true,
     status: 'ĐÃ UPDATE',
     category: 'LUYỆN TẬP',
     subCategory: 'math',
-    topic: 'Hình học Không gian',
+    topic: 'Hình học Không gian (Phần 1)',
     modules: [{
       id: 'mod-chuyen-de-05',
       examId: 'chuyen-de-05',
-      title: 'Chuyên đề Hình học Không gian Cổ điển',
+      title: 'Chuyên đề 05: Hình học Không gian (Phần 1)',
       category: 'math',
       durationMinutes: 45,
       openTime: '00:00 01/01/2026',
@@ -157,18 +157,18 @@ export const PRACTICE_TOPIC_EXAMS: Exam[] = [
   },
   {
     id: 'chuyen-de-06',
-    title: 'Chuyên đề 06: Xác suất có điều kiện & Công thức Bayes',
-    description: 'Nội dung mới trọng tâm GDPT 2018: Xác suất có điều kiện, Quy tắc nhân xác suất, Công thức Bayes và Ứng dụng thực tế',
+    title: 'Chuyên đề 06: Hình học Không gian (Phần 2)',
+    description: 'Khối đa diện, Thể tích khối chóp, Khối lăng trụ & Toán thực tế',
     isFree: true,
     isPublished: true,
     status: 'ĐÃ UPDATE',
     category: 'LUYỆN TẬP',
     subCategory: 'math',
-    topic: 'Xác suất có điều kiện',
+    topic: 'Hình học Không gian (Phần 2)',
     modules: [{
       id: 'mod-chuyen-de-06',
       examId: 'chuyen-de-06',
-      title: 'Chuyên đề Xác suất có điều kiện & Bayes',
+      title: 'Chuyên đề 06: Hình học Không gian (Phần 2)',
       category: 'math',
       durationMinutes: 45,
       openTime: '00:00 01/01/2026',
@@ -179,18 +179,18 @@ export const PRACTICE_TOPIC_EXAMS: Exam[] = [
   },
   {
     id: 'chuyen-de-07',
-    title: 'Chuyên đề 07: Các số đặc trưng đo độ phân tán mẫu số liệu ghép nhóm 12',
-    description: 'Nội dung mới lớp 12: Khoảng biến thiên, Khoảng tứ phân vị, Phương sai, Độ lệch chuẩn của mẫu số liệu ghép nhóm',
+    title: 'Chuyên đề 07: Nguyên hàm & Tích phân',
+    description: 'Nguyên hàm, Tích phân, Ứng dụng tính diện tích & Thể tích khối tròn xoay',
     isFree: true,
     isPublished: true,
     status: 'ĐÃ UPDATE',
     category: 'LUYỆN TẬP',
     subCategory: 'math',
-    topic: 'Thống kê Ghép nhóm',
+    topic: 'Nguyên hàm & Tích phân',
     modules: [{
       id: 'mod-chuyen-de-07',
       examId: 'chuyen-de-07',
-      title: 'Chuyên đề Số đặc trưng mẫu số liệu ghép nhóm',
+      title: 'Chuyên đề 07: Nguyên hàm & Tích phân',
       category: 'math',
       durationMinutes: 45,
       openTime: '00:00 01/01/2026',
@@ -201,18 +201,18 @@ export const PRACTICE_TOPIC_EXAMS: Exam[] = [
   },
   {
     id: 'chuyen-de-08',
-    title: 'Chuyên đề 08: Dãy số, Cấp số cộng & Cấp số nhân',
-    description: 'Công thức số hạng tổng quát, Tổng n số hạng đầu tiên, Bài toán tăng trưởng kinh tế & lãi suất',
+    title: 'Chuyên đề 08: Thống kê mẫu số liệu ghép nhóm',
+    description: 'Các số đặc trưng đo xu thế trung tâm & Mức độ phân tán mẫu ghép nhóm',
     isFree: true,
     isPublished: true,
     status: 'ĐÃ UPDATE',
     category: 'LUYỆN TẬP',
     subCategory: 'math',
-    topic: 'Dãy số & Cấp số',
+    topic: 'Thống kê mẫu số liệu ghép nhóm',
     modules: [{
       id: 'mod-chuyen-de-08',
       examId: 'chuyen-de-08',
-      title: 'Chuyên đề Cấp số cộng & Cấp số nhân',
+      title: 'Chuyên đề 08: Thống kê mẫu số liệu ghép nhóm',
       category: 'math',
       durationMinutes: 45,
       openTime: '00:00 01/01/2026',
@@ -223,18 +223,40 @@ export const PRACTICE_TOPIC_EXAMS: Exam[] = [
   },
   {
     id: 'chuyen-de-09',
-    title: 'Chuyên đề 09: Thống kê & Đại số Tổ hợp Ứng dụng',
-    description: 'Quy tắc cộng, Quy tắc nhân, Hoán vị, Chỉnh hợp, Tổ hợp, Nhị thức Newton & Bài toán xác suất cổ điển',
+    title: 'Chuyên đề 09: Phương pháp Tọa độ trong không gian Oxyz',
+    description: 'Vectơ trong không gian, Phương trình Mặt phẳng, Đường thẳng & Mặt cầu',
     isFree: true,
     isPublished: true,
     status: 'ĐÃ UPDATE',
     category: 'LUYỆN TẬP',
     subCategory: 'math',
-    topic: 'Tổ hợp & Xác suất',
+    topic: 'Phương pháp Tọa độ Oxyz',
     modules: [{
       id: 'mod-chuyen-de-09',
       examId: 'chuyen-de-09',
-      title: 'Chuyên đề Đại số Tổ hợp & Thống kê',
+      title: 'Chuyên đề 09: Phương pháp Tọa độ trong không gian Oxyz',
+      category: 'math',
+      durationMinutes: 45,
+      openTime: '00:00 01/01/2026',
+      closeTime: '23:59 31/12/2027',
+      totalQuestions: 22
+    }],
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: 'chuyen-de-10',
+    title: 'Chuyên đề 10: Xác suất có điều kiện',
+    description: 'Xác suất có điều kiện, Công thức nhân xác suất, Công thức xác suất toàn phần & Bayes',
+    isFree: true,
+    isPublished: true,
+    status: 'ĐÃ UPDATE',
+    category: 'LUYỆN TẬP',
+    subCategory: 'math',
+    topic: 'Xác suất có điều kiện',
+    modules: [{
+      id: 'mod-chuyen-de-10',
+      examId: 'chuyen-de-10',
+      title: 'Chuyên đề 10: Xác suất có điều kiện',
       category: 'math',
       durationMinutes: 45,
       openTime: '00:00 01/01/2026',
@@ -245,14 +267,43 @@ export const PRACTICE_TOPIC_EXAMS: Exam[] = [
   },
 ];
 
-// BỘ 36 ĐỀ THI THỬ THỰC CHIẾN TN THPTQG 2026 (CẬP NHẬT LIÊN TỤC)
-export const MOCK_FULL_EXAMS: Exam[] = Array.from({ length: 36 }).map((_, i) => {
+// BỘ 30 ĐỀ THI THỰC CHIẾN (20 ĐỀ HỌC KÌ + 10 ĐỀ TỐT NGHIỆP)
+export const MOCK_FULL_EXAMS: Exam[] = Array.from({ length: 30 }).map((_, i) => {
   const num = String(i + 1).padStart(2, '0');
+  const index = i + 1;
   const isFree = i === 0;
+
+  let stage: 'gk1' | 'hk1' | 'gk2' | 'ck2' | 'tot-nghiep' = 'tot-nghiep';
+  let title = '';
+  let description = '';
+
+  if (index >= 1 && index <= 5) {
+    stage = 'gk1';
+    title = `Đề Ôn Thi Giữa Kì 1 Toán 12 - Đề Số ${num}`;
+    description = `Bám sát cấu trúc kiểm tra Giữa Học Kì 1 chuẩn GDPT 2018 (22 câu - 90 phút)`;
+  } else if (index >= 6 && index <= 10) {
+    stage = 'hk1';
+    title = `Đề Ôn Thi Học Kì 1 Toán 12 - Đề Số ${num}`;
+    description = `Tổng ôn kiến thức Học Kì 1 chuẩn cấu trúc Bộ GD&ĐT (22 câu - 90 phút)`;
+  } else if (index >= 11 && index <= 15) {
+    stage = 'gk2';
+    title = `Đề Ôn Thi Giữa Kì 2 Toán 12 - Đề Số ${num}`;
+    description = `Bám sát cấu trúc kiểm tra Giữa Học Kì 2 chuẩn GDPT 2018 (22 câu - 90 phút)`;
+  } else if (index >= 16 && index <= 20) {
+    stage = 'ck2';
+    title = `Đề Ôn Thi Cuối Kì 2 Toán 12 - Đề Số ${num}`;
+    description = `Tổng ôn toàn diện Học Kì 2 Toán 12 chuẩn cấu trúc mới (22 câu - 90 phút)`;
+  } else {
+    stage = 'tot-nghiep';
+    title = `Đề Thi Thử Thực Chiến TN THPTQG 2027 - Đề Số ${num}`;
+    description = `Bộ đề thực chiến Tốt nghiệp THPT Quốc gia 2027 mức độ vận dụng (22 câu - 90 phút)`;
+  }
+
   return {
     id: `de-thuc-chien-${num}`,
-    title: `Đề Thi Thử Thực Chiến TN THPTQG 2026 - Đề Số ${num}`,
-    description: `Bộ đề chuẩn cấu trúc Bộ GD&ĐT 2026 môn Toán (22 câu - 90 phút - 3 phần)`,
+    title,
+    description,
+    stage,
     isFree,
     isDemoExam: isFree,
     isPublished: true,
@@ -262,7 +313,7 @@ export const MOCK_FULL_EXAMS: Exam[] = Array.from({ length: 36 }).map((_, i) => 
     modules: [{
       id: `mod-de-thuc-chien-${num}`,
       examId: `de-thuc-chien-${num}`,
-      title: `Bài Thi Môn Toán THPTQG - Đề Số ${num}`,
+      title,
       category: 'math',
       durationMinutes: 90,
       openTime: '00:00 01/01/2026',
