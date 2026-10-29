@@ -477,7 +477,7 @@ export default function AdminExamsWorkspacePage() {
                     required
                     value={formTitle}
                     onChange={(e) => setFormTitle(e.target.value)}
-                    placeholder="Ví dụ: Đề TSA Caculus VIP 21"
+                    placeholder="Ví dụ: Đề Thi Thử PARABOL VIP 21"
                     className="w-full text-sm border border-slate-300 rounded-xl px-3.5 py-2.5 focus:ring-2 focus:ring-[#d90429] outline-none font-semibold text-slate-900"
                   />
                 </div>

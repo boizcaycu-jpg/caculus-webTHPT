@@ -297,13 +297,13 @@ function AdminExamEditorInner() {
       {/* Dedicated Clean Local Workspace Header (Không Navbar, Không Login) */}
       <header className="bg-[#002b66] text-white px-6 py-3.5 flex items-center justify-between shadow-md sticky top-0 z-30">
         <div className="flex items-center gap-3">
-          <div className="bg-white p-1.5 rounded-lg shadow-sm">
+          <div className="bg-white p-1 rounded-lg shadow-sm">
             <Image
-              src="/logo_thptqg.png"
-              alt="CACULUS"
-              width={140}
-              height={36}
-              className="h-7 w-auto object-contain"
+              src="/logo-parabol-horizontal.png"
+              alt="PARABOL KHẢO THÍ"
+              width={160}
+              height={40}
+              className="h-8 w-auto object-contain"
               priority
             />
           </div>

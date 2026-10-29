@@ -266,7 +266,7 @@ export default function SplitTestRoom({
 
           <div className="hidden sm:flex items-center gap-1.5 bg-slate-900/[0.04] border border-slate-200/70 rounded-full px-2.5 py-1 text-xs font-mono font-bold text-slate-700">
             <span className="text-[11px] text-slate-400 font-sans font-medium">SBD:</span>
-            <span className="text-blue-700">{studentId}</span>
+            <span className="text-blue-700">{studentId?.replace(/^CACULUS_/i, 'PARABOL_').replace(/^THPTQG_/i, 'PARABOL_')}</span>
           </div>
 
           <div className="rounded-full bg-blue-500/10 text-blue-700 border border-blue-500/20 px-3 py-1 text-xs font-semibold tabular-nums flex items-center gap-1.5">

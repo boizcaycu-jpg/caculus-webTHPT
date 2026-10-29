@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import {
-  Sparkles,
   User,
   LogOut,
   ShieldAlert,
@@ -26,7 +25,7 @@ export default function Navbar() {
         if (data.authenticated) {
           setUser(data.user);
         } else if (typeof window !== 'undefined') {
-          const stored = localStorage.getItem('caculus_user');
+          const stored = localStorage.getItem('parabol_user') || localStorage.getItem('caculus_user');
           if (stored) {
             try {
               setUser(JSON.parse(stored));
@@ -39,6 +38,7 @@ export default function Navbar() {
 
   const handleLogout = async () => {
     if (typeof window !== 'undefined') {
+      localStorage.removeItem('parabol_user');
       localStorage.removeItem('caculus_user');
     }
     await fetch('/api/auth/logout', { method: 'POST' });
@@ -56,22 +56,28 @@ export default function Navbar() {
   const isLeaderboard = pathname === '/leaderboard';
   const isContact = pathname === '/contact';
 
+  const formatStudentBadge = (id?: string) => {
+    if (!id) return 'PARABOL_2027';
+    return id.replace(/^CACULUS_/i, 'PARABOL_').replace(/^THPTQG_/i, 'PARABOL_');
+  };
+
   return (
     <header className="sticky top-0 z-40 w-full bg-white/75 backdrop-blur-2xl border-b border-slate-200/60 shadow-[0_2px_20px_rgb(0,0,0,0.02)] transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
         {/* Brand Block */}
         <div className="flex items-center gap-3 shrink-0">
           <Link href="/dashboard" className="flex items-center gap-2.5 group">
-            <div className="bg-gradient-to-b from-blue-600 to-blue-700 text-white shadow-sm rounded-xl px-3 py-1.5 font-bold tracking-tight text-xs flex items-center gap-1.5 transition-transform duration-200 group-hover:scale-105 active:scale-95">
-              <Sparkles className="w-3.5 h-3.5 text-blue-200" />
-              <span>CACULUS</span>
-            </div>
+            <img
+              src="/logo-parabol-icon.png"
+              alt="PARABOL KHẢO THÍ"
+              className="h-9 w-auto object-contain rounded-xl shadow-xs transition-transform duration-200 group-hover:scale-105 active:scale-95"
+            />
             <div className="flex flex-col">
-              <span className="text-sm font-semibold tracking-tight text-slate-900">
-                CACULUS THPTQG
+              <span className="text-sm font-extrabold tracking-tight text-[#0F172A]">
+                PARABOL KHẢO THÍ
               </span>
               <span className="text-[11px] text-slate-500 font-medium hidden sm:inline">
-                Luyện Thi Toán 12 • Chuẩn GDPT 2018
+                Hệ Thống Khảo Thí & Luyện Đề Toán 12
               </span>
             </div>
           </Link>
@@ -144,7 +150,7 @@ export default function Navbar() {
                     {user.name || user.realName || 'Thí sinh'}
                   </span>
                   <span className="text-[10px] text-blue-600 font-mono font-medium leading-none">
-                    {user.studentId || 'THPTQG_2027'}
+                    {formatStudentBadge(user.studentId)}
                   </span>
                 </div>
               </div>

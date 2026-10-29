@@ -24,7 +24,7 @@ export default function ExamPreparationPage() {
         if (data.authenticated) {
           setUser(data.user);
         } else if (typeof window !== 'undefined') {
-          const stored = localStorage.getItem('caculus_user');
+          const stored = localStorage.getItem('parabol_user') || localStorage.getItem('caculus_user');
           if (stored) {
             try {
               setUser(JSON.parse(stored));
@@ -100,7 +100,8 @@ export default function ExamPreparationPage() {
   };
 
   const studentName = user?.realName || user?.name || user?.fullName || 'Thí sinh THPTQG';
-  const studentSbd = user?.studentId || user?.username || user?.email || 'THPTQG-2027';
+  const rawSbd = user?.studentId || user?.username || user?.email || 'PARABOL_2027';
+  const studentSbd = rawSbd.replace(/^CACULUS_/i, 'PARABOL_').replace(/^THPTQG_/i, 'PARABOL_');
   const examTitle = exam?.title || 'Đề Thi Mô Phỏng Tốt Nghiệp THPTQG 2027 - Môn Toán';
   const duration = exam?.durationMinutes || 90;
   const questionCount = exam?.questions?.length || 22;
@@ -135,7 +136,7 @@ export default function ExamPreparationPage() {
           {/* Eyebrow Pill */}
           <div className="inline-flex items-center gap-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 px-3.5 py-1 text-[11px] font-bold uppercase tracking-wider text-blue-700 mb-3">
             <Sparkles className="w-3 h-3 text-blue-600" />
-            <span>Phòng Khảo Thí Mô Phỏng • Môn Toán 12</span>
+            <span>PARABOL KHẢO THÍ • MÔN TOÁN 12</span>
           </div>
 
           {/* Exam Title (Full-width, centered, zero awkward truncation) */}
@@ -258,7 +259,7 @@ export default function ExamPreparationPage() {
       {/* Footer Minimal */}
       <footer className="max-w-3xl w-full mx-auto py-3 text-center text-xs text-slate-400 font-medium flex items-center justify-center gap-2">
         <CheckCircle2 className="w-3.5 h-3.5 text-blue-500" />
-        <span>CACULUS THPTQG 2027 • Hệ Thống Khảo Thí Trực Tuyến</span>
+        <span>PARABOL KHẢO THÍ 2027 • Hệ Thống Khảo Thí Trực Tuyến</span>
       </footer>
     </div>
   );

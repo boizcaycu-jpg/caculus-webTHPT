@@ -45,7 +45,7 @@ export async function PATCH(req: NextRequest) {
       role: updated.role || 'student',
       name: realName,
       realName: realName,
-      studentId: updated.studentId || ('CACULUS_' + String(updated.id).slice(-6)),
+      studentId: updated.studentId || ('PARABOL_' + String(updated.id).slice(-6)),
       isVip: updated.isVip ?? true,
     };
 

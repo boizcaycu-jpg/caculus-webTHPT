@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: false, error: 'Vui lòng điền đầy đủ Email, Họ tên và Mật khẩu' }, { status: 400 });
     }
 
-    const finalStudentId = studentId || ('CACULUS_' + Math.floor(100000 + Math.random() * 900000));
+    const finalStudentId = studentId || ('PARABOL_' + Math.floor(100000 + Math.random() * 900000));
     const passwordHash = await hashPassword(password);
     const newId = 'user-' + Date.now();
 

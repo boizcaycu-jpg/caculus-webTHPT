@@ -34,7 +34,7 @@ export default function ContactPage() {
             Liên Hệ & Hỗ Trợ Kỹ Thuật
           </h1>
           <p className="text-sm text-slate-500 max-w-lg mx-auto leading-relaxed">
-            Hệ thống khảo thí CACULUS THPTQG cam kết hỗ trợ tối đa cho học sinh trong quá trình ôn luyện và thi thử trực tuyến.
+            Hệ thống khảo thí PARABOL KHẢO THÍ cam kết hỗ trợ tối đa cho học sinh trong quá trình ôn luyện và thi thử trực tuyến.
           </p>
         </div>
 
@@ -45,7 +45,7 @@ export default function ContactPage() {
               <Mail className="w-6 h-6" />
             </div>
             <h3 className="font-bold text-slate-900 text-sm">Email Hỗ Trợ</h3>
-            <p className="text-xs text-slate-500 font-mono break-all">support.caculus.edu.vn@gmail.com</p>
+            <p className="text-xs text-slate-500 font-mono break-all">support.parabol.edu.vn@gmail.com</p>
           </div>
 
           <div className="rounded-[24px] p-6 bg-white/80 backdrop-blur-xl border border-white/90 ring-1 ring-slate-900/[0.05] shadow-sm text-center space-y-3">
@@ -64,7 +64,7 @@ export default function ContactPage() {
               <Code className="w-6 h-6" />
             </div>
             <h3 className="font-bold text-slate-900 text-sm">Phiên Bản Hệ Thống</h3>
-            <p className="text-xs text-slate-600 font-mono font-bold">CACULUS v2.7 Pro</p>
+            <p className="text-xs text-slate-600 font-mono font-bold">PARABOL KHẢO THÍ v2.7 Pro</p>
             <span className="inline-block text-[10px] font-semibold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full">
               Chuẩn GDPT 2018
             </span>

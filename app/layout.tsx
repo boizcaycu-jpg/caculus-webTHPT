@@ -2,8 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Phòng Luyện THPTQG - CACULUS",
-  description: "Phòng Luyện Thi Tốt Nghiệp THPT Quốc Gia Môn Toán - Hệ Thống Khảo Thí Trực Tuyến CACULUS",
+  title: "PARABOL KHẢO THÍ | Hệ Thống Luyện Đề Toán 12 & Tốt Nghiệp THPT Chuẩn GDPT 2018",
+  description: "Nền tảng khảo thí và luyện đề Toán 12 trực tuyến PARABOL KHẢO THÍ. Lộ trình 40 chuyên đề & đề thi Giữa kì, Học kì, Tốt nghiệp THPT tích hợp AI giải chi tiết.",
+  icons: {
+    icon: "/logo-parabol-icon.png",
+    apple: "/logo-parabol-icon.png",
+  },
 };
 
 export default function RootLayout({

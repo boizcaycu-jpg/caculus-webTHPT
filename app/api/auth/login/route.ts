@@ -16,20 +16,23 @@ export async function POST(req: NextRequest) {
 
     // 1. Single Admin Account
     if (
-      (email === 'admin@caculus.edu.vn' || email === 'admin') &&
+      (email === 'admin@caculus.edu.vn' || email === 'admin@parabol.edu.vn' || email === 'admin') &&
       (password === 'admin123' || password === process.env.ADMIN_PASSWORD)
     ) {
       tokenPayload = {
         userId: 'user-admin-1',
-        email: 'admin@caculus.edu.vn',
+        email: 'admin@parabol.edu.vn',
         role: 'admin',
-        name: 'Quản trị viên THPTQG',
+        name: 'Quản trị viên PARABOL KHẢO THÍ',
         studentId: 'ADMIN-001',
         isVip: true,
       };
     } else {
-      // 2. Check 500 Pre-provisioned VIP Accounts in DB
-      const user = getUserByEmail(email);
+      // 2. Check 500 Pre-provisioned VIP Accounts in DB (support both @parabol.edu.vn and @caculus.edu.vn)
+      let user = getUserByEmail(email);
+      if (!user && email.endsWith('@parabol.edu.vn')) {
+        user = getUserByEmail(email.replace('@parabol.edu.vn', '@caculus.edu.vn'));
+      }
 
       if (user) {
         const isPasswordValid = 

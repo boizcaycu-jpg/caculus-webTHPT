@@ -76,6 +76,7 @@ export default function DashboardPage() {
         } else {
           setUser(data.user);
           if (typeof window !== 'undefined') {
+            localStorage.setItem('parabol_user', JSON.stringify(data.user));
             localStorage.setItem('caculus_user', JSON.stringify(data.user));
           }
         }
@@ -110,8 +111,14 @@ export default function DashboardPage() {
     }
   };
 
+  const formatStudentBadge = (id?: string) => {
+    if (!id) return 'PARABOL_2027';
+    return id.replace(/^CACULUS_/i, 'PARABOL_').replace(/^THPTQG_/i, 'PARABOL_');
+  };
+
   const handleLogout = async () => {
     if (typeof window !== 'undefined') {
+      localStorage.removeItem('parabol_user');
       localStorage.removeItem('caculus_user');
     }
     await fetch('/api/auth/logout', { method: 'POST' });
@@ -143,6 +150,7 @@ export default function DashboardPage() {
       if (res.ok && data.success) {
         setUser(data.user);
         if (typeof window !== 'undefined') {
+          localStorage.setItem('parabol_user', JSON.stringify(data.user));
           localStorage.setItem('caculus_user', JSON.stringify(data.user));
         }
       } else {
@@ -162,7 +170,7 @@ export default function DashboardPage() {
     setTimeout(() => {
       setFeedbackText('');
       setFeedbackSent(false);
-      alert('Cảm ơn bạn! Phản hồi của bạn đã được gửi tới Ban Chuyên Môn CACULUS.');
+      alert('Cảm ơn bạn! Phản hồi của bạn đã được gửi tới Ban Chuyên Môn PARABOL KHẢO THÍ.');
     }, 1000);
   };
 
@@ -244,16 +252,17 @@ export default function DashboardPage() {
               onClick={() => handleNavTabChange('overview')}
               className="flex items-center gap-2.5 group text-left"
             >
-              <div className="bg-gradient-to-b from-blue-600 to-blue-700 text-white shadow-sm rounded-xl px-3 py-1.5 font-bold tracking-tight text-xs flex items-center gap-1.5 transition-transform duration-200 group-hover:scale-105 active:scale-95">
-                <Sparkles className="w-3.5 h-3.5 text-blue-200" />
-                <span>CACULUS</span>
-              </div>
+              <img
+                src="/logo-parabol-icon.png"
+                alt="PARABOL KHẢO THÍ"
+                className="h-9 w-auto object-contain rounded-xl shadow-xs transition-transform duration-200 group-hover:scale-105 active:scale-95"
+              />
               <div className="flex flex-col">
-                <span className="text-sm font-semibold tracking-tight text-slate-900">
-                  CACULUS THPTQG
+                <span className="text-sm font-extrabold tracking-tight text-[#0F172A]">
+                  PARABOL KHẢO THÍ
                 </span>
                 <span className="text-[11px] text-slate-500 font-medium hidden sm:inline">
-                  Luyện Thi Toán 12 • Chuẩn GDPT 2018
+                  Hệ Thống Khảo Thí & Luyện Đề Toán 12
                 </span>
               </div>
             </button>
@@ -317,7 +326,7 @@ export default function DashboardPage() {
                   {user?.name || user?.realName || 'Thí sinh'}
                 </span>
                 <span className="text-[10px] text-blue-600 font-mono font-medium leading-none">
-                  {user?.studentId || 'THPTQG_2027'}
+                  {formatStudentBadge(user?.studentId)}
                 </span>
               </div>
             </div>
@@ -400,7 +409,7 @@ export default function DashboardPage() {
                       {user?.name || user?.realName || 'Thí sinh VIP'}
                     </h2>
                     <span className="inline-block mt-1 text-[10px] font-bold text-blue-700 bg-blue-500/10 border border-blue-500/20 px-2 py-0.5 rounded-full uppercase tracking-tight">
-                      MÔN TOÁN 12 • {user?.studentId || 'THPTQG_2027'}
+                      MÔN TOÁN 12 • {formatStudentBadge(user?.studentId)}
                     </span>
                   </div>
                 </div>
@@ -875,7 +884,7 @@ export default function DashboardPage() {
                 <span>Bảng Vinh Danh Khảo Thí</span>
               </div>
               <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
-                Bảng Xếp Hạng Toàn Hệ Thống CACULUS THPTQG
+                Bảng Xếp Hạng Toàn Hệ Thống PARABOL KHẢO THÍ
               </h1>
               <p className="text-sm text-slate-500 max-w-xl mx-auto leading-relaxed">
                 Vinh danh những thí sinh xuất sắc nhất có điểm số cao nhất trên hệ thống luyện thi trực tuyến môn Toán 12.
@@ -1025,7 +1034,7 @@ export default function DashboardPage() {
                 Liên Hệ & Hỗ Trợ Kỹ Thuật
               </h1>
               <p className="text-sm text-slate-500 max-w-lg mx-auto leading-relaxed">
-                Hệ thống khảo thí CACULUS THPTQG cam kết hỗ trợ tối đa cho học sinh trong quá trình ôn luyện và thi thử trực tuyến.
+                Hệ thống khảo thí PARABOL KHẢO THÍ cam kết hỗ trợ tối đa cho học sinh trong quá trình ôn luyện và thi thử trực tuyến.
               </p>
             </div>
 
@@ -1036,7 +1045,7 @@ export default function DashboardPage() {
                   <Mail className="w-6 h-6" />
                 </div>
                 <h3 className="font-bold text-slate-900 text-sm">Email Hỗ Trợ</h3>
-                <p className="text-xs text-slate-500 font-mono break-all">support.caculus.edu.vn@gmail.com</p>
+                <p className="text-xs text-slate-500 font-mono break-all">support.parabol.edu.vn@gmail.com</p>
               </div>
 
               <div className="rounded-[24px] p-6 bg-white/80 backdrop-blur-xl border border-white/90 ring-1 ring-slate-900/[0.05] shadow-sm text-center space-y-3">
@@ -1055,7 +1064,7 @@ export default function DashboardPage() {
                   <Code className="w-6 h-6" />
                 </div>
                 <h3 className="font-bold text-slate-900 text-sm">Phiên Bản Hệ Thống</h3>
-                <p className="text-xs text-slate-600 font-mono font-bold">CACULUS v2.7 Pro</p>
+                <p className="text-xs text-slate-600 font-mono font-bold">PARABOL KHẢO THÍ v2.7 Pro</p>
                 <span className="inline-block text-[10px] font-semibold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full">
                   Chuẩn GDPT 2018
                 </span>
@@ -1137,7 +1146,7 @@ export default function DashboardPage() {
                 disabled={submittingName}
                 className="w-full rounded-full py-3.5 text-sm font-semibold bg-gradient-to-b from-blue-500 to-blue-600 text-white shadow-[0_2px_12px_rgba(37,99,235,0.3)] hover:from-blue-600 hover:to-blue-700 active:scale-[0.97] transition-all flex items-center justify-center gap-2"
               >
-                {submittingName ? 'Đang lưu thông tin...' : 'Xác nhận & Vào Luyện THPTQG'}
+                {submittingName ? 'Đang lưu thông tin...' : 'Xác nhận & Vào Luyện PARABOL'}
               </button>
             </form>
           </div>

@@ -61,7 +61,7 @@ export default function AdminDashboardPage() {
           <div>
             <div className="flex items-center gap-2">
               <span className="w-3 h-8 bg-[#0052cc] rounded-full inline-block"></span>
-              <h1 className="text-2xl font-bold text-slate-900">Quản trị Hệ thống Khảo thí CACULUS THPTQG</h1>
+              <h1 className="text-2xl font-bold text-slate-900">Quản trị Hệ thống Khảo thí PARABOL KHẢO THÍ</h1>
             </div>
             <p className="text-slate-500 text-sm mt-1">
               Quản lý 500 Tài khoản Thí sinh VIP, 44 Đề thi THPTQG (Luyện tập & Thực chiến) & Giám sát Gian lận

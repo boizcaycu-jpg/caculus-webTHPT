@@ -19,13 +19,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
         // 1. Check Admin accounts
         if (
-          (email === 'admin@caculus.edu.vn' || email === 'admin') &&
+          (email === 'admin@caculus.edu.vn' || email === 'admin@parabol.edu.vn' || email === 'admin') &&
           (password === 'admin123' || password === process.env.ADMIN_PASSWORD)
         ) {
           return {
             id: 'user-admin-1',
-            email: 'admin@caculus.edu.vn',
-            name: 'Quản trị viên 1',
+            email: 'admin@parabol.edu.vn',
+            name: 'Quản trị viên PARABOL KHẢO THÍ 1',
             role: 'admin',
             studentId: 'ADMIN-001',
             isVip: true,
@@ -33,13 +33,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         }
 
         if (
-          email === 'admin2@caculus.edu.vn' &&
+          (email === 'admin2@caculus.edu.vn' || email === 'admin2@parabol.edu.vn') &&
           (password === 'admin123' || password === process.env.ADMIN_PASSWORD)
         ) {
           return {
             id: 'user-admin-2',
-            email: 'admin2@caculus.edu.vn',
-            name: 'Quản trị viên 2',
+            email: 'admin2@parabol.edu.vn',
+            name: 'Quản trị viên PARABOL KHẢO THÍ 2',
             role: 'admin',
             studentId: 'ADMIN-002',
             isVip: true,
@@ -47,7 +47,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         }
 
         // 2. Check Student accounts in DB
-        const user = getUserByEmail(email);
+        let user = getUserByEmail(email);
+        if (!user && email.endsWith('@parabol.edu.vn')) {
+          user = getUserByEmail(email.replace('@parabol.edu.vn', '@caculus.edu.vn'));
+        }
         if (user) {
           const isValid =
             (password === 'student123' && (user.role === 'student' || !user.role)) ||
@@ -59,7 +62,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
               email: user.email,
               name: user.name,
               role: user.role || 'student',
-              studentId: user.studentId || ('CACULUS_' + String(user.id).slice(-6)),
+              studentId: user.studentId || ('PARABOL_' + String(user.id).slice(-6)),
               isVip: user.isVip ?? true,
             };
           }

@@ -7,7 +7,7 @@ export interface User {
   passwordPlain?: string;
   name: string | null;
   realName?: string | null;
-  studentId: string; // e.g. CACULUS_VIP_001
+  studentId: string; // e.g. PARABOL_VIP_001
   role: Role;
   isVip?: boolean;
   createdAt: string;

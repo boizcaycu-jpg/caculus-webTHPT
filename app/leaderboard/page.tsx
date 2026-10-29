@@ -36,7 +36,7 @@ export default function LeaderboardPage() {
             <span>Bảng Vinh Danh Khảo Thí</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
-            Bảng Xếp Hạng Toàn Hệ Thống CACULUS THPTQG
+            Bảng Xếp Hạng Toàn Hệ Thống PARABOL KHẢO THÍ
           </h1>
           <p className="text-sm text-slate-500 max-w-xl mx-auto leading-relaxed">
             Vinh danh những thí sinh xuất sắc nhất có điểm số cao nhất trên hệ thống luyện thi trực tuyến môn Toán 12.

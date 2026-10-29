@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
     }
 
     const passwordHash = await hashPassword(password);
-    const finalStudentId = studentId || 'CACULUS_' + Math.floor(100000 + Math.random() * 900000);
+    const finalStudentId = studentId || 'PARABOL_' + Math.floor(100000 + Math.random() * 900000);
     const newId = 'user-' + Date.now();
 
     const newUser = createUser({

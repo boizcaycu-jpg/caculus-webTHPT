@@ -136,7 +136,7 @@ export default function ResultsPage() {
           </div>
 
           <div className="space-y-1">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400">HỘI ĐỒNG KHẢO THÍ CACULUS TSA</span>
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-400">HỘI ĐỒNG KHẢO THÍ PARABOL</span>
             <h1 className="text-2xl sm:text-3xl font-black text-slate-900">Báo cáo Kết quả Khảo thí</h1>
             <p className="text-xs text-slate-500 font-medium">Thí sinh: <strong>{submission.userName}</strong> ({submission.studentId})</p>
           </div>
