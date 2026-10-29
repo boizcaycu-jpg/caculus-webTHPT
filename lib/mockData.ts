@@ -1,47 +1,7 @@
 import { User, Exam, Question, Submission, AntiCheatLog } from '../types';
+import syncedUsers from '../data/users.json';
 
-const passwordHash = '$2a$10$w6M7q3p/k9Zz9t.g3/6VyeGz3/U9eD2eF3.L/M9X8/1Y1Y1Y1Y1Y1';
-
-// Seed Admin & Core Test Students
-const baseUsers: User[] = [
-  {
-    id: 'user-admin-1',
-    email: 'admin@caculus.edu.vn',
-    passwordHash,
-    name: 'Quản trị viên THPTQG',
-    studentId: 'ADMIN-001',
-    role: 'admin',
-    isVip: true,
-    createdAt: new Date().toISOString(),
-  },
-  {
-    id: 'user-student-1',
-    email: 'student@caculus.edu.vn',
-    passwordHash,
-    name: 'Nguyễn Cường',
-    studentId: 'THPTQG_496692',
-    role: 'student',
-    isVip: true,
-    createdAt: new Date().toISOString(),
-  }
-];
-
-// Seed 500 VIP Students
-const vipStudents: User[] = Array.from({ length: 500 }).map((_, i) => {
-  const num = String(i + 1).padStart(3, '0');
-  return {
-    id: `user-hs-${num}`,
-    email: `hs${num}@caculus.edu.vn`,
-    passwordHash,
-    name: `Học sinh ${num}`,
-    studentId: `THPTQG_${num}`,
-    role: 'student',
-    isVip: true,
-    createdAt: new Date().toISOString(),
-  };
-});
-
-export const INITIAL_USERS: User[] = [...baseUsers, ...vipStudents];
+export const INITIAL_USERS: User[] = syncedUsers as User[];
 
 // 10 CHUYÊN ĐỀ TOÁN 12 CHUẨN GDPT 2018
 export const PRACTICE_TOPIC_EXAMS: Exam[] = [

@@ -125,16 +125,6 @@ export default function Navbar() {
           >
             Liên hệ
           </Link>
-
-          {user?.role === 'admin' && (
-            <Link
-              href="/admin"
-              className="ml-1 text-amber-900 bg-amber-300 hover:bg-amber-400 font-bold px-3 py-1 rounded-full text-xs transition-all active:scale-95 flex items-center gap-1 shadow-xs"
-            >
-              <ShieldAlert className="w-3.5 h-3.5" />
-              <span>Admin</span>
-            </Link>
-          )}
         </nav>
 
         {/* Right User Profile Pill & Logout */}
@@ -221,15 +211,6 @@ export default function Navbar() {
           >
             Liên hệ
           </Link>
-          {user?.role === 'admin' && (
-            <Link
-              href="/admin"
-              onClick={() => setMenuOpen(false)}
-              className="block font-bold text-xs py-2 px-3 rounded-xl bg-amber-50 text-amber-900"
-            >
-              Quản trị Admin
-            </Link>
-          )}
         </div>
       )}
     </header>

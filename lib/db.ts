@@ -78,7 +78,34 @@ export function getUsers(): User[] {
 
 export function getUserByEmail(email: string): User | undefined {
   const db = ensureDbFile();
-  return db.users.find(u => u.email.toLowerCase() === email.toLowerCase());
+  const raw = (email || '').trim().toLowerCase();
+  if (!raw) return undefined;
+
+  // Normalize common variations:
+  // 1. "hs001" or "hs1" -> "hs001@caculus.edu.vn"
+  let normalized = raw;
+  const hsMatch = raw.match(/^hs(\d+)$/i);
+  if (hsMatch) {
+    const padded = hsMatch[1].padStart(3, '0');
+    normalized = `hs${padded}@caculus.edu.vn`;
+  } else if (raw.endsWith('@parabol.edu.vn')) {
+    normalized = raw.replace('@parabol.edu.vn', '@caculus.edu.vn');
+  }
+
+  return db.users.find(u => {
+    const uEmail = u.email.toLowerCase();
+    const uStudentId = (u.studentId || '').toLowerCase();
+    const uParabolId = uStudentId.replace(/^caculus_/i, 'parabol_');
+
+    return (
+      uEmail === normalized ||
+      uEmail === raw ||
+      uEmail.replace('@caculus.edu.vn', '@parabol.edu.vn') === raw ||
+      uStudentId === raw ||
+      uParabolId === raw ||
+      u.id.toLowerCase() === raw
+    );
+  });
 }
 
 export function getUserById(id: string): User | undefined {
