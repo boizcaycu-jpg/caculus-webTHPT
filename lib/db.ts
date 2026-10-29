@@ -65,6 +65,10 @@ function saveDb(data: DatabaseSchema): void {
       fs.mkdirSync(dir, { recursive: true });
     }
     fs.writeFileSync(DB_FILE_PATH, JSON.stringify(data, null, 2), 'utf-8');
+    const usersPath = path.join(dir, 'users.json');
+    if (data.users && data.users.length > 0) {
+      fs.writeFileSync(usersPath, JSON.stringify(data.users, null, 2), 'utf-8');
+    }
   } catch (error) {
     console.error('Error writing DB file:', error);
   }

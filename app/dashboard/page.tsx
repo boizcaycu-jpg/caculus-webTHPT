@@ -49,9 +49,10 @@ export default function DashboardPage() {
   const [feedbackText, setFeedbackText] = useState('');
   const [feedbackSent, setFeedbackSent] = useState(false);
 
-  // Mandatory Name Entry State
+  // Personalized Name Entry State
   const [inputRealName, setInputRealName] = useState('');
   const [submittingName, setSubmittingName] = useState(false);
+  const [showNameModal, setShowNameModal] = useState(true);
 
   // Stage Tab Filter for Full Mock Exams
   const [activeStageTab, setActiveStageTab] = useState<'gk1' | 'hk1' | 'gk2' | 'ck2' | 'tot-nghiep'>('gk1');
@@ -132,7 +133,17 @@ export default function DashboardPage() {
   const highestScore = submissions.reduce((max, s) => Math.max(max, s.score || 0), 0);
   const progressPercent = Math.min(100, Math.round((completedCount / totalExamsCount) * 100));
 
-  const needsName = user && user.role === 'student' && (!user.name || user.name === 'null' || user.name.trim() === '');
+  // Determine if student has a generic / default placeholder name ("Học sinh 00x")
+  const isDefaultName = Boolean(
+    !user?.realName ||
+    !user?.name ||
+    user.name.trim() === '' ||
+    user.name === 'null' ||
+    user.name.toLowerCase().startsWith('học sinh') ||
+    user.name.toLowerCase().startsWith('hoc sinh')
+  );
+
+  const needsName = Boolean(user && user.role === 'student' && isDefaultName && showNameModal);
 
   const handleUpdateName = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -149,6 +160,8 @@ export default function DashboardPage() {
       const data = await res.json();
       if (res.ok && data.success) {
         setUser(data.user);
+        setShowNameModal(false);
+        setInputRealName('');
         if (typeof window !== 'undefined') {
           localStorage.setItem('parabol_user', JSON.stringify(data.user));
           localStorage.setItem('caculus_user', JSON.stringify(data.user));
@@ -405,9 +418,22 @@ export default function DashboardPage() {
                   </div>
                   <div className="min-w-0">
                     <div className="text-xs text-slate-500 font-medium">Xin chào,</div>
-                    <h2 className="text-base font-bold text-slate-900 truncate">
-                      {user?.name || user?.realName || 'Thí sinh VIP'}
-                    </h2>
+                    <div className="flex items-center gap-1.5">
+                      <h2 className="text-base font-bold text-slate-900 truncate">
+                        {user?.realName || user?.name || 'Thí sinh VIP'}
+                      </h2>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setInputRealName(user?.realName || (user?.name?.toLowerCase().startsWith('học sinh') ? '' : user?.name) || '');
+                          setShowNameModal(true);
+                        }}
+                        title="Đổi họ tên"
+                        className="text-[11px] font-semibold text-blue-600 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 rounded-full px-2 py-0.5 transition active:scale-95"
+                      >
+                        Đổi tên
+                      </button>
+                    </div>
                     <span className="inline-block mt-1 text-[10px] font-bold text-blue-700 bg-blue-500/10 border border-blue-500/20 px-2 py-0.5 rounded-full uppercase tracking-tight">
                       MÔN TOÁN 12 • {formatStudentBadge(user?.studentId)}
                     </span>
@@ -1112,42 +1138,61 @@ export default function DashboardPage() {
         )}
       </main>
 
-      {/* MANDATORY NAME ENTRY MODAL (Liquid Glass) */}
+      {/* MANDATORY / PERSONALIZED NAME ENTRY MODAL (Apple iOS Liquid Glass) */}
       {needsName && (
-        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-md flex items-center justify-center p-4 z-50 animate-in fade-in duration-200">
-          <div className="bg-white/90 backdrop-blur-2xl rounded-[28px] p-6 sm:p-8 max-w-md w-full shadow-[0_20px_60px_rgba(0,0,0,0.15)] border border-white/90 ring-1 ring-slate-900/[0.05] space-y-6">
+        <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-md flex items-center justify-center p-4 z-50 animate-in fade-in duration-200">
+          <div className="bg-white/95 backdrop-blur-2xl rounded-[28px] p-6 sm:p-8 max-w-md w-full shadow-[0_20px_60px_rgba(0,0,0,0.2)] border border-white/90 ring-1 ring-slate-900/[0.05] space-y-6 relative">
+            <button
+              type="button"
+              onClick={() => setShowNameModal(false)}
+              className="absolute top-5 right-5 text-slate-400 hover:text-slate-700 p-1.5 rounded-full hover:bg-slate-100 transition"
+              title="Đóng"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
             <div className="text-center space-y-2">
               <div className="w-14 h-14 bg-gradient-to-tr from-blue-500 to-indigo-600 text-white rounded-2xl flex items-center justify-center mx-auto shadow-md">
                 <User className="w-7 h-7" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 tracking-tight">Xác nhận Họ & Tên Thí sinh</h3>
+              <h3 className="text-xl font-bold text-slate-900 tracking-tight">Cá Nhân Hóa Thí Sinh</h3>
               <p className="text-xs text-slate-500 leading-relaxed">
-                Tài khoản <strong>{user?.email}</strong> cần nhập Họ và tên chính xác để tham gia làm bài thi thử THPTQG.
+                Chào mừng bạn đến với <strong>PARABOL KHẢO THÍ</strong>! Vui lòng nhập Họ & Tên của bạn để hiển thị trên hồ sơ thi thử, kết quả làm bài và bảng vinh danh.
               </p>
             </div>
 
             <form onSubmit={handleUpdateName} className="space-y-4">
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase">
-                  Họ và tên đầy đủ *
+                <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">
+                  Họ và tên thí sinh *
                 </label>
                 <input
                   type="text"
                   required
+                  autoFocus
                   value={inputRealName}
                   onChange={(e) => setInputRealName(e.target.value)}
                   placeholder="Ví dụ: Nguyễn Văn Cường"
-                  className="w-full text-sm border border-slate-200 bg-white/80 rounded-xl px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none font-medium text-slate-900 shadow-xs transition-all"
+                  className="w-full text-sm border border-slate-200 bg-white rounded-xl px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none font-medium text-slate-900 shadow-xs transition-all"
                 />
               </div>
 
-              <button
-                type="submit"
-                disabled={submittingName}
-                className="w-full rounded-full py-3.5 text-sm font-semibold bg-gradient-to-b from-blue-500 to-blue-600 text-white shadow-[0_2px_12px_rgba(37,99,235,0.3)] hover:from-blue-600 hover:to-blue-700 active:scale-[0.97] transition-all flex items-center justify-center gap-2"
-              >
-                {submittingName ? 'Đang lưu thông tin...' : 'Xác nhận & Vào Luyện PARABOL'}
-              </button>
+              <div className="space-y-2 pt-1">
+                <button
+                  type="submit"
+                  disabled={submittingName || !inputRealName.trim()}
+                  className="w-full rounded-full py-3.5 text-sm font-semibold bg-gradient-to-b from-blue-500 to-blue-600 text-white shadow-[0_2px_12px_rgba(37,99,235,0.3)] hover:from-blue-600 hover:to-blue-700 active:scale-[0.97] transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                >
+                  {submittingName ? 'Đang lưu...' : 'Xác nhận & Bắt đầu luyện thi'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setShowNameModal(false)}
+                  className="w-full py-2 text-xs font-semibold text-slate-500 hover:text-slate-800 transition"
+                >
+                  Để sau (Sử dụng tên mặc định)
+                </button>
+              </div>
             </form>
           </div>
         </div>

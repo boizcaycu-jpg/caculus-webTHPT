@@ -13,6 +13,19 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [imgError, setImgError] = useState(false);
 
+  // Clear any residual session on login page to prevent credential overlap
+  React.useEffect(() => {
+    setEmail('');
+    setPassword('');
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.removeItem('parabol_user');
+        localStorage.removeItem('caculus_user');
+        sessionStorage.clear();
+      } catch {}
+    }
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
@@ -86,20 +99,25 @@ export default function LoginPage() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} autoComplete="new-password" className="space-y-4">
+          <form onSubmit={handleSubmit} autoComplete="off" className="space-y-4">
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-slate-700">Tài khoản / Email thí sinh *</label>
               <div className="relative">
                 <Mail className="w-4 h-4 absolute left-3.5 top-3.5 text-slate-400" />
                 <input
                   type="text"
-                  name="auth_user_email_secure"
-                  id="auth_user_email_secure"
+                  name="parabol_account_id"
+                  id="parabol_account_id"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  autoComplete="username"
-                  placeholder="Ví dụ: hs001@caculus.edu.vn hoặc hs001"
+                  autoComplete="off"
+                  autoCorrect="off"
+                  autoCapitalize="none"
+                  spellCheck={false}
+                  data-lpignore="true"
+                  data-1p-ignore="true"
+                  data-form-type="other"
                   className="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-2xl text-sm focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition shadow-xs font-medium text-slate-900"
                 />
               </div>
@@ -111,13 +129,18 @@ export default function LoginPage() {
                 <Lock className="w-4 h-4 absolute left-3.5 top-3.5 text-slate-400" />
                 <input
                   type="password"
-                  name="auth_user_pass_secure"
-                  id="auth_user_pass_secure"
+                  name="parabol_auth_pass"
+                  id="parabol_auth_pass"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   autoComplete="new-password"
-                  placeholder="Nhập mật khẩu..."
+                  autoCorrect="off"
+                  autoCapitalize="none"
+                  spellCheck={false}
+                  data-lpignore="true"
+                  data-1p-ignore="true"
+                  data-form-type="other"
                   className="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-2xl text-sm focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition shadow-xs font-medium text-slate-900"
                 />
               </div>
