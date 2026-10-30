@@ -6241,8 +6241,8 @@
     },
     {
       "id": "de-thuc-chien-20",
-      "title": "Đề Thi Thử Thực Chiến TN THPTQG 2027 - Đề Số 20",
-      "description": "Bộ đề thực chiến Tốt nghiệp THPT Quốc gia 2027 mức độ vận dụng (22 câu - 90 phút)",
+      "title": "Đề Ôn Thi Cuối Kì 2 Toán 12 - Đề Số 20",
+      "description": "Tổng ôn toàn diện Học Kì 2 Toán 12 chuẩn cấu trúc mới (22 câu - 90 phút)",
       "stage": "ck2",
       "isFree": false,
       "isDemoExam": false,
@@ -6254,7 +6254,7 @@
         {
           "id": "mod-de-thuc-chien-20",
           "examId": "de-thuc-chien-20",
-          "title": "Đề Thi Thử Thực Chiến TN THPTQG 2027 - Đề Số 20",
+          "title": "Đề Ôn Thi Cuối Kì 2 Toán 12 - Đề Số 20",
           "category": "math",
           "durationMinutes": 90,
           "openTime": "00:00 01/01/2026",

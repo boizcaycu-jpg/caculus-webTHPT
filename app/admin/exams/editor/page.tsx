@@ -6,33 +6,72 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { CloudUpload, ExternalLink, FileText, CheckCircle2, RefreshCw } from 'lucide-react';
 
-// Danh mục 9 Chuyên đề chuẩn GDPT 2018 (Không còn số phức)
-const TOPIC_PRESETS = [
-  { id: 'chuyen-de-01', code: 'CD-01', title: 'Chuyên đề 01: Ứng dụng Đạo hàm khảo sát & vẽ đồ thị hàm số 12' },
-  { id: 'chuyen-de-02', code: 'CD-02', title: 'Chuyên đề 02: Hàm số Mũ, Hàm số Lôgarit & Phương trình Mũ - Logarit' },
-  { id: 'chuyen-de-03', code: 'CD-03', title: 'Chuyên đề 03: Nguyên hàm, Tích phân & Ứng dụng thực tế' },
-  { id: 'chuyen-de-04', code: 'CD-04', title: 'Chuyên đề 04: Phương pháp Tọa độ trong không gian Oxyz 12' },
-  { id: 'chuyen-de-05', code: 'CD-05', title: 'Chuyên đề 05: Hình học Không gian Cổ điển & Khối tròn xoay (Nón - Trụ - Cầu)' },
-  { id: 'chuyen-de-06', code: 'CD-06', title: 'Chuyên đề 06: Xác suất có điều kiện & Công thức Bayes' },
-  { id: 'chuyen-de-07', code: 'CD-07', title: 'Chuyên đề 07: Các số đặc trưng đo độ phân tán mẫu số liệu ghép nhóm 12' },
-  { id: 'chuyen-de-08', code: 'CD-08', title: 'Chuyên đề 08: Dãy số, Cấp số cộng & Cấp số nhân' },
-  { id: 'chuyen-de-09', code: 'CD-09', title: 'Chuyên đề 09: Thống kê & Đại số Tổ hợp Ứng dụng' },
+// 10 Chuyên đề trọng tâm Toán 12 chuẩn GDPT 2018
+export const TOPIC_PRESETS = [
+  { id: 'chuyen-de-01', code: 'CD-01', title: 'Chuyên đề 01: Cấp số cộng & Cấp số nhân', desc: 'Dãy số, Cấp số cộng, Cấp số nhân & Bài toán thực tế' },
+  { id: 'chuyen-de-02', code: 'CD-02', title: 'Chuyên đề 02: Ứng dụng Đạo hàm khảo sát hàm số (Phần 1)', desc: 'Tính đơn điệu, Cực trị, GTLN - GTNN của hàm số' },
+  { id: 'chuyen-de-03', code: 'CD-03', title: 'Chuyên đề 03: Ứng dụng Đạo hàm & Đồ thị hàm số (Phần 2)', desc: 'Tiệm cận, Nhận diện đồ thị, Tương giao & Bài toán tối ưu thực tế' },
+  { id: 'chuyen-de-04', code: 'CD-04', title: 'Chuyên đề 04: Hàm số Mũ & Hàm số Lôgarit', desc: 'Lũy thừa, Mũ, Lôgarit, Phương trình & Bất phương trình Mũ - Logarit' },
+  { id: 'chuyen-de-05', code: 'CD-05', title: 'Chuyên đề 05: Hình học Không gian (Phần 1)', desc: 'Quan hệ song song, Quan hệ vuông góc, Góc & Khoảng cách cổ điển' },
+  { id: 'chuyen-de-06', code: 'CD-06', title: 'Chuyên đề 06: Hình học Không gian (Phần 2)', desc: 'Khối đa diện, Thể tích khối chóp, Khối lăng trụ & Toán thực tế' },
+  { id: 'chuyen-de-07', code: 'CD-07', title: 'Chuyên đề 07: Nguyên hàm & Tích phân', desc: 'Định nghĩa, Tính chất, Phương pháp tính tích phân & Ứng dụng hình học' },
+  { id: 'chuyen-de-08', code: 'CD-08', title: 'Chuyên đề 08: Thống kê mẫu số liệu ghép nhóm', desc: 'Khoảng biến thiên, Khoảng tứ phân vị, Phương sai & Độ lệch chuẩn' },
+  { id: 'chuyen-de-09', code: 'CD-09', title: 'Chuyên đề 09: Phương pháp Tọa độ trong không gian Oxyz', desc: 'Tọa độ vectơ, Tọa độ điểm, Mặt phẳng, Đường thẳng & Mặt cầu' },
+  { id: 'chuyen-de-10', code: 'CD-10', title: 'Chuyên đề 10: Xác suất có điều kiện', desc: 'Xác suất có điều kiện, Công thức nhân xác suất & Công thức Bayes' },
 ];
 
-// Danh mục 36 Đề Thực Chiến chuẩn 2026
-const FULL_EXAM_PRESETS = Array.from({ length: 36 }).map((_, i) => {
-  const num = String(i + 1).padStart(2, '0');
+// 20 Đề thi Học kỳ Toán 12 (GK1, HK1, GK2, CK2)
+export const SEMESTER_EXAM_PRESETS = [
+  // 5 Đề Giữa Kì 1 (GK1)
+  { id: 'de-thuc-chien-01', code: 'GK1-01', stage: 'gk1', stageLabel: 'Giữa Kì 1', title: 'Đề Ôn Thi Giữa Kì 1 Toán 12 - Đề Số 01', desc: 'Bám sát cấu trúc kiểm tra Giữa Học Kì 1 chuẩn GDPT 2018 (22 câu - 90 phút)' },
+  { id: 'de-thuc-chien-02', code: 'GK1-02', stage: 'gk1', stageLabel: 'Giữa Kì 1', title: 'Đề Ôn Thi Giữa Kì 1 Toán 12 - Đề Số 02', desc: 'Bám sát cấu trúc kiểm tra Giữa Học Kì 1 chuẩn GDPT 2018 (22 câu - 90 phút)' },
+  { id: 'de-thuc-chien-03', code: 'GK1-03', stage: 'gk1', stageLabel: 'Giữa Kì 1', title: 'Đề Ôn Thi Giữa Kì 1 Toán 12 - Đề Số 03', desc: 'Bám sát cấu trúc kiểm tra Giữa Học Kì 1 chuẩn GDPT 2018 (22 câu - 90 phút)' },
+  { id: 'de-thuc-chien-04', code: 'GK1-04', stage: 'gk1', stageLabel: 'Giữa Kì 1', title: 'Đề Ôn Thi Giữa Kì 1 Toán 12 - Đề Số 04', desc: 'Bám sát cấu trúc kiểm tra Giữa Học Kì 1 chuẩn GDPT 2018 (22 câu - 90 phút)' },
+  { id: 'de-thuc-chien-05', code: 'GK1-05', stage: 'gk1', stageLabel: 'Giữa Kì 1', title: 'Đề Ôn Thi Giữa Kì 1 Toán 12 - Đề Số 05', desc: 'Bám sát cấu trúc kiểm tra Giữa Học Kì 1 chuẩn GDPT 2018 (22 câu - 90 phút)' },
+  // 5 Đề Học Kì 1 (HK1)
+  { id: 'de-thuc-chien-06', code: 'HK1-06', stage: 'hk1', stageLabel: 'Học Kì 1', title: 'Đề Ôn Thi Học Kì 1 Toán 12 - Đề Số 06', desc: 'Tổng ôn kiến thức Học Kì 1 chuẩn cấu trúc Bộ GD&ĐT (22 câu - 90 phút)' },
+  { id: 'de-thuc-chien-07', code: 'HK1-07', stage: 'hk1', stageLabel: 'Học Kì 1', title: 'Đề Ôn Thi Học Kì 1 Toán 12 - Đề Số 07', desc: 'Tổng ôn kiến thức Học Kì 1 chuẩn cấu trúc Bộ GD&ĐT (22 câu - 90 phút)' },
+  { id: 'de-thuc-chien-08', code: 'HK1-08', stage: 'hk1', stageLabel: 'Học Kì 1', title: 'Đề Ôn Thi Học Kì 1 Toán 12 - Đề Số 08', desc: 'Tổng ôn kiến thức Học Kì 1 chuẩn cấu trúc Bộ GD&ĐT (22 câu - 90 phút)' },
+  { id: 'de-thuc-chien-09', code: 'HK1-09', stage: 'hk1', stageLabel: 'Học Kì 1', title: 'Đề Ôn Thi Học Kì 1 Toán 12 - Đề Số 09', desc: 'Tổng ôn kiến thức Học Kì 1 chuẩn cấu trúc Bộ GD&ĐT (22 câu - 90 phút)' },
+  { id: 'de-thuc-chien-10', code: 'HK1-10', stage: 'hk1', stageLabel: 'Học Kì 1', title: 'Đề Ôn Thi Học Kì 1 Toán 12 - Đề Số 10', desc: 'Tổng ôn kiến thức Học Kì 1 chuẩn cấu trúc Bộ GD&ĐT (22 câu - 90 phút)' },
+  // 5 Đề Giữa Kì 2 (GK2)
+  { id: 'de-thuc-chien-11', code: 'GK2-11', stage: 'gk2', stageLabel: 'Giữa Kì 2', title: 'Đề Ôn Thi Giữa Kì 2 Toán 12 - Đề Số 11', desc: 'Bám sát cấu trúc kiểm tra Giữa Học Kì 2 chuẩn GDPT 2018 (22 câu - 90 phút)' },
+  { id: 'de-thuc-chien-12', code: 'GK2-12', stage: 'gk2', stageLabel: 'Giữa Kì 2', title: 'Đề Ôn Thi Giữa Kì 2 Toán 12 - Đề Số 12', desc: 'Bám sát cấu trúc kiểm tra Giữa Học Kì 2 chuẩn GDPT 2018 (22 câu - 90 phút)' },
+  { id: 'de-thuc-chien-13', code: 'GK2-13', stage: 'gk2', stageLabel: 'Giữa Kì 2', title: 'Đề Ôn Thi Giữa Kì 2 Toán 12 - Đề Số 13', desc: 'Bám sát cấu trúc kiểm tra Giữa Học Kì 2 chuẩn GDPT 2018 (22 câu - 90 phút)' },
+  { id: 'de-thuc-chien-14', code: 'GK2-14', stage: 'gk2', stageLabel: 'Giữa Kì 2', title: 'Đề Ôn Thi Giữa Kì 2 Toán 12 - Đề Số 14', desc: 'Bám sát cấu trúc kiểm tra Giữa Học Kì 2 chuẩn GDPT 2018 (22 câu - 90 phút)' },
+  { id: 'de-thuc-chien-15', code: 'GK2-15', stage: 'gk2', stageLabel: 'Giữa Kì 2', title: 'Đề Ôn Thi Giữa Kì 2 Toán 12 - Đề Số 15', desc: 'Bám sát cấu trúc kiểm tra Giữa Học Kì 2 chuẩn GDPT 2018 (22 câu - 90 phút)' },
+  // 5 Đề Cuối Kì 2 (CK2)
+  { id: 'de-thuc-chien-16', code: 'CK2-16', stage: 'ck2', stageLabel: 'Cuối Kì 2', title: 'Đề Ôn Thi Cuối Kì 2 Toán 12 - Đề Số 16', desc: 'Tổng ôn toàn diện Học Kì 2 Toán 12 chuẩn cấu trúc mới (22 câu - 90 phút)' },
+  { id: 'de-thuc-chien-17', code: 'CK2-17', stage: 'ck2', stageLabel: 'Cuối Kì 2', title: 'Đề Ôn Thi Cuối Kì 2 Toán 12 - Đề Số 17', desc: 'Tổng ôn toàn diện Học Kì 2 Toán 12 chuẩn cấu trúc mới (22 câu - 90 phút)' },
+  { id: 'de-thuc-chien-18', code: 'CK2-18', stage: 'ck2', stageLabel: 'Cuối Kì 2', title: 'Đề Ôn Thi Cuối Kì 2 Toán 12 - Đề Số 18', desc: 'Tổng ôn toàn diện Học Kì 2 Toán 12 chuẩn cấu trúc mới (22 câu - 90 phút)' },
+  { id: 'de-thuc-chien-19', code: 'CK2-19', stage: 'ck2', stageLabel: 'Cuối Kì 2', title: 'Đề Ôn Thi Cuối Kì 2 Toán 12 - Đề Số 19', desc: 'Tổng ôn toàn diện Học Kì 2 Toán 12 chuẩn cấu trúc mới (22 câu - 90 phút)' },
+  { id: 'de-thuc-chien-20', code: 'CK2-20', stage: 'ck2', stageLabel: 'Cuối Kì 2', title: 'Đề Ôn Thi Cuối Kì 2 Toán 12 - Đề Số 20', desc: 'Tổng ôn toàn diện Học Kì 2 Toán 12 chuẩn cấu trúc mới (22 câu - 90 phút)' },
+];
+
+// 10 Đề thi thử Tốt nghiệp THPT 2027 chuẩn Bộ GD&ĐT
+export const GRADUATION_EXAM_PRESETS = Array.from({ length: 10 }).map((_, i) => {
+  const num = String(21 + i).padStart(2, '0');
   return {
     id: `de-thuc-chien-${num}`,
-    code: `TC-${num}`,
-    title: `Đề Thi Thử Thực Chiến TN THPTQG 2026 - Đề Số ${num}`,
+    code: `TN-${num}`,
+    stage: 'tot-nghiep',
+    stageLabel: 'Tốt Nghiệp 2027',
+    title: `Đề Thi Thử Thực Chiến TN THPTQG 2027 - Đề Số ${num}`,
+    desc: `Bộ đề thực chiến Tốt nghiệp THPT Quốc gia 2027 mức độ vận dụng (22 câu - 90 phút)`,
   };
 });
+
+// Toàn bộ 40 đề thi đồng bộ 100% với Web Luyện Thi (10 Chuyên đề + 20 Học kỳ + 10 Tốt nghiệp)
+export const ALL_EXAM_PRESETS = [
+  ...TOPIC_PRESETS.map((t) => ({ ...t, stage: undefined, stageLabel: '10 Chuyên Đề', category: 'LUYỆN TẬP' })),
+  ...SEMESTER_EXAM_PRESETS.map((s) => ({ ...s, category: 'THỰC CHIẾN' })),
+  ...GRADUATION_EXAM_PRESETS.map((g) => ({ ...g, category: 'THỰC CHIẾN' })),
+];
 
 function AdminExamEditorInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const initialId = searchParams.get('id') || 'de-thuc-chien-01';
+  const initialId = searchParams.get('id') || 'chuyen-de-01';
 
   const [selectedExamId, setSelectedExamId] = useState(initialId);
   const [examTitle, setExamTitle] = useState('');
@@ -148,10 +187,8 @@ function AdminExamEditorInner() {
   };
 
   const getDefaultTitle = (id: string) => {
-    const topic = TOPIC_PRESETS.find(t => t.id === id);
-    if (topic) return topic.title;
-    const full = FULL_EXAM_PRESETS.find(f => f.id === id);
-    if (full) return full.title;
+    const found = ALL_EXAM_PRESETS.find((e) => e.id === id);
+    if (found) return found.title;
     return `Đề Thi THPTQG Môn Toán - ${id}`;
   };
 
@@ -191,6 +228,7 @@ function AdminExamEditorInner() {
   const isTopic = selectedExamId.startsWith('chuyen-de-');
   const autoCategory = isTopic ? 'LUYỆN TẬP' : 'THỰC CHIẾN';
   const autoDuration = isTopic ? 45 : 90;
+  const currentSelectedPreset = ALL_EXAM_PRESETS.find((e) => e.id === selectedExamId);
 
   const handleSaveExam = async () => {
     if (!examTitle.trim()) {
@@ -248,12 +286,17 @@ function AdminExamEditorInner() {
       })),
     ];
 
+    const currentPreset = ALL_EXAM_PRESETS.find((e) => e.id === selectedExamId);
+    const stage = currentPreset?.stage;
+    const defaultDesc = isTopic
+      ? (currentPreset?.desc || `Chuyên đề luyện tập Toán 12 chuẩn GDPT 2018 (22 câu - 45 phút)`)
+      : (currentPreset?.desc || `Bộ đề thi thử thực chiến môn Toán THPTQG 2027 (22 câu - 90 phút)`);
+
     const examPayload = {
       id: selectedExamId,
       title: examTitle,
-      description: isTopic
-        ? `Chuyên đề luyện tập Toán THPTQG 2026`
-        : `Bộ đề thi thử thực chiến môn Toán THPTQG 2026 (22 câu - 90 phút)`,
+      description: defaultDesc,
+      stage: stage,
       category: autoCategory,
       subCategory: 'math',
       isFree: true,
@@ -351,7 +394,7 @@ function AdminExamEditorInner() {
               onChange={(e) => setSelectedExamId(e.target.value)}
               className="w-full text-sm font-bold px-4 py-3 bg-blue-50/50 border-2 border-blue-200 rounded-xl outline-none focus:border-[#0052cc] text-slate-900 shadow-2xs"
             >
-              <optgroup label="🔵 9 CHUYÊN ĐỀ TRỌNG TÂM GDPT 2018 (KHÔNG SỐ PHỨC)">
+              <optgroup label="📘 10 CHUYÊN ĐỀ TOÁN 12 TRỌNG TÂM (CHUẨN GDPT 2018)">
                 {TOPIC_PRESETS.map((t) => (
                   <option key={t.id} value={t.id}>
                     [{t.code}] {t.id} — {t.title}
@@ -359,10 +402,18 @@ function AdminExamEditorInner() {
                 ))}
               </optgroup>
 
-              <optgroup label="🔥 36 ĐỀ THI THỬ THỰC CHIẾN 2026 (CẬP NHẬT LIÊN TỤC)">
-                {FULL_EXAM_PRESETS.map((f) => (
-                  <option key={f.id} value={f.id}>
-                    [{f.code}] {f.id} — {f.title}
+              <optgroup label="📝 20 ĐỀ THI ÔN TẬP HỌC KỲ (GK1 • HK1 • GK2 • CK2)">
+                {SEMESTER_EXAM_PRESETS.map((s) => (
+                  <option key={s.id} value={s.id}>
+                    [{s.code}] {s.id} — {s.title}
+                  </option>
+                ))}
+              </optgroup>
+
+              <optgroup label="🎯 10 ĐỀ THI THỬ TỐT NGHIỆP THPT 2027 (CHUẨN BỘ GD&ĐT)">
+                {GRADUATION_EXAM_PRESETS.map((g) => (
+                  <option key={g.id} value={g.id}>
+                    [{g.code}] {g.id} — {g.title}
                   </option>
                 ))}
               </optgroup>
@@ -370,7 +421,7 @@ function AdminExamEditorInner() {
           </div>
 
           {/* Card Thông tin Metadata tự động của Đề */}
-          <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+          <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 grid grid-cols-1 sm:grid-cols-4 gap-4 text-xs">
             <div>
               <span className="text-slate-400 font-bold block">MÃ ID HỆ THỐNG:</span>
               <span className="font-mono font-black text-[#0052cc] text-sm">{selectedExamId}</span>
@@ -380,11 +431,17 @@ function AdminExamEditorInner() {
               <span className="font-mono text-slate-700 font-semibold">/exams/{selectedExamId}</span>
             </div>
             <div>
-              <span className="text-slate-400 font-bold block">TỰ ĐỘNG PHÂN VÀO:</span>
+              <span className="text-slate-400 font-bold block">PHÂN LOẠI:</span>
               <span className={`inline-block font-extrabold px-2.5 py-0.5 rounded-md mt-0.5 ${
                 isTopic ? 'bg-blue-100 text-blue-800' : 'bg-rose-100 text-rose-800'
               }`}>
-                {isTopic ? '🔵 CHUYÊN ĐỀ LUYỆN TẬP' : '🔥 BỘ ĐỀ THỰC CHIẾN (90P)'}
+                {isTopic ? '📘 CHUYÊN ĐỀ (45P)' : '🔥 THỰC CHIẾN (90P)'}
+              </span>
+            </div>
+            <div>
+              <span className="text-slate-400 font-bold block">GIAI ĐOẠN KHẢO THÍ:</span>
+              <span className="inline-block font-extrabold text-blue-900 bg-blue-100/80 px-2.5 py-0.5 rounded-md mt-0.5">
+                {currentSelectedPreset?.stageLabel || (isTopic ? '10 Chuyên Đề' : 'Đề Thực Chiến')}
               </span>
             </div>
           </div>
