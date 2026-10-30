@@ -49,17 +49,18 @@ export const SEMESTER_EXAM_PRESETS = [
 ];
 
 // 10 Đề thi thử Tốt nghiệp THPT 2027 chuẩn Bộ GD&ĐT
-export const GRADUATION_EXAM_PRESETS = Array.from({ length: 10 }).map((_, i) => {
-  const num = String(21 + i).padStart(2, '0');
-  return {
-    id: `de-thuc-chien-${num}`,
-    code: `TN-${num}`,
-    stage: 'tot-nghiep',
-    stageLabel: 'Tốt Nghiệp 2027',
-    title: `Đề Thi Thử Thực Chiến TN THPTQG 2027 - Đề Số ${num}`,
-    desc: `Bộ đề thực chiến Tốt nghiệp THPT Quốc gia 2027 mức độ vận dụng (22 câu - 90 phút)`,
-  };
-});
+export const GRADUATION_EXAM_PRESETS = [
+  { id: 'de-thuc-chien-21', code: 'TN-21', stage: 'tot-nghiep', stageLabel: 'Tốt Nghiệp 2027', title: 'Đề Thi Thử Thực Chiến TN THPTQG 2027 - Đề Số 21', desc: 'Bộ đề thực chiến Tốt nghiệp THPT Quốc gia 2027 mức độ vận dụng (22 câu - 90 phút)' },
+  { id: 'de-thuc-chien-22', code: 'TN-22', stage: 'tot-nghiep', stageLabel: 'Tốt Nghiệp 2027', title: 'Đề Thi Thử Thực Chiến TN THPTQG 2027 - Đề Số 22', desc: 'Bộ đề thực chiến Tốt nghiệp THPT Quốc gia 2027 mức độ vận dụng (22 câu - 90 phút)' },
+  { id: 'de-thuc-chien-23', code: 'TN-23', stage: 'tot-nghiep', stageLabel: 'Tốt Nghiệp 2027', title: 'Đề Thi Thử Thực Chiến TN THPTQG 2027 - Đề Số 23', desc: 'Bộ đề thực chiến Tốt nghiệp THPT Quốc gia 2027 mức độ vận dụng (22 câu - 90 phút)' },
+  { id: 'de-thuc-chien-24', code: 'TN-24', stage: 'tot-nghiep', stageLabel: 'Tốt Nghiệp 2027', title: 'Đề Thi Thử Thực Chiến TN THPTQG 2027 - Đề Số 24', desc: 'Bộ đề thực chiến Tốt nghiệp THPT Quốc gia 2027 mức độ vận dụng (22 câu - 90 phút)' },
+  { id: 'de-thuc-chien-25', code: 'TN-25', stage: 'tot-nghiep', stageLabel: 'Tốt Nghiệp 2027', title: 'Đề Thi Thử Thực Chiến TN THPTQG 2027 - Đề Số 25', desc: 'Bộ đề thực chiến Tốt nghiệp THPT Quốc gia 2027 mức độ vận dụng (22 câu - 90 phút)' },
+  { id: 'de-thuc-chien-26', code: 'TN-26', stage: 'tot-nghiep', stageLabel: 'Tốt Nghiệp 2027', title: 'Đề Thi Thử Thực Chiến TN THPTQG 2027 - Đề Số 26', desc: 'Bộ đề thực chiến Tốt nghiệp THPT Quốc gia 2027 mức độ vận dụng (22 câu - 90 phút)' },
+  { id: 'de-thuc-chien-27', code: 'TN-27', stage: 'tot-nghiep', stageLabel: 'Tốt Nghiệp 2027', title: 'Đề Thi Thử Thực Chiến TN THPTQG 2027 - Đề Số 27', desc: 'Bộ đề thực chiến Tốt nghiệp THPT Quốc gia 2027 mức độ vận dụng (22 câu - 90 phút)' },
+  { id: 'de-thuc-chien-28', code: 'TN-28', stage: 'tot-nghiep', stageLabel: 'Tốt Nghiệp 2027', title: 'Đề Thi Thử Thực Chiến TN THPTQG 2027 - Đề Số 28', desc: 'Bộ đề thực chiến Tốt nghiệp THPT Quốc gia 2027 mức độ vận dụng (22 câu - 90 phút)' },
+  { id: 'de-thuc-chien-29', code: 'TN-29', stage: 'tot-nghiep', stageLabel: 'Tốt Nghiệp 2027', title: 'Đề Thi Thử Thực Chiến TN THPTQG 2027 - Đề Số 29', desc: 'Bộ đề thực chiến Tốt nghiệp THPT Quốc gia 2027 mức độ vận dụng (22 câu - 90 phút)' },
+  { id: 'de-thuc-chien-30', code: 'TN-30', stage: 'tot-nghiep', stageLabel: 'Tốt Nghiệp 2027', title: 'Đề Thi Thử Thực Chiến TN THPTQG 2027 - Đề Số 30', desc: 'Bộ đề thực chiến Tốt nghiệp THPT Quốc gia 2027 mức độ vận dụng (22 câu - 90 phút)' },
+];
 
 // Toàn bộ 40 đề thi đồng bộ 100% với Web Luyện Thi (10 Chuyên đề + 20 Học kỳ + 10 Tốt nghiệp)
 export const ALL_EXAM_PRESETS = [
