@@ -68,7 +68,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
               email: user.email,
               name: user.name,
               role: user.role || 'student',
-              studentId: user.studentId || ('CACULUS_VIP_' + String(user.id).replace('user-hs-', '')),
+              studentId: user.studentId || ('PARABOL_VIP_' + String(user.id).replace('user-hs-', '')),
               isVip: user.isVip ?? true,
             };
           }

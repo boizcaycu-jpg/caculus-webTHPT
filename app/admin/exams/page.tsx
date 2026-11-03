@@ -378,7 +378,7 @@ export default function AdminExamsWorkspacePage() {
 
                     <td className="px-4 py-4 text-xs font-medium text-slate-600">
                       {exam.category === 'LUYỆN TẬP' || exam.id.startsWith('chuyen-de-') ? (
-                        <span>Toán 12 • 22 câu (45 phút)</span>
+                        <span>Toán 12 • 22 câu (90 phút)</span>
                       ) : (
                         <span>Toán THPTQG • 22 câu (90 phút)</span>
                       )}

@@ -228,7 +228,7 @@ function AdminExamEditorInner() {
   // Tự động nhận diện phân loại qua Mã ID
   const isTopic = selectedExamId.startsWith('chuyen-de-');
   const autoCategory = isTopic ? 'LUYỆN TẬP' : 'THỰC CHIẾN';
-  const autoDuration = isTopic ? 45 : 90;
+  const autoDuration = 90;
   const currentSelectedPreset = ALL_EXAM_PRESETS.find((e) => e.id === selectedExamId);
 
   const handleSaveExam = async () => {
@@ -290,7 +290,7 @@ function AdminExamEditorInner() {
     const currentPreset = ALL_EXAM_PRESETS.find((e) => e.id === selectedExamId);
     const stage = currentPreset?.stage;
     const defaultDesc = isTopic
-      ? (currentPreset?.desc || `Chuyên đề luyện tập Toán 12 chuẩn GDPT 2018 (22 câu - 45 phút)`)
+      ? (currentPreset?.desc || `Chuyên đề luyện tập Toán 12 chuẩn GDPT 2018 (22 câu - 90 phút)`)
       : (currentPreset?.desc || `Bộ đề thi thử thực chiến môn Toán THPTQG 2027 (22 câu - 90 phút)`);
 
     const examPayload = {

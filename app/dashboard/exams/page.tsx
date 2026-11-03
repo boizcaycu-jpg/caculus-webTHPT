@@ -156,7 +156,7 @@ export default function StudentExamsPage() {
 
                       <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
                         <span className="text-xs text-slate-500 font-medium">
-                          {item.modules?.[0]?.totalQuestions || 20} câu • 45 phút
+                          {item.modules?.[0]?.totalQuestions || 22} câu • {item.modules?.[0]?.durationMinutes || 90} phút
                         </span>
 
                         {canAccess ? (
@@ -286,7 +286,7 @@ export default function StudentExamsPage() {
 
                       <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
                         <span className="text-xs text-slate-500 font-medium">
-                          {item.modules?.[0]?.totalQuestions || 15} câu • 45 phút
+                          {item.modules?.[0]?.totalQuestions || 22} câu • {item.modules?.[0]?.durationMinutes || 90} phút
                         </span>
 
                         {canAccess ? (

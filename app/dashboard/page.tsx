@@ -20,7 +20,6 @@ import {
   Download,
   Users,
   ExternalLink,
-  PlaySquare,
   MessageCircle,
   Mail,
   Phone,
@@ -565,7 +564,7 @@ export default function DashboardPage() {
                             </h4>
                             <div className="flex items-center gap-2 mt-1">
                               <span className="text-[10px] font-medium text-slate-400">
-                                22 câu • 45 phút
+                                22 câu • 90 phút
                               </span>
                               {sub && (
                                 <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/60">
@@ -793,37 +792,10 @@ export default function DashboardPage() {
               </p>
             </div>
 
-            {/* 2 Apple Spatial Featured Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* Card 1: YouTube Video Lectures */}
-              <div className="rounded-[24px] p-6 bg-gradient-to-br from-blue-700 via-indigo-700 to-slate-900 text-white shadow-[0_12px_36px_rgba(30,58,138,0.25)] flex flex-col justify-between space-y-5 relative overflow-hidden">
-                <div className="space-y-3">
-                  <div className="inline-flex items-center gap-1.5 rounded-full bg-white/15 backdrop-blur-md px-3 py-1 text-[11px] font-bold tracking-wide">
-                    <PlaySquare className="w-3.5 h-3.5 text-blue-200" />
-                    <span>BÀI GIẢNG VIDEO CHỮA ĐỀ CHI TIẾT</span>
-                  </div>
-                  <h2 className="text-xl sm:text-2xl font-bold tracking-tight leading-snug">
-                    Kênh Bài Giảng Giải Đề THPTQG
-                  </h2>
-                  <p className="text-xs text-blue-100 leading-relaxed opacity-90">
-                    Tổng hợp video chữa chi tiết các đề thi thử Toán 12, phân tích bẫy đề thi và phương pháp giải nhanh Trắc nghiệm Đúng/Sai & Điền số chuẩn cấu trúc 2027.
-                  </p>
-                </div>
-
-                <a
-                  href="https://www.youtube.com/@siiuuuu77777"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-white hover:bg-slate-50 text-blue-700 font-semibold text-xs px-5 py-2.5 transition-all shadow-sm active:scale-95 w-fit"
-                >
-                  <span>Xem Kênh YouTube</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </a>
-              </div>
-
-              {/* Card 2: Zalo Study Support Community */}
-              <div className="rounded-[24px] p-6 bg-gradient-to-br from-sky-600 via-blue-600 to-indigo-800 text-white shadow-[0_12px_36px_rgba(37,99,235,0.25)] flex flex-col justify-between space-y-5 relative overflow-hidden">
-                <div className="space-y-3">
+            {/* Apple Spatial Featured Community Card */}
+            <div>
+              <div className="rounded-[24px] p-6 sm:p-7 bg-gradient-to-br from-sky-600 via-blue-600 to-indigo-800 text-white shadow-[0_12px_36px_rgba(37,99,235,0.25)] flex flex-col md:flex-row md:items-center justify-between gap-5 relative overflow-hidden">
+                <div className="space-y-3 max-w-2xl">
                   <div className="inline-flex items-center gap-1.5 rounded-full bg-white/15 backdrop-blur-md px-3 py-1 text-[11px] font-bold tracking-wide">
                     <Users className="w-3.5 h-3.5 text-sky-200" />
                     <span>CỘNG ĐỒNG HỌC TẬP TOÁN 12</span>
@@ -831,7 +803,7 @@ export default function DashboardPage() {
                   <h2 className="text-xl sm:text-2xl font-bold tracking-tight leading-snug">
                     Cộng Đồng Hỏi Đáp & Trao Đổi Bài Tập
                   </h2>
-                  <p className="text-xs text-blue-100 leading-relaxed opacity-90">
+                  <p className="text-xs sm:text-sm text-blue-100 leading-relaxed opacity-90">
                     Tham gia nhóm Zalo để trao đổi giải bài tập khó hàng ngày, nhận tài liệu tổng ôn vận dụng cao và giải đáp thắc mắc trực tiếp cùng thầy cô và bạn học.
                   </p>
                 </div>
@@ -840,9 +812,9 @@ export default function DashboardPage() {
                   href="https://zalo.me/g/mw6rrjaosw86oamzaxy1"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-white hover:bg-slate-50 text-indigo-700 font-semibold text-xs px-5 py-2.5 transition-all shadow-sm active:scale-95 w-fit"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-white hover:bg-slate-50 text-indigo-700 font-semibold text-xs sm:text-sm px-6 py-3 transition-all shadow-sm active:scale-95 shrink-0 w-fit"
                 >
-                  <MessageCircle className="w-3.5 h-3.5" />
+                  <MessageCircle className="w-4 h-4" />
                   <span>Tham gia Nhóm Zalo</span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
@@ -928,13 +900,13 @@ export default function DashboardPage() {
                   HẠNG 2 • Á QUÂN
                 </span>
                 <h3 className="font-bold text-slate-900 text-base">
-                  {leaderboard[1]?.name || 'Trần Thị Mai'}
+                  {leaderboard[1]?.name || 'Trần Mai Phương'}
                 </h3>
                 <p className="text-xs font-mono text-slate-400">
-                  {leaderboard[1]?.studentId || 'THPTQG_2027_02'}
+                  {(leaderboard[1]?.studentId || 'PARABOL_VIP_002').replace(/^CACULUS_/i, 'PARABOL_').replace(/^THPTQG_/i, 'PARABOL_')}
                 </p>
                 <div className="rounded-full bg-slate-100 text-slate-800 font-mono font-bold text-lg px-4 py-1">
-                  {leaderboard[1]?.highestScore || 9.4} điểm
+                  {leaderboard[1]?.highestScore ?? 9.6} điểm
                 </div>
               </div>
 
@@ -950,10 +922,10 @@ export default function DashboardPage() {
                   {leaderboard[0]?.name || 'Nguyễn Văn An'}
                 </h3>
                 <p className="text-xs font-mono text-amber-100">
-                  {leaderboard[0]?.studentId || 'THPTQG_2027_01'}
+                  {(leaderboard[0]?.studentId || 'PARABOL_VIP_001').replace(/^CACULUS_/i, 'PARABOL_').replace(/^THPTQG_/i, 'PARABOL_')}
                 </p>
                 <div className="rounded-full bg-amber-400/30 text-white font-mono font-bold text-2xl px-5 py-1.5 border border-white/25">
-                  {leaderboard[0]?.highestScore || 9.8} điểm
+                  {leaderboard[0]?.highestScore ?? 9.8} điểm
                 </div>
               </div>
 
@@ -969,10 +941,10 @@ export default function DashboardPage() {
                   {leaderboard[2]?.name || 'Lê Hoàng Nam'}
                 </h3>
                 <p className="text-xs font-mono text-slate-400">
-                  {leaderboard[2]?.studentId || 'THPTQG_2027_03'}
+                  {(leaderboard[2]?.studentId || 'PARABOL_VIP_003').replace(/^CACULUS_/i, 'PARABOL_').replace(/^THPTQG_/i, 'PARABOL_')}
                 </p>
                 <div className="rounded-full bg-amber-50 text-amber-900 font-mono font-bold text-lg px-4 py-1">
-                  {leaderboard[2]?.highestScore || 9.0} điểm
+                  {leaderboard[2]?.highestScore ?? 9.4} điểm
                 </div>
               </div>
             </div>
@@ -1002,14 +974,22 @@ export default function DashboardPage() {
                     {(leaderboard.length > 0
                       ? leaderboard
                       : [
-                          { rank: 1, name: 'Nguyễn Văn An', studentId: 'THPTQG_2027_01', completedExams: 18, highestScore: 9.8 },
-                          { rank: 2, name: 'Trần Thị Mai', studentId: 'THPTQG_2027_02', completedExams: 15, highestScore: 9.4 },
-                          { rank: 3, name: 'Lê Hoàng Nam', studentId: 'THPTQG_2027_03', completedExams: 16, highestScore: 9.0 },
-                          { rank: 4, name: 'Phạm Minh Đức', studentId: 'THPTQG_2027_04', completedExams: 12, highestScore: 8.6 },
-                          { rank: 5, name: 'Vũ Thùy Linh', studentId: 'THPTQG_2027_05', completedExams: 14, highestScore: 8.4 },
+                          { rank: 1, name: 'Nguyễn Văn An', studentId: 'PARABOL_VIP_001', completedExams: 26, totalExams: 26, highestScore: 9.8 },
+                          { rank: 2, name: 'Trần Mai Phương', studentId: 'PARABOL_VIP_002', completedExams: 24, totalExams: 24, highestScore: 9.6 },
+                          { rank: 3, name: 'Lê Hoàng Nam', studentId: 'PARABOL_VIP_003', completedExams: 25, totalExams: 25, highestScore: 9.4 },
+                          { rank: 4, name: 'Phạm Minh Đức', studentId: 'PARABOL_VIP_004', completedExams: 22, totalExams: 22, highestScore: 9.2 },
+                          { rank: 5, name: 'Vũ Thùy Linh', studentId: 'PARABOL_VIP_005', completedExams: 21, totalExams: 21, highestScore: 9.0 },
+                          { rank: 6, name: 'Đặng Quang Huy', studentId: 'PARABOL_VIP_006', completedExams: 20, totalExams: 20, highestScore: 8.8 },
+                          { rank: 7, name: 'Hoàng Bảo Ngọc', studentId: 'PARABOL_VIP_007', completedExams: 19, totalExams: 19, highestScore: 8.8 },
+                          { rank: 8, name: 'Ngô Gia Bách', studentId: 'PARABOL_VIP_008', completedExams: 18, totalExams: 18, highestScore: 8.6 },
+                          { rank: 9, name: 'Bùi Khánh Linh', studentId: 'PARABOL_VIP_009', completedExams: 17, totalExams: 17, highestScore: 8.4 },
+                          { rank: 10, name: 'Đỗ Tuấn Kiệt', studentId: 'PARABOL_VIP_010', completedExams: 16, totalExams: 16, highestScore: 8.2 },
                         ]
                     ).map((row, idx) => {
                       const rank = row.rank || idx + 1;
+                      const displaySbd = (row.studentId || '')
+                        .replace(/^CACULUS_/i, 'PARABOL_')
+                        .replace(/^THPTQG_/i, 'PARABOL_');
                       return (
                         <tr key={idx} className="hover:bg-slate-50/60 transition-colors">
                           <td className="py-3.5 px-4 text-center">
@@ -1028,9 +1008,9 @@ export default function DashboardPage() {
                             </span>
                           </td>
                           <td className="py-3.5 px-4 font-semibold text-slate-900">{row.name}</td>
-                          <td className="py-3.5 px-4 font-mono text-blue-600 text-xs">{row.studentId}</td>
+                          <td className="py-3.5 px-4 font-mono text-blue-600 text-xs">{displaySbd}</td>
                           <td className="py-3.5 px-4 text-center text-slate-600 font-medium">
-                            {row.completedExams || row.completedCount || 10} bài
+                            {row.completedExams || row.totalExams || 10} bài
                           </td>
                           <td className="py-3.5 px-4 text-right font-mono font-bold text-emerald-600">
                             {row.highestScore}

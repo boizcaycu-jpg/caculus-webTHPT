@@ -9,7 +9,6 @@ import {
   ExternalLink,
   Sparkles,
   MessageCircle,
-  PlaySquare,
   BookOpen,
   ArrowRight,
   ShieldCheck,
@@ -75,37 +74,10 @@ export default function DocumentsPage() {
           </p>
         </div>
 
-        {/* 2 Apple Spatial Featured Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* Card 1: YouTube Video Lectures */}
-          <div className="rounded-[24px] p-6 bg-gradient-to-br from-blue-700 via-indigo-700 to-slate-900 text-white shadow-[0_12px_36px_rgba(30,58,138,0.25)] flex flex-col justify-between space-y-5 relative overflow-hidden">
-            <div className="space-y-3">
-              <div className="inline-flex items-center gap-1.5 rounded-full bg-white/15 backdrop-blur-md px-3 py-1 text-[11px] font-bold tracking-wide">
-                <PlaySquare className="w-3.5 h-3.5 text-blue-200" />
-                <span>BÀI GIẢNG VIDEO CHỮA ĐỀ CHI TIẾT</span>
-              </div>
-              <h2 className="text-xl sm:text-2xl font-bold tracking-tight leading-snug">
-                Kênh Bài Giảng Giải Đề THPTQG
-              </h2>
-              <p className="text-xs text-blue-100 leading-relaxed opacity-90">
-                Tổng hợp video chữa chi tiết các đề thi thử Toán 12, phân tích bẫy đề thi và phương pháp giải nhanh Trắc nghiệm Đúng/Sai & Điền số chuẩn cấu trúc 2027.
-              </p>
-            </div>
-
-            <a
-              href="https://www.youtube.com/@siiuuuu77777"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-white hover:bg-slate-50 text-blue-700 font-semibold text-xs px-5 py-2.5 transition-all shadow-sm active:scale-95 w-fit"
-            >
-              <span>Xem Kênh YouTube</span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
-          </div>
-
-          {/* Card 2: Zalo Study Support Community */}
-          <div className="rounded-[24px] p-6 bg-gradient-to-br from-sky-600 via-blue-600 to-indigo-800 text-white shadow-[0_12px_36px_rgba(37,99,235,0.25)] flex flex-col justify-between space-y-5 relative overflow-hidden">
-            <div className="space-y-3">
+        {/* Apple Spatial Featured Community Card */}
+        <div>
+          <div className="rounded-[24px] p-6 sm:p-7 bg-gradient-to-br from-sky-600 via-blue-600 to-indigo-800 text-white shadow-[0_12px_36px_rgba(37,99,235,0.25)] flex flex-col md:flex-row md:items-center justify-between gap-5 relative overflow-hidden">
+            <div className="space-y-3 max-w-2xl">
               <div className="inline-flex items-center gap-1.5 rounded-full bg-white/15 backdrop-blur-md px-3 py-1 text-[11px] font-bold tracking-wide">
                 <Users className="w-3.5 h-3.5 text-sky-200" />
                 <span>CỘNG ĐỒNG HỌC TẬP TOÁN 12</span>
@@ -113,7 +85,7 @@ export default function DocumentsPage() {
               <h2 className="text-xl sm:text-2xl font-bold tracking-tight leading-snug">
                 Cộng Đồng Hỏi Đáp & Trao Đổi Bài Tập
               </h2>
-              <p className="text-xs text-blue-100 leading-relaxed opacity-90">
+              <p className="text-xs sm:text-sm text-blue-100 leading-relaxed opacity-90">
                 Tham gia nhóm Zalo để trao đổi giải bài tập khó hàng ngày, nhận tài liệu tổng ôn vận dụng cao và giải đáp thắc mắc trực tiếp cùng thầy cô và bạn học.
               </p>
             </div>
@@ -122,9 +94,9 @@ export default function DocumentsPage() {
               href="https://zalo.me/g/mw6rrjaosw86oamzaxy1"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-white hover:bg-slate-50 text-indigo-700 font-semibold text-xs px-5 py-2.5 transition-all shadow-sm active:scale-95 w-fit"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-white hover:bg-slate-50 text-indigo-700 font-semibold text-xs sm:text-sm px-6 py-3 transition-all shadow-sm active:scale-95 shrink-0 w-fit"
             >
-              <MessageCircle className="w-3.5 h-3.5" />
+              <MessageCircle className="w-4 h-4" />
               <span>Tham gia Nhóm Zalo</span>
               <ExternalLink className="w-3.5 h-3.5" />
             </a>

@@ -53,7 +53,7 @@ export async function POST(req: NextRequest) {
             email: user.email,
             role: user.role || 'student',
             name: nameVal as any,
-            studentId: user.studentId || ('CACULUS_VIP_' + String(user.id).replace('user-hs-', '')),
+            studentId: user.studentId || ('PARABOL_VIP_' + String(user.id).replace('user-hs-', '')),
             isVip: true,
           };
         }

@@ -54,10 +54,12 @@ export default function LeaderboardPage() {
               <span className="rounded-full bg-slate-100 text-slate-700 text-[10px] font-bold px-3 py-0.5 uppercase tracking-wider">
                 HẠNG 2 • Á QUÂN
               </span>
-              <h3 className="font-bold text-slate-900 text-base">{top3[1]?.name || 'Thí sinh 02'}</h3>
-              <p className="text-xs font-mono text-slate-400">{top3[1]?.studentId || 'THPTQG_02'}</p>
+              <h3 className="font-bold text-slate-900 text-base">{top3[1]?.name || 'Trần Mai Phương'}</h3>
+              <p className="text-xs font-mono text-slate-400">
+                {(top3[1]?.studentId || 'PARABOL_VIP_002').replace(/^CACULUS_/i, 'PARABOL_').replace(/^THPTQG_/i, 'PARABOL_')}
+              </p>
               <div className="rounded-full bg-slate-100 text-slate-800 font-mono font-bold text-lg px-4 py-1">
-                {top3[1]?.highestScore || 9.2} điểm
+                {top3[1]?.highestScore ?? 9.6} điểm
               </div>
             </div>
 
@@ -69,10 +71,12 @@ export default function LeaderboardPage() {
               <span className="rounded-full bg-white text-amber-900 text-[10px] font-bold px-3.5 py-1 uppercase tracking-wider shadow-xs">
                 QUÁN QUÂN TOÀN HỆ THỐNG
               </span>
-              <h3 className="font-bold text-white text-lg">{top3[0]?.name || 'Thí sinh 01'}</h3>
-              <p className="text-xs font-mono text-amber-100">{top3[0]?.studentId || 'THPTQG_01'}</p>
+              <h3 className="font-bold text-white text-lg">{top3[0]?.name || 'Nguyễn Văn An'}</h3>
+              <p className="text-xs font-mono text-amber-100">
+                {(top3[0]?.studentId || 'PARABOL_VIP_001').replace(/^CACULUS_/i, 'PARABOL_').replace(/^THPTQG_/i, 'PARABOL_')}
+              </p>
               <div className="rounded-full bg-amber-400/30 text-white font-mono font-bold text-2xl px-5 py-1.5 border border-white/25">
-                {top3[0]?.highestScore || 9.8} điểm
+                {top3[0]?.highestScore ?? 9.8} điểm
               </div>
             </div>
 
@@ -84,10 +88,12 @@ export default function LeaderboardPage() {
               <span className="rounded-full bg-amber-50 text-amber-800 text-[10px] font-bold px-3 py-0.5 uppercase tracking-wider">
                 HẠNG 3 • ĐỒNG HẠNG
               </span>
-              <h3 className="font-bold text-slate-900 text-base">{top3[2]?.name || 'Thí sinh 03'}</h3>
-              <p className="text-xs font-mono text-slate-400">{top3[2]?.studentId || 'THPTQG_03'}</p>
+              <h3 className="font-bold text-slate-900 text-base">{top3[2]?.name || 'Lê Hoàng Nam'}</h3>
+              <p className="text-xs font-mono text-slate-400">
+                {(top3[2]?.studentId || 'PARABOL_VIP_003').replace(/^CACULUS_/i, 'PARABOL_').replace(/^THPTQG_/i, 'PARABOL_')}
+              </p>
               <div className="rounded-full bg-amber-50 text-amber-900 font-mono font-bold text-lg px-4 py-1">
-                {top3[2]?.highestScore || 8.8} điểm
+                {top3[2]?.highestScore ?? 9.4} điểm
               </div>
             </div>
           </div>
@@ -118,14 +124,22 @@ export default function LeaderboardPage() {
                 {(leaderboard.length > 0
                   ? leaderboard
                   : [
-                      { rank: 1, name: 'Nguyễn Văn An', studentId: 'THPTQG_2027_01', completedExams: 18, highestScore: 9.8 },
-                      { rank: 2, name: 'Trần Thị Mai', studentId: 'THPTQG_2027_02', completedExams: 15, highestScore: 9.4 },
-                      { rank: 3, name: 'Lê Hoàng Nam', studentId: 'THPTQG_2027_03', completedExams: 16, highestScore: 9.0 },
-                      { rank: 4, name: 'Phạm Minh Đức', studentId: 'THPTQG_2027_04', completedExams: 12, highestScore: 8.6 },
-                      { rank: 5, name: 'Vũ Thùy Linh', studentId: 'THPTQG_2027_05', completedExams: 14, highestScore: 8.4 },
+                      { rank: 1, name: 'Nguyễn Văn An', studentId: 'PARABOL_VIP_001', completedExams: 26, totalExams: 26, highestScore: 9.8 },
+                      { rank: 2, name: 'Trần Mai Phương', studentId: 'PARABOL_VIP_002', completedExams: 24, totalExams: 24, highestScore: 9.6 },
+                      { rank: 3, name: 'Lê Hoàng Nam', studentId: 'PARABOL_VIP_003', completedExams: 25, totalExams: 25, highestScore: 9.4 },
+                      { rank: 4, name: 'Phạm Minh Đức', studentId: 'PARABOL_VIP_004', completedExams: 22, totalExams: 22, highestScore: 9.2 },
+                      { rank: 5, name: 'Vũ Thùy Linh', studentId: 'PARABOL_VIP_005', completedExams: 21, totalExams: 21, highestScore: 9.0 },
+                      { rank: 6, name: 'Đặng Quang Huy', studentId: 'PARABOL_VIP_006', completedExams: 20, totalExams: 20, highestScore: 8.8 },
+                      { rank: 7, name: 'Hoàng Bảo Ngọc', studentId: 'PARABOL_VIP_007', completedExams: 19, totalExams: 19, highestScore: 8.8 },
+                      { rank: 8, name: 'Ngô Gia Bách', studentId: 'PARABOL_VIP_008', completedExams: 18, totalExams: 18, highestScore: 8.6 },
+                      { rank: 9, name: 'Bùi Khánh Linh', studentId: 'PARABOL_VIP_009', completedExams: 17, totalExams: 17, highestScore: 8.4 },
+                      { rank: 10, name: 'Đỗ Tuấn Kiệt', studentId: 'PARABOL_VIP_010', completedExams: 16, totalExams: 16, highestScore: 8.2 },
                     ]
                 ).map((row, idx) => {
                   const rank = row.rank || idx + 1;
+                  const displaySbd = (row.studentId || '')
+                    .replace(/^CACULUS_/i, 'PARABOL_')
+                    .replace(/^THPTQG_/i, 'PARABOL_');
                   return (
                     <tr key={idx} className="hover:bg-slate-50/60 transition-colors">
                       <td className="py-3.5 px-4 text-center">
@@ -144,9 +158,9 @@ export default function LeaderboardPage() {
                         </span>
                       </td>
                       <td className="py-3.5 px-4 font-semibold text-slate-900">{row.name}</td>
-                      <td className="py-3.5 px-4 font-mono text-blue-600 text-xs">{row.studentId}</td>
+                      <td className="py-3.5 px-4 font-mono text-blue-600 text-xs">{displaySbd}</td>
                       <td className="py-3.5 px-4 text-center text-slate-600 font-medium">
-                        {row.completedExams || row.completedCount || 10} bài
+                        {row.completedExams || row.totalExams || 10} bài
                       </td>
                       <td className="py-3.5 px-4 text-right font-mono font-bold text-emerald-600">
                         {row.highestScore}

@@ -20,7 +20,7 @@ export const PRACTICE_TOPIC_EXAMS: Exam[] = [
       examId: 'chuyen-de-01',
       title: 'Chuyên đề 01: Cấp số cộng & Cấp số nhân',
       category: 'math',
-      durationMinutes: 45,
+      durationMinutes: 90,
       openTime: '00:00 01/01/2026',
       closeTime: '23:59 31/12/2027',
       totalQuestions: 22
@@ -42,7 +42,7 @@ export const PRACTICE_TOPIC_EXAMS: Exam[] = [
       examId: 'chuyen-de-02',
       title: 'Chuyên đề 02: Ứng dụng Đạo hàm khảo sát hàm số (Phần 1)',
       category: 'math',
-      durationMinutes: 45,
+      durationMinutes: 90,
       openTime: '00:00 01/01/2026',
       closeTime: '23:59 31/12/2027',
       totalQuestions: 22
@@ -64,7 +64,7 @@ export const PRACTICE_TOPIC_EXAMS: Exam[] = [
       examId: 'chuyen-de-03',
       title: 'Chuyên đề 03: Ứng dụng Đạo hàm & Đồ thị hàm số (Phần 2)',
       category: 'math',
-      durationMinutes: 45,
+      durationMinutes: 90,
       openTime: '00:00 01/01/2026',
       closeTime: '23:59 31/12/2027',
       totalQuestions: 22
@@ -86,7 +86,7 @@ export const PRACTICE_TOPIC_EXAMS: Exam[] = [
       examId: 'chuyen-de-04',
       title: 'Chuyên đề 04: Hàm số Mũ & Hàm số Lôgarit',
       category: 'math',
-      durationMinutes: 45,
+      durationMinutes: 90,
       openTime: '00:00 01/01/2026',
       closeTime: '23:59 31/12/2027',
       totalQuestions: 22
@@ -108,7 +108,7 @@ export const PRACTICE_TOPIC_EXAMS: Exam[] = [
       examId: 'chuyen-de-05',
       title: 'Chuyên đề 05: Hình học Không gian (Phần 1)',
       category: 'math',
-      durationMinutes: 45,
+      durationMinutes: 90,
       openTime: '00:00 01/01/2026',
       closeTime: '23:59 31/12/2027',
       totalQuestions: 22
@@ -130,7 +130,7 @@ export const PRACTICE_TOPIC_EXAMS: Exam[] = [
       examId: 'chuyen-de-06',
       title: 'Chuyên đề 06: Hình học Không gian (Phần 2)',
       category: 'math',
-      durationMinutes: 45,
+      durationMinutes: 90,
       openTime: '00:00 01/01/2026',
       closeTime: '23:59 31/12/2027',
       totalQuestions: 22
@@ -152,7 +152,7 @@ export const PRACTICE_TOPIC_EXAMS: Exam[] = [
       examId: 'chuyen-de-07',
       title: 'Chuyên đề 07: Nguyên hàm & Tích phân',
       category: 'math',
-      durationMinutes: 45,
+      durationMinutes: 90,
       openTime: '00:00 01/01/2026',
       closeTime: '23:59 31/12/2027',
       totalQuestions: 22
@@ -174,7 +174,7 @@ export const PRACTICE_TOPIC_EXAMS: Exam[] = [
       examId: 'chuyen-de-08',
       title: 'Chuyên đề 08: Thống kê mẫu số liệu ghép nhóm',
       category: 'math',
-      durationMinutes: 45,
+      durationMinutes: 90,
       openTime: '00:00 01/01/2026',
       closeTime: '23:59 31/12/2027',
       totalQuestions: 22
@@ -196,7 +196,7 @@ export const PRACTICE_TOPIC_EXAMS: Exam[] = [
       examId: 'chuyen-de-09',
       title: 'Chuyên đề 09: Phương pháp Tọa độ trong không gian Oxyz',
       category: 'math',
-      durationMinutes: 45,
+      durationMinutes: 90,
       openTime: '00:00 01/01/2026',
       closeTime: '23:59 31/12/2027',
       totalQuestions: 22
@@ -218,7 +218,7 @@ export const PRACTICE_TOPIC_EXAMS: Exam[] = [
       examId: 'chuyen-de-10',
       title: 'Chuyên đề 10: Xác suất có điều kiện',
       category: 'math',
-      durationMinutes: 45,
+      durationMinutes: 90,
       openTime: '00:00 01/01/2026',
       closeTime: '23:59 31/12/2027',
       totalQuestions: 22
