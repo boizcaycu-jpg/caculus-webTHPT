@@ -18,6 +18,7 @@ import {
   ChevronRight,
   ShieldCheck,
   Sparkles,
+  LogOut,
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -27,6 +28,7 @@ interface SplitTestRoomProps {
   questions: Question[];
   studentName: string;
   studentId: string;
+  isTrial?: boolean;
 }
 
 export default function SplitTestRoom({
@@ -35,6 +37,7 @@ export default function SplitTestRoom({
   questions,
   studentName,
   studentId,
+  isTrial,
 }: SplitTestRoomProps) {
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -47,6 +50,20 @@ export default function SplitTestRoom({
   const [showResultModal, setShowResultModal] = useState(false);
   const [isReviewMode, setIsReviewMode] = useState(false);
   const [submissionResult, setSubmissionResult] = useState<{ answered: number; total: number; score: number } | null>(null);
+
+  const handleTrialLogout = async () => {
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' });
+    } catch {}
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.removeItem('parabol_user');
+        localStorage.removeItem('caculus_user');
+        sessionStorage.clear();
+      } catch {}
+    }
+    router.push('/login?trial_ended=true');
+  };
 
   const currentQ = questions[currentIndex] || questions[0];
   const partType = currentQ?.partType || (currentQ?.number <= 12 ? 'part1' : currentQ?.number <= 16 ? 'part2' : 'part3');
@@ -327,10 +344,13 @@ export default function SplitTestRoom({
                 Xem điểm
               </button>
               <button
-                onClick={() => router.push('/dashboard')}
-                className="rounded-full bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs px-4 py-1.5 shadow-sm transition active:scale-95"
+                onClick={isTrial ? handleTrialLogout : () => router.push('/dashboard')}
+                className={`rounded-full font-semibold text-xs px-4 py-1.5 shadow-sm transition active:scale-95 flex items-center gap-1.5 ${
+                  isTrial ? 'bg-rose-600 hover:bg-rose-700 text-white' : 'bg-slate-900 hover:bg-slate-800 text-white'
+                }`}
               >
-                Trang chủ
+                {isTrial && <LogOut className="w-3.5 h-3.5" />}
+                <span>{isTrial ? 'Kết thúc & Đăng xuất' : 'Trang chủ'}</span>
               </button>
             </div>
           )}
@@ -739,25 +759,53 @@ export default function SplitTestRoom({
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row justify-center gap-3 pt-2">
-              <button
-                onClick={() => {
-                  setShowResultModal(false);
-                  setIsReviewMode(true);
-                  setCurrentIndex(0);
-                }}
-                className="rounded-full bg-gradient-to-b from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold text-xs px-6 py-3 shadow-[0_2px_10px_rgba(37,99,235,0.25)] transition flex items-center justify-center gap-2 active:scale-95"
-              >
-                <Eye className="w-4 h-4" />
-                <span>Xem Đáp Án & Lời Giải Chi Tiết</span>
-              </button>
-              <button
-                onClick={() => router.push('/dashboard')}
-                className="rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs px-6 py-3 border border-slate-200 transition active:scale-95"
-              >
-                Hoàn thành
-              </button>
-            </div>
+            {isTrial ? (
+              <div className="space-y-3 pt-2">
+                <div className="p-3.5 rounded-2xl bg-amber-50 border border-amber-200/80 text-amber-900 text-xs text-center leading-relaxed">
+                  ✨ <strong>Tài khoản dùng thử:</strong> Bạn đã hoàn thành <strong>1 lượt thi thử miễn phí duy nhất</strong>. Sau khi xem kết quả / lời giải chi tiết, phiên thi thử sẽ kết thúc.
+                </div>
+                <div className="flex flex-col sm:flex-row justify-center gap-3">
+                  <button
+                    onClick={() => {
+                      setShowResultModal(false);
+                      setIsReviewMode(true);
+                      setCurrentIndex(0);
+                    }}
+                    className="rounded-full bg-gradient-to-b from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold text-xs px-6 py-3 shadow-[0_2px_10px_rgba(37,99,235,0.25)] transition flex items-center justify-center gap-2 active:scale-95"
+                  >
+                    <Eye className="w-4 h-4" />
+                    <span>Xem Đáp Án & Lời Giải Chi Tiết</span>
+                  </button>
+                  <button
+                    onClick={handleTrialLogout}
+                    className="rounded-full bg-rose-600 hover:bg-rose-700 text-white font-semibold text-xs px-6 py-3 border border-rose-600 transition active:scale-95 flex items-center justify-center gap-1.5 shadow-sm"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    <span>Hoàn thành & Đăng xuất</span>
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="flex flex-col sm:flex-row justify-center gap-3 pt-2">
+                <button
+                  onClick={() => {
+                    setShowResultModal(false);
+                    setIsReviewMode(true);
+                    setCurrentIndex(0);
+                  }}
+                  className="rounded-full bg-gradient-to-b from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold text-xs px-6 py-3 shadow-[0_2px_10px_rgba(37,99,235,0.25)] transition flex items-center justify-center gap-2 active:scale-95"
+                >
+                  <Eye className="w-4 h-4" />
+                  <span>Xem Đáp Án & Lời Giải Chi Tiết</span>
+                </button>
+                <button
+                  onClick={() => router.push('/dashboard')}
+                  className="rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs px-6 py-3 border border-slate-200 transition active:scale-95"
+                >
+                  Hoàn thành
+                </button>
+              </div>
+            )}
           </div>
         </div>
       )}

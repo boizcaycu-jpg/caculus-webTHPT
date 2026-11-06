@@ -12,6 +12,7 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [imgError, setImgError] = useState(false);
+  const [trialEndedNotice, setTrialEndedNotice] = useState(false);
 
   // Clear any residual session on login page to prevent credential overlap
   React.useEffect(() => {
@@ -19,6 +20,9 @@ export default function LoginPage() {
     setPassword('');
     if (typeof window !== 'undefined') {
       try {
+        if (window.location.search.includes('trial_ended')) {
+          setTrialEndedNotice(true);
+        }
         localStorage.removeItem('parabol_user');
         localStorage.removeItem('caculus_user');
         sessionStorage.clear();
@@ -91,6 +95,15 @@ export default function LoginPage() {
             <h2 className="text-xl font-bold tracking-tight text-slate-900">Đăng nhập thí sinh</h2>
             <p className="text-xs text-slate-500">Tài khoản dự thi được cấp bởi Quản trị viên</p>
           </div>
+
+          {trialEndedNotice && (
+            <div className="bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs p-3.5 rounded-2xl flex items-start gap-2.5 leading-relaxed shadow-xs">
+              <ShieldCheck className="w-4 h-4 shrink-0 text-emerald-600 mt-0.5" />
+              <span>
+                🎉 <strong>Hoàn thành thi thử!</strong> Bạn đã hoàn tất 1 bài thi thử miễn phí. Để mở khóa toàn bộ 40 chuyên đề và bộ đề thực chiến, hãy liên hệ Thầy cô hoặc Quản trị viên để nâng cấp VIP!
+              </span>
+            </div>
+          )}
 
           {error && (
             <div className="bg-rose-50 border border-rose-200 text-rose-700 text-xs p-3 rounded-2xl flex items-center gap-2">

@@ -87,11 +87,14 @@ export function getUserByEmail(email: string): User | undefined {
 
   // Normalize common variations:
   // 1. "hs001" or "hs1" -> "hs001@caculus.edu.vn"
+  // 2. "test", "test01" -> "test@parabol.edu.vn"
   let normalized = raw;
   const hsMatch = raw.match(/^hs(\d+)$/i);
   if (hsMatch) {
     const padded = hsMatch[1].padStart(3, '0');
     normalized = `hs${padded}@caculus.edu.vn`;
+  } else if (raw === 'test' || raw === 'test01' || raw === 'hocsinh_test' || raw === 'parabol_test' || raw === 'parabol_test_001') {
+    normalized = 'test@parabol.edu.vn';
   } else if (raw.endsWith('@parabol.edu.vn')) {
     normalized = raw.replace('@parabol.edu.vn', '@caculus.edu.vn');
   }
@@ -101,10 +104,15 @@ export function getUserByEmail(email: string): User | undefined {
     const uStudentId = (u.studentId || '').toLowerCase();
     const uParabolId = uStudentId.replace(/^caculus_/i, 'parabol_');
 
+    const isTestAlias = (raw === 'test' || raw === 'test01' || raw === 'hocsinh_test' || raw === 'parabol_test' || raw === 'parabol_test_001') &&
+      (u.id === 'user-test-01' || uEmail.startsWith('test@'));
+
     return (
+      isTestAlias ||
       uEmail === normalized ||
       uEmail === raw ||
       uEmail.replace('@caculus.edu.vn', '@parabol.edu.vn') === raw ||
+      uEmail.replace('@parabol.edu.vn', '@caculus.edu.vn') === raw ||
       uStudentId === raw ||
       uParabolId === raw ||
       u.id.toLowerCase() === raw

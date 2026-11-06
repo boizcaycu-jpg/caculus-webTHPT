@@ -10,6 +10,8 @@ export interface User {
   studentId: string; // e.g. PARABOL_VIP_001
   role: Role;
   isVip?: boolean;
+  isTrial?: boolean;
+  maxExams?: number;
   createdAt: string;
 }
 

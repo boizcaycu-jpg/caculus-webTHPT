@@ -5521,6 +5521,20 @@
       "isVip": true,
       "createdAt": "2026-09-01T10:38:28.723Z",
       "passwordPlain": "eteep7"
+    },
+    {
+      "id": "user-test-01",
+      "email": "test@parabol.edu.vn",
+      "passwordHash": ".EBsdNIj58DAS",
+      "passwordPlain": "parabol123",
+      "name": "Thí sinh Trải Nghiệm",
+      "realName": "Học sinh Trải Nghiệm",
+      "studentId": "PARABOL_TEST_001",
+      "role": "student",
+      "isVip": false,
+      "isTrial": true,
+      "maxExams": 1,
+      "createdAt": "2026-11-06T18:38:57.206Z"
     }
   ],
   "exams": [

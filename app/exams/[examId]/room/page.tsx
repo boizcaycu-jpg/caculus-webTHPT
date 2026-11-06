@@ -111,6 +111,7 @@ Trong những năm 1930, William Frederick Gericke tại Đại học California
       questions={questions}
       studentName={user?.name || user?.realName || 'Thí sinh'}
       studentId={user?.studentId || 'PARABOL_2027'}
+      isTrial={Boolean(user?.isTrial)}
     />
   );
 }

@@ -15,19 +15,25 @@ export default function ExamPreparationPage() {
   const [sliderPosition, setSliderPosition] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [isStarting, setIsStarting] = useState(false);
+  const [trialBlockMessage, setTrialBlockMessage] = useState<string | null>(null);
   const sliderTrackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    let resolvedUser: any = null;
+
     fetch('/api/auth/me')
       .then((res) => res.json())
       .then((data) => {
         if (data.authenticated) {
           setUser(data.user);
+          resolvedUser = data.user;
         } else if (typeof window !== 'undefined') {
           const stored = localStorage.getItem('parabol_user') || localStorage.getItem('caculus_user');
           if (stored) {
             try {
-              setUser(JSON.parse(stored));
+              const parsed = JSON.parse(stored);
+              setUser(parsed);
+              resolvedUser = parsed;
             } catch {
               // Ignore invalid local storage json
             }
@@ -41,6 +47,17 @@ export default function ExamPreparationPage() {
       .then((data) => {
         const found = (data.exams || []).find((e: any) => e.id === examId);
         if (found) setExam(found);
+
+        // Check trial restrictions
+        const u = resolvedUser || (typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('parabol_user') || '{}') : null);
+        if (u?.isTrial) {
+          const subs = data.submissions || [];
+          if (subs.length >= (u.maxExams || 1)) {
+            setTrialBlockMessage('Tài khoản dùng thử đã hoàn thành 1/1 lượt thi miễn phí duy nhất.');
+          } else if (examId !== 'de-thuc-chien-01' && !found?.isDemoExam) {
+            setTrialBlockMessage('Đề thi này yêu cầu tài khoản VIP. Bạn vui lòng làm Đề Thi Thử Miễn Phí (Đề Số 01).');
+          }
+        }
       })
       .catch(() => {});
   }, [examId]);
@@ -206,46 +223,61 @@ export default function ExamPreparationPage() {
 
           {/* 3. Authentic iOS "Slide to Start Exam" Capsule */}
           <div className="max-w-md mx-auto w-full">
-            <div
-              ref={sliderTrackRef}
-              onClick={handleTrackClick}
-              className="relative h-14 w-full rounded-full bg-slate-900/[0.06] backdrop-blur-md border border-slate-300/60 p-1.5 shadow-inner overflow-hidden select-none flex items-center cursor-pointer transition-colors"
-            >
-              {/* Progress Fill tracking the thumb */}
-              <div
-                style={{ width: `${sliderPosition + 44}px` }}
-                className="absolute left-0 top-0 bottom-0 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full transition-[width] duration-75 pointer-events-none opacity-90"
-              />
-
-              {/* Center Track Label */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 px-12">
-                <span
-                  style={{
-                    opacity: Math.max(0, 1 - sliderPosition / 140),
-                  }}
-                  className="text-xs font-semibold tracking-wide text-slate-600 transition-opacity"
+            {trialBlockMessage ? (
+              <div className="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-center space-y-3 shadow-xs">
+                <p className="text-xs font-semibold leading-relaxed">
+                  {trialBlockMessage}
+                </p>
+                <Link
+                  href="/dashboard"
+                  className="inline-flex items-center justify-center gap-1.5 rounded-full px-5 py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-semibold text-xs shadow-sm transition active:scale-95"
                 >
-                  {isStarting ? 'Đang mở phòng thi...' : 'Kéo sang phải để bắt đầu tính giờ →'}
-                </span>
+                  <ArrowLeft className="w-3.5 h-3.5" />
+                  <span>Quay về Dashboard</span>
+                </Link>
               </div>
-
-              {/* Draggable Thumb Button */}
+            ) : (
               <div
-                onMouseDown={() => !isStarting && setIsDragging(true)}
-                onTouchStart={() => !isStarting && setIsDragging(true)}
-                style={{
-                  transform: `translateX(${sliderPosition}px)`,
-                  transition: isDragging ? 'none' : 'transform 200ms cubic-bezier(0.16, 1, 0.3, 1)',
-                }}
-                className="relative h-11 w-11 rounded-full bg-white shadow-[0_2px_10px_rgba(0,0,0,0.15)] ring-1 ring-black/[0.04] flex items-center justify-center text-blue-600 cursor-grab active:cursor-grabbing active:scale-95 z-10 select-none"
+                ref={sliderTrackRef}
+                onClick={handleTrackClick}
+                className="relative h-14 w-full rounded-full bg-slate-900/[0.06] backdrop-blur-md border border-slate-300/60 p-1.5 shadow-inner overflow-hidden select-none flex items-center cursor-pointer transition-colors"
               >
-                {isStarting ? (
-                  <div className="w-5 h-5 border-2 border-blue-600 border-t-transparent rounded-full animate-spin" />
-                ) : (
-                  <ChevronRight className="w-5 h-5 stroke-[2.5]" />
-                )}
+                {/* Progress Fill tracking the thumb */}
+                <div
+                  style={{ width: `${sliderPosition + 44}px` }}
+                  className="absolute left-0 top-0 bottom-0 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full transition-[width] duration-75 pointer-events-none opacity-90"
+                />
+
+                {/* Center Track Label */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 px-12">
+                  <span
+                    style={{
+                      opacity: Math.max(0, 1 - sliderPosition / 140),
+                    }}
+                    className="text-xs font-semibold tracking-wide text-slate-600 transition-opacity"
+                  >
+                    {isStarting ? 'Đang mở phòng thi...' : 'Kéo sang phải để bắt đầu tính giờ →'}
+                  </span>
+                </div>
+
+                {/* Draggable Thumb Button */}
+                <div
+                  onMouseDown={() => !isStarting && setIsDragging(true)}
+                  onTouchStart={() => !isStarting && setIsDragging(true)}
+                  style={{
+                    transform: `translateX(${sliderPosition}px)`,
+                    transition: isDragging ? 'none' : 'transform 200ms cubic-bezier(0.16, 1, 0.3, 1)',
+                  }}
+                  className="relative h-11 w-11 rounded-full bg-white shadow-[0_2px_10px_rgba(0,0,0,0.15)] ring-1 ring-black/[0.04] flex items-center justify-center text-blue-600 cursor-grab active:cursor-grabbing active:scale-95 z-10 select-none"
+                >
+                  {isStarting ? (
+                    <div className="w-5 h-5 border-2 border-blue-600 border-t-transparent rounded-full animate-spin" />
+                  ) : (
+                    <ChevronRight className="w-5 h-5 stroke-[2.5]" />
+                  )}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Subtle Anti-cheat & Security Guidance */}
             <p className="text-[11px] text-slate-400 text-center mt-3 flex items-center justify-center gap-1.5">

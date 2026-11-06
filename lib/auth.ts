@@ -12,6 +12,8 @@ export interface TokenPayload {
   realName?: string | null;
   studentId: string;
   isVip?: boolean;
+  isTrial?: boolean;
+  maxExams?: number;
 }
 
 export async function hashPassword(password: string): Promise<string> {

@@ -35,7 +35,9 @@ export default function StudentExamsPage() {
       });
   }, []);
 
-  const isUserVip = user?.isVip ?? true;
+  const isTrialUser = Boolean(user?.isTrial);
+  const isUserVip = isTrialUser ? false : (user?.isVip ?? true);
+  const trialExhausted = isTrialUser && submissions.length >= (user?.maxExams || 1);
 
   // Filter LUYỆN TẬP (Chuyên đề)
   const practiceExams = exams.filter(e => e.category === 'LUYỆN TẬP');
@@ -128,7 +130,7 @@ export default function StudentExamsPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {filterBySearch(mathPractice).map((item) => {
                   const isPub = item.isPublished;
-                  const canAccess = isPub && (item.isDemoExam || isUserVip || user?.role === 'admin');
+                  const canAccess = isPub && !trialExhausted && (isUserVip || user?.role === 'admin');
 
                   return (
                     <div
@@ -193,7 +195,7 @@ export default function StudentExamsPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {filterBySearch(readingPractice).map((item) => {
                   const isPub = item.isPublished;
-                  const canAccess = isPub && (item.isDemoExam || isUserVip || user?.role === 'admin');
+                  const canAccess = isPub && !trialExhausted && (isUserVip || user?.role === 'admin');
 
                   return (
                     <div
@@ -258,7 +260,7 @@ export default function StudentExamsPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {filterBySearch(sciencePractice).map((item) => {
                   const isPub = item.isPublished;
-                  const canAccess = isPub && (item.isDemoExam || isUserVip || user?.role === 'admin');
+                  const canAccess = isPub && !trialExhausted && (isUserVip || user?.role === 'admin');
 
                   return (
                     <div
@@ -327,8 +329,8 @@ export default function StudentExamsPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filterBySearch(fullExams).map((exam) => {
                 const isPublished = exam.isPublished ?? (exam.is_published ?? (exam.status !== 'CHƯA UPDATE'));
-                const isDemoExam = exam.isFree || exam.isDemoExam || exam.id.includes('demo');
-                const canAccess = isPublished && (isDemoExam || isUserVip || user?.role === 'admin');
+                const isDemoExam = exam.isDemoExam || exam.id === 'de-thuc-chien-01';
+                const canAccess = isPublished && !trialExhausted && (isDemoExam || isUserVip || user?.role === 'admin');
 
                 const sub = submissions.find(s => s.examId === exam.id);
 

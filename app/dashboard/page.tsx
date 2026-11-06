@@ -186,7 +186,9 @@ export default function DashboardPage() {
     }, 1000);
   };
 
-  const isUserVip = user?.isVip ?? true;
+  const isTrialUser = Boolean(user?.isTrial);
+  const isUserVip = isTrialUser ? false : (user?.isVip ?? true);
+  const trialExhausted = isTrialUser && submissions.length >= (user?.maxExams || 1);
 
   // Separate Practice Topics and Full Mock Exams
   const practiceExams = exams.filter((e) => e.category === 'LUYỆN TẬP' || e.id.startsWith('chuyen-de-'));
@@ -495,6 +497,15 @@ export default function DashboardPage() {
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                         Đã kích hoạt VIP
                       </span>
+                    ) : isTrialUser ? (
+                      <span className={`rounded-full px-2.5 py-1 text-xs font-semibold inline-flex items-center gap-1.5 ${
+                        trialExhausted
+                          ? 'bg-rose-500/10 text-rose-700 border border-rose-500/20'
+                          : 'bg-amber-500/10 text-amber-700 border border-amber-500/20'
+                      }`}>
+                        <span className={`w-1.5 h-1.5 rounded-full ${trialExhausted ? 'bg-rose-500' : 'bg-amber-500'}`} />
+                        {trialExhausted ? 'Đã dùng 1/1 lượt thi' : 'Thi Thử Miễn Phí (1 lượt)'}
+                      </span>
                     ) : (
                       <span className="bg-amber-500/10 text-amber-700 border border-amber-500/20 rounded-full px-2.5 py-1 text-xs font-semibold inline-flex items-center gap-1">
                         Tài khoản Free
@@ -547,7 +558,7 @@ export default function DashboardPage() {
                   {practiceExams.map((topic) => {
                     const isPublished = topic.isPublished ?? topic.status !== 'CHƯA UPDATE';
                     const sub = submissions.find((s) => s.examId === topic.id);
-                    const canAccess = isPublished;
+                    const canAccess = isPublished && (isUserVip || user?.role === 'admin');
 
                     return (
                       <div
@@ -591,7 +602,7 @@ export default function DashboardPage() {
                             disabled
                             className="rounded-full px-4 py-2 text-xs font-medium bg-slate-100 text-slate-400 border border-slate-200 cursor-not-allowed shrink-0 flex items-center gap-1"
                           >
-                            <Lock className="w-3 h-3" /> Chưa mở
+                            <Lock className="w-3 h-3" /> {isTrialUser ? 'Khóa VIP' : 'Chưa mở'}
                           </button>
                         )}
                       </div>
@@ -677,8 +688,8 @@ export default function DashboardPage() {
               <div className="space-y-3">
                 {currentStageExams.map((exam) => {
                   const isPublished = exam.isPublished ?? exam.status !== 'CHƯA UPDATE';
-                  const isDemoExam = exam.isFree || exam.isDemoExam || exam.id.includes('demo') || exam.id === 'de-thuc-chien-01';
-                  const canAccess = isPublished && (isDemoExam || isUserVip || user?.role === 'admin');
+                  const isDemoExam = exam.isDemoExam || exam.id === 'de-thuc-chien-01';
+                  const canAccess = isPublished && !trialExhausted && (isDemoExam || isUserVip || user?.role === 'admin');
                   const sub = submissions.find((s) => s.examId === exam.id);
 
                   let stageBadge = {
@@ -753,14 +764,15 @@ export default function DashboardPage() {
                             className="rounded-full px-4 py-2 text-xs font-semibold bg-gradient-to-b from-blue-500 to-blue-600 text-white shadow-[0_2px_8px_rgba(37,99,235,0.25),inset_0_1px_0_0_rgba(255,255,255,0.3)] hover:from-blue-600 hover:to-blue-700 active:scale-[0.96] transition-all flex items-center gap-1.5 shrink-0"
                           >
                             <PlayCircle className="w-3.5 h-3.5" />
-                            <span>{sub ? 'Thi lại' : 'Vào thi'}</span>
+                            <span>{sub ? 'Thi lại' : (isDemoExam && isTrialUser ? 'Thi thử miễn phí' : 'Vào thi')}</span>
                           </Link>
                         ) : (
                           <button
                             disabled
                             className="rounded-full px-4 py-2 text-xs font-medium bg-slate-100 text-slate-400 border border-slate-200 cursor-not-allowed shrink-0 flex items-center gap-1"
                           >
-                            <Lock className="w-3.5 h-3.5" /> Chưa mở
+                            <Lock className="w-3 h-3" />
+                            <span>{trialExhausted ? 'Đã hết lượt thi' : (!isUserVip && !isDemoExam ? 'Khóa VIP' : 'Chưa mở')}</span>
                           </button>
                         )}
                       </div>
@@ -1174,6 +1186,34 @@ export default function DashboardPage() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Modal Thông Báo Hết Lượt Thi Thử Cho Tài Khoản Test */}
+      {isTrialUser && trialExhausted && (
+        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-md flex items-center justify-center p-4 z-50 animate-in fade-in duration-200">
+          <div className="bg-white/95 backdrop-blur-2xl rounded-[32px] max-w-md w-full border border-white/90 ring-1 ring-slate-900/[0.08] shadow-[0_25px_60px_rgba(0,0,0,0.15)] p-6 sm:p-8 space-y-5 text-center">
+            <div className="w-16 h-16 rounded-full bg-amber-50 border border-amber-200 flex items-center justify-center mx-auto text-amber-600 shadow-sm text-2xl">
+              🎉
+            </div>
+            <div className="space-y-2">
+              <h3 className="text-xl font-bold text-slate-900">
+                Đã hoàn thành bài thi thử!
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Bạn đã hoàn thành <strong>1 lượt thi thử miễn phí duy nhất</strong> của tài khoản Test (Điểm đạt: <strong className="text-blue-700 font-bold">{highestScore}đ</strong>).
+                <br /><br />
+                Để mở khóa toàn bộ <strong>40 chuyên đề và bộ đề thực chiến</strong> tích hợp AI giải chi tiết, bạn vui lòng liên hệ Thầy cô hoặc Quản trị viên để nhận tài khoản VIP chính thức!
+              </p>
+            </div>
+            <button
+              onClick={handleLogout}
+              className="w-full rounded-full py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold text-xs shadow-md transition active:scale-95 flex items-center justify-center gap-2"
+            >
+              <LogOut className="w-4 h-4" />
+              <span>Đăng xuất tài khoản</span>
+            </button>
           </div>
         </div>
       )}
